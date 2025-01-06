@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OurSystemCode.Properties;
+//using WMS;
 
 
 namespace OurSystemCode
@@ -43,6 +44,11 @@ namespace OurSystemCode
             userroleBox.Text= role;
             usernameBox.TabStop = false;
             userroleBox.TabStop = false;
+
+            UpdateItemCount();
+            UpdateCatogiryCount();
+            LowStockCount();
+            UpcomingCount();
 
             int cornerRadius = 20;
             Form1.ApplyRoundedCorners(this, cornerRadius);
@@ -101,6 +107,117 @@ namespace OurSystemCode
         private void Dash_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;  
+        }
+
+        private void UpdateItemCount()
+        {
+            try
+            {
+               
+                string query = "SELECT COUNT(*) FROM whms_schema.Item";
+
+                
+                DatabaseOperations dbOps = new DatabaseOperations();
+                DataSet ds = dbOps.getData(query);
+
+                
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    int totalItems = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+                    TotalItemsBox.Text = totalItems.ToString();  
+                }
+                else
+                {
+                    TotalItemsBox.Text = "Null";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void UpcomingCount()
+        {
+            try
+            {
+
+                string query = "SELECT COUNT(*) FROM whms_schema.PurchaseOrders  WHERE CAST(ExpectedDeliveryDate AS DATE) = CAST(GETDATE() AS DATE)";
+
+
+                DatabaseOperations dbOps = new DatabaseOperations();
+                DataSet ds = dbOps.getData(query);
+
+
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    int IntUpcomingCount = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+                    UpcomingDelBox.Text = IntUpcomingCount.ToString();
+                }
+                else
+                {
+                    UpcomingDelBox.Text = "Null";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void UpdateCatogiryCount()
+        {
+            try
+            {
+                
+                string query = "SELECT COUNT(*) FROM whms_schema.Categories";
+
+                
+                DatabaseOperations dbOps = new DatabaseOperations();
+                DataSet ds = dbOps.getData(query);
+
+                
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    int totalCategory = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
+                    CategoriesBox.Text = totalCategory.ToString();  
+                }
+                else
+                {
+                    CategoriesBox.Text = "Null";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        private void LowStockCount()
+        {
+            try
+            {
+
+                string query = "SELECT * FROM whms_schema.Item WHERE Quantity < 50";
+
+
+                DatabaseOperations dbOps = new DatabaseOperations();
+                DataSet ds = dbOps.getData(query);
+
+
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    int LowStockCount = ds.Tables[0].Rows.Count;
+                    LowStockBox.Text = LowStockCount.ToString();
+                }
+                else
+                {
+                    LowStockBox.Text = "Null";
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -269,6 +386,8 @@ namespace OurSystemCode
         {
             
         }
+
+   
     }
 
 

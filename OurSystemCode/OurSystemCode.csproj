@@ -120,6 +120,7 @@
     <Compile Include="Suppliers.Designer.cs">
       <DependentUpon>Suppliers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utility.cs" />
     <EmbeddedResource Include="AdminSittings.resx">
       <DependentUpon>AdminSittings.cs</DependentUpon>
     </EmbeddedResource>

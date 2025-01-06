@@ -558,7 +558,7 @@
   <data name="pictureBox7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qwAAAKsB1E2SqwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADASURBVEhL7ZU7
+        qAAAAKgBefSzxgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADASURBVEhL7ZU7
         CkIxEEUP2LoSBRHs3YKFWAjWtm5FXJe1nZ2NW7BRLiSP54UoyYsf0AO3yBByyAQm8CF6wBiYFGboBzpz
         4NoxAz+0zQo4eDEDCXSTJNUF6vkMWITsagv0oCoeQ861BVqoGKneor/A+U7BFFgnMrK9RYItsE9kY3uL
         BDn8gGAJXFqjIzc6S+OnwQX98CfE4fcspzAg41qDUwO0wQW5qJ1qa5KXC/SHStAlaulDJNFNSqIHvev5
@@ -568,7 +568,7 @@
   <data name="pictureBox5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAArpJREFUeF7tmr2O1EAQhCsiIAcRcCHiJSAH3on0jmdBiBByflICCI6Yn/Ak7kIS
+        DAAACwwBP0AiyAAAArpJREFUeF7tmr2O1EAQhCsiIAcRcCHiJSAH3on0jmdBiBByflICCI6Yn/Ak7kIS
         UEkeadRq22Wme3Ys/EkduLemp3q8t7bHBxwcHBz8G7cBPAfwFcBvAH9OED8BvABwy5rL5i6AT46hU8WF
         NZgJm/8yTcyzX0ycgkfT3PwmdOEOgM/TpJcA7p14AUi3+b3mSTcDM3SZf6550sXAAunzLzVP0g2skDr/
         WvMk1YBA2vxK8yTNgEjK/GrzJMXABsLn5x1eucnh9Z7X/SXCDWwkfH7e3rIgb3LWmn88aX/YDzoSvgD8
@@ -602,7 +602,7 @@
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAAAMlJREFUWEftkMsJAzEQQ3VKT0mB+bSVkFKSNhIMNngHsRp5ffQDXcaaZ2Ngscjx
+        DAAACwwBP0AiyAAAAMlJREFUWEftkMsJAzEQQ3VKT0mB+bSVkFKSNhIMNngHsRp5ffQDXcaaZ2Ngscjx
         G8w0ojibabhCty9xhW5f4grdvsQVun2JK3T7G04AHgC+nehoPgBu1S25E8GsXONljPLaUj7HgwNcqrO4
         Je21hTeAVzgfpffu0hfL5c9wPsrQA2aS9qaLJmkvK7aZG+aQsGIUZ8McElZksz1Yn80orMhme7A+m1Fa
         kSVL3LMcccFarsS9EccGd9ntS1yh25fEb8xmGlGczWIh+QP2duZi5m9FzgAAAABJRU5ErkJggg==
@@ -639,4 +639,7 @@
         djxFB92m54lhBjv/AWzGS/9PTMqVAAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="dataSet1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

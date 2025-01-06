@@ -62,7 +62,7 @@ namespace OurSystemCode
                 return;
             }
 
-            Console.WriteLine("SSSS Role: " + role);
+            
             if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
