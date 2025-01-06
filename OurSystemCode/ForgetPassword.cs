@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WMS;
 
+
 namespace OurSystemCode
 {
-    public partial class ForgetPassword : MetroFramework.Forms.MetroForm
+    public partial class ForgetPassword : Form
     {
         DatabaseOperations databaseOperation = new DatabaseOperations();
         String query;
@@ -24,18 +26,13 @@ namespace OurSystemCode
         public ForgetPassword()
         {
             InitializeComponent();
+
         }
 
       
-        private void ForgetPassword_Load(object sender, EventArgs e)
-        {
-           
-            this.MouseDown += new MouseEventHandler(ForgetPassword_MouseDown);
-            this.MouseMove += new MouseEventHandler(ForgetPassword_MouseMove);
-            this.MouseUp += new MouseEventHandler(ForgetPassword_MouseUp);
-        }
+        
 
-        private void ForgetPassword_MouseDown(object sender, MouseEventArgs e)
+        public void ForgetPassword_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -44,16 +41,15 @@ namespace OurSystemCode
             }
         }
 
-        private void ForgetPassword_MouseMove(object sender, MouseEventArgs e)
+        public void ForgetPassword_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging)
             {
-                this.Left = this.Left + (e.X - mouseOffset.X);  
-                this.Top = this.Top + (e.Y - mouseOffset.Y);    
+                this.Left = this.Left + (e.X - mouseOffset.X);
+                this.Top = this.Top + (e.Y - mouseOffset.Y);
             }
         }
-
-        private void ForgetPassword_MouseUp(object sender, MouseEventArgs e)
+        public void ForgetPassword_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
         }
@@ -92,7 +88,7 @@ namespace OurSystemCode
                     {
                         MessageBox.Show("Password updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
-                        FormLogin Loginform = new FormLogin();
+                        Form1 Loginform = new Form1();
                         Loginform.Show();
                     }
                     else
@@ -135,6 +131,33 @@ namespace OurSystemCode
             {
                 textBoxPassword.PasswordChar = '*';
             }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            
+        }
+
+        private void buttonMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panelBlogin_Resize(object sender, EventArgs e)
+        {
+            int cornerRadius = 20;
+            Form1.ApplyRoundedCorners(panelBlogin, cornerRadius);
+        }
+
+        private void ForgetPassword_Load_1(object sender, EventArgs e)
+        {
+            int cornerRadius = 20;
+            Form1.ApplyRoundedCorners(this, cornerRadius);
+
+            this.MouseDown += new MouseEventHandler(ForgetPassword_MouseDown);
+            this.MouseMove += new MouseEventHandler(ForgetPassword_MouseMove);
+            this.MouseUp += new MouseEventHandler(ForgetPassword_MouseUp);
         }
     }
 }

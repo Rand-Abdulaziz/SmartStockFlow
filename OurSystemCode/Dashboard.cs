@@ -18,6 +18,7 @@ namespace OurSystemCode
             
         private bool isDragging = false;
         private Point mouseOffset;
+
         public Dashboard()
         {
             InitializeComponent();
@@ -25,32 +26,28 @@ namespace OurSystemCode
 
         }
 
+        String name;
         String role;
-        public Dashboard(String role)
+        public Dashboard(String role , String name)
         {
             InitializeComponent();
             this.Size = new Size(811, 490); 
             this.role = role;
+            this.name = name;
             
         }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-           
-            int cornerRadius = 20; 
+            usernameBox.Text = name;
+            userroleBox.Text= role;
+            usernameBox.TabStop = false;
+            userroleBox.TabStop = false;
 
-            GraphicsPath path = new GraphicsPath();
-            path.StartFigure();
-            path.AddArc(0, 0, cornerRadius, cornerRadius, 180, 90); // الزاوية العلوية اليسرى
-            path.AddArc(this.Width - cornerRadius, 0, cornerRadius, cornerRadius, 270, 90); // الزاوية العلوية اليمنى
-            path.AddArc(this.Width - cornerRadius, this.Height - cornerRadius, cornerRadius, cornerRadius, 0, 90); // الزاوية السفلية اليمنى
-            path.AddArc(0, this.Height - cornerRadius, cornerRadius, cornerRadius, 90, 90); // الزاوية السفلية اليسرى
-            path.CloseFigure();
+            int cornerRadius = 20;
+            Form1.ApplyRoundedCorners(this, cornerRadius);
 
-           
-            this.Region = new Region(path);
-
-            // ربط الأحداث بالـ Form
+          
             this.MouseDown += new MouseEventHandler(Dash_MouseDown);
             this.MouseMove += new MouseEventHandler(Dash_MouseMove);
             this.MouseUp += new MouseEventHandler(Dash_MouseUp);
@@ -90,7 +87,7 @@ namespace OurSystemCode
             }
         }
 
-        // عند تحريك الماوس
+      
         private void Dash_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging) 
@@ -100,10 +97,10 @@ namespace OurSystemCode
             }
         }
 
-        // عند رفع زر الماوس
+       
         private void Dash_MouseUp(object sender, MouseEventArgs e)
         {
-            isDragging = false;  // إيقاف السحب
+            isDragging = false;  
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -113,36 +110,67 @@ namespace OurSystemCode
 
         private void button4_Click(object sender, EventArgs e)
         {
+            InventoryMan InventoryManScreen = new InventoryMan(role , name);
+            this.Hide();
+            InventoryManScreen.Show();
         }
 
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
-            
+            this.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            DataEntry DataEntryScreen = new DataEntry(role,name);
+            this.Hide();
+            DataEntryScreen.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            Reports ReportsScreen = new Reports(role,name);
+            this.Hide();
+            ReportsScreen.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
+            Suppliers SuppliersScreen = new Suppliers(role,name);
+            this.Hide();
+            SuppliersScreen.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
+            Employees EmployeesScreen = new Employees(role , name);
+            this.Hide();
+            EmployeesScreen.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            
+            if (string.IsNullOrEmpty(role))
+            {
+                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
+            {
+                Sittings SittingsScreen = new Sittings(role , name);
+                this.Hide();
+                SittingsScreen.Show();
+
+            }
+            else
+            {
+
+                AdminSittings ASittingsScreen = new AdminSittings(role, name);
+                this.Hide();
+                ASittingsScreen.Show();
+            }
         }
 
         private void BtnDashboard_Leave(object sender, EventArgs e)
@@ -157,12 +185,12 @@ namespace OurSystemCode
 
         private void panel3_Resize(object sender, EventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel3, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel3, 20);
         }
 
         private void panel4_Resize(object sender, EventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel4, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -172,57 +200,74 @@ namespace OurSystemCode
 
         private void panel5_Resize(object sender, EventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel5, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel5, 20);
         }
 
         private void panel6_Resize(object sender, EventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel6, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel6, 20);
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel7, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel7, 20);
         }
 
         private void panel8_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel8, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel8, 20);
         }
 
         private void panel11_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel11, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel11, 20);
         }
 
         private void panel12_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel12, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel12, 20);
         }
 
         private void panel9_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel9, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel9, 20);
         }
 
         private void panel10_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel10, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel10, 20);
         }
 
         private void panel13_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel13, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel13, 20);
         }
 
         private void panel14_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel14, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel14, 20);
         }
 
         private void panel15_Paint(object sender, PaintEventArgs e)
         {
-            OurSystemCode.FormLogin.ApplyRoundedCorners(panel15, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel15, 20);
+        }
+
+        private void buttonMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form1 LogoutScreen = new Form1();
+            this.Close();
+           LogoutScreen.Show();
+        }
+
+        private void usernameBox_TextChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 

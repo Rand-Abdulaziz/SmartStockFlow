@@ -8,7 +8,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OurSystemCode
 {
-    public partial class FormLogin : MetroFramework.Forms.MetroForm
+    public partial class Form1 : Form
     {
 
         DatabaseOperations databaseOperation = new DatabaseOperations();
@@ -17,7 +17,7 @@ namespace OurSystemCode
         private bool isDragging = false;
         private Point mouseOffset;
 
-        public FormLogin()
+        public Form1()
         {
             InitializeComponent();
         }
@@ -31,6 +31,13 @@ namespace OurSystemCode
             this.MouseDown += new MouseEventHandler(FormLogin_MouseDown);
             this.MouseMove += new MouseEventHandler(FormLogin_MouseMove);
             this.MouseUp += new MouseEventHandler(FormLogin_MouseUp);
+
+            if (Properties.Settings.Default.UserEmail != string.Empty)
+            {
+                textBoxEmail.Text = Properties.Settings.Default.UserEmail;
+                textBoxPassword.Text = Properties.Settings.Default.UserPassword;
+
+            }
         }
         public static void ApplyRoundedCorners(Control control, int cornerRadius)
         {
@@ -60,8 +67,8 @@ namespace OurSystemCode
         {
             if (isDragging)
             {
-                this.Left = this.Left + (e.X - mouseOffset.X);  // تحريك النافذة أفقيًا
-                this.Top = this.Top + (e.Y - mouseOffset.Y);    // تحريك النافذة عموديًا
+                this.Left = this.Left + (e.X - mouseOffset.X);  
+                this.Top = this.Top + (e.Y - mouseOffset.Y);    
             }
         }
         public void FormLogin_MouseUp(object sender, MouseEventArgs e)
@@ -107,6 +114,18 @@ namespace OurSystemCode
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            if (checkBoxRemember.Checked == true) {
+                Properties.Settings.Default.UserEmail = textBoxEmail.Text;
+                Properties.Settings.Default.UserPassword = textBoxPassword.Text;
+                Properties.Settings.Default.Save();
+            }
+            else
+            {
+                Properties.Settings.Default.UserEmail = "";
+                Properties.Settings.Default.UserPassword = "";
+                Properties.Settings.Default.Save();
+            }
+
             try
             {
                 query = $"SELECT * FROM whms_schema.Users WHERE Email = '{textBoxEmail.Text}'";
@@ -118,7 +137,7 @@ namespace OurSystemCode
                     string storedPassword = ds.Tables[0].Rows[0]["Password"].ToString();
                     if (storedPassword == textBoxPassword.Text)
                     {
-                        
+                        string name = ds.Tables[0].Rows[0]["UserName"].ToString();
                         string role = ds.Tables[0].Rows[0]["Role"].ToString();
                         Console.WriteLine("Role: " + role);
 
@@ -133,7 +152,7 @@ namespace OurSystemCode
 
                         Console.WriteLine("User Role: " + role);
                         Int64 appUserPK = Int64.Parse(ds.Tables[0].Rows[0][0].ToString());
-                        Dashboard mdash = new Dashboard(role);
+                        Dashboard mdash = new Dashboard(role,name);
                         mdash.Show();
                         this.Hide();
                     }
@@ -156,6 +175,15 @@ namespace OurSystemCode
             }
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void buttonMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 
 
