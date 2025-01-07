@@ -43,6 +43,8 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonMinimize = new System.Windows.Forms.Button();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -59,17 +61,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.buttonMinimize = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -290,6 +290,31 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1269, 208);
             this.panel4.TabIndex = 12;
+            this.panel4.Resize += new System.EventHandler(this.panel4_Resize);
+            // 
+            // buttonMinimize
+            // 
+            this.buttonMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.buttonMinimize.FlatAppearance.BorderSize = 0;
+            this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMinimize.Font = new System.Drawing.Font("Tahoma", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMinimize.Location = new System.Drawing.Point(1155, 4);
+            this.buttonMinimize.Name = "buttonMinimize";
+            this.buttonMinimize.Size = new System.Drawing.Size(35, 39);
+            this.buttonMinimize.TabIndex = 8;
+            this.buttonMinimize.Text = "-";
+            this.buttonMinimize.UseVisualStyleBackColor = false;
+            this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(1196, 7);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(30, 27);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 7;
+            this.pictureBox7.TabStop = false;
             // 
             // label3
             // 
@@ -335,6 +360,7 @@
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(655, 115);
             this.panel7.TabIndex = 7;
+            this.panel7.Resize += new System.EventHandler(this.panel7_Resize);
             // 
             // comboBox1
             // 
@@ -358,6 +384,7 @@
             this.button9.TabIndex = 9;
             this.button9.Text = "Show";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Resize += new System.EventHandler(this.button9_Resize);
             // 
             // panel5
             // 
@@ -370,6 +397,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(655, 219);
             this.panel5.TabIndex = 7;
+            this.panel5.Resize += new System.EventHandler(this.panel5_Resize);
             // 
             // radioButton6
             // 
@@ -426,6 +454,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(655, 219);
             this.panel6.TabIndex = 1;
+            this.panel6.Resize += new System.EventHandler(this.panel6_Resize);
             // 
             // radioButton5
             // 
@@ -471,30 +500,6 @@
             this.radioButton1.Text = "Add | Update items";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(1196, 7);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(30, 27);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 7;
-            this.pictureBox7.TabStop = false;
-            // 
-            // buttonMinimize
-            // 
-            this.buttonMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.buttonMinimize.FlatAppearance.BorderSize = 0;
-            this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMinimize.Font = new System.Drawing.Font("Tahoma", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMinimize.Location = new System.Drawing.Point(1155, 4);
-            this.buttonMinimize.Name = "buttonMinimize";
-            this.buttonMinimize.Size = new System.Drawing.Size(35, 39);
-            this.buttonMinimize.TabIndex = 8;
-            this.buttonMinimize.Text = "-";
-            this.buttonMinimize.UseVisualStyleBackColor = false;
-            this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
-            // 
             // Reports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -506,6 +511,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Reports";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reports";
             this.Load += new System.EventHandler(this.Reports_Load);
             this.panel1.ResumeLayout(false);
@@ -514,13 +520,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
 
         }

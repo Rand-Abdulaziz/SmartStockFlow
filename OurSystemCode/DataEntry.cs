@@ -219,7 +219,6 @@ namespace OurSystemCode
             try
             {
                 
-
                 string query = "SELECT * FROM whms_schema.Item " +
                         "WHERE Name LIKE '%" + SearchBoxEntry.Text + "%' " +
                         "OR Item_ID LIKE '%" + SearchBoxEntry.Text + "%' " +
@@ -250,6 +249,8 @@ namespace OurSystemCode
         private void pictureEye_Click(object sender, EventArgs e)
         {
             OBItemPan.Visible = true;
+            DeleteItemPan.Visible = false;
+            tableLayoutFilter.Visible = false;
             tableLayoutPanelAdd.Visible = true;
            
         }
@@ -593,7 +594,7 @@ namespace OurSystemCode
             OBItemPan.Visible = true;
             tableLayoutFilter.Visible = true;
             OBbutton.Text = "Filter";
-            OBlapel.Text = "Filter";
+            OBlapel.Text = "Filtering Items";
         }
 
         private void FilExpirationDateInsertBox_ValueChanged(object sender, EventArgs e)
@@ -604,6 +605,31 @@ namespace OurSystemCode
         private void EntryDataPrint_Click(object sender, EventArgs e)
         {
             PrintEntryData();
+        }
+
+        private void ItemIDDelete_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utility.onlyNumber(e);
+        }
+
+        private void FilterIDBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utility.onlyNumber(e);
+        }
+
+        private void FilQuantityNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utility.onlyNumber(e);
+        }
+
+        private void FilCatogeryIDInsertBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utility.onlyNumber(e);
+        }
+
+        private void FilLocationIDInsertBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utility.onlyNumber(e);
         }
     }
 }

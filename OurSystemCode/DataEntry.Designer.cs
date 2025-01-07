@@ -46,7 +46,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.EntryDataPrint = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -106,7 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.EntryDataPrint)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -333,7 +331,6 @@
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.buttonMinimize);
             this.panel4.Controls.Add(this.pictureBox7);
-            this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.pictureBox4);
             this.panel4.Controls.Add(this.EntryDataPrint);
             this.panel4.Controls.Add(this.pictureBox2);
@@ -381,24 +378,12 @@
             this.pictureBox7.TabIndex = 10;
             this.pictureBox7.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(1148, 54);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 9;
-            this.pictureBox5.TabStop = false;
-            // 
             // pictureBox4
             // 
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1116, 54);
+            this.pictureBox4.Location = new System.Drawing.Point(1148, 54);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(25, 25);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -424,7 +409,7 @@
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1085, 54);
+            this.pictureBox2.Location = new System.Drawing.Point(1117, 54);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -437,7 +422,7 @@
             this.pictureEye.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureEye.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureEye.Image = ((System.Drawing.Image)(resources.GetObject("pictureEye.Image")));
-            this.pictureEye.Location = new System.Drawing.Point(1051, 54);
+            this.pictureEye.Location = new System.Drawing.Point(1086, 54);
             this.pictureEye.Name = "pictureEye";
             this.pictureEye.Size = new System.Drawing.Size(25, 25);
             this.pictureEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -596,6 +581,7 @@
             this.FilCatogeryIDInsertBox.Name = "FilCatogeryIDInsertBox";
             this.FilCatogeryIDInsertBox.Size = new System.Drawing.Size(123, 33);
             this.FilCatogeryIDInsertBox.TabIndex = 20;
+            this.FilCatogeryIDInsertBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilCatogeryIDInsertBox_KeyPress);
             // 
             // FilterIDBox
             // 
@@ -605,6 +591,7 @@
             this.FilterIDBox.Size = new System.Drawing.Size(123, 33);
             this.FilterIDBox.TabIndex = 26;
             this.FilterIDBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.FilterIDBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilterIDBox_KeyPress);
             // 
             // label12
             // 
@@ -624,6 +611,7 @@
             this.FilQuantityNameBox.Name = "FilQuantityNameBox";
             this.FilQuantityNameBox.Size = new System.Drawing.Size(123, 33);
             this.FilQuantityNameBox.TabIndex = 29;
+            this.FilQuantityNameBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilQuantityNameBox_KeyPress);
             // 
             // label13
             // 
@@ -643,6 +631,7 @@
             this.FilLocationIDInsertBox.Name = "FilLocationIDInsertBox";
             this.FilLocationIDInsertBox.Size = new System.Drawing.Size(123, 33);
             this.FilLocationIDInsertBox.TabIndex = 21;
+            this.FilLocationIDInsertBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FilLocationIDInsertBox_KeyPress);
             // 
             // label14
             // 
@@ -739,6 +728,7 @@
             this.ItemIDDelete.Size = new System.Drawing.Size(123, 33);
             this.ItemIDDelete.TabIndex = 26;
             this.ItemIDDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ItemIDDelete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemIDDelete_KeyPress);
             // 
             // label16
             // 
@@ -1035,7 +1025,6 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.EntryDataPrint)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1077,7 +1066,6 @@
         private System.Windows.Forms.PictureBox EntryDataPrint;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureEye;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.PictureBox pictureBox7;

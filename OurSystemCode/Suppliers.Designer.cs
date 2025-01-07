@@ -43,27 +43,58 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureEye = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SearchBoxSuppliers = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.DeleteSupPan = new System.Windows.Forms.TableLayoutPanel();
+            this.SupNameDelete = new System.Windows.Forms.TextBox();
+            this.SupIDDelete = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.OBSuppliersPan = new System.Windows.Forms.Panel();
+            this.OBlapelSup = new System.Windows.Forms.Label();
+            this.tableLayoutPanelAddSup = new System.Windows.Forms.TableLayoutPanel();
+            this.InsertNameBoxSup = new System.Windows.Forms.TextBox();
+            this.SupplierContact = new System.Windows.Forms.Label();
+            this.QuantityNameBox = new System.Windows.Forms.TextBox();
+            this.SupplierName = new System.Windows.Forms.Label();
+            this.IsertSizeBoxS = new System.Windows.Forms.TextBox();
+            this.SupplierLocation = new System.Windows.Forms.Label();
+            this.OBbuttonSup = new System.Windows.Forms.Button();
+            this.OBcloseSup = new System.Windows.Forms.Button();
+            this.SuppliersView = new System.Windows.Forms.DataGridView();
+            this.tableLayoutFilterSup = new System.Windows.Forms.TableLayoutPanel();
+            this.SupplierNameFilBox = new System.Windows.Forms.TextBox();
+            this.SupplierContactFil = new System.Windows.Forms.Label();
+            this.SupplierIDFilBox = new System.Windows.Forms.TextBox();
+            this.SupplierContactFilBox = new System.Windows.Forms.TextBox();
+            this.SupplierNameFil = new System.Windows.Forms.Label();
+            this.SupplierLocationFilBox = new System.Windows.Forms.TextBox();
+            this.SupplierLocationFil = new System.Windows.Forms.Label();
+            this.SupplierIDFil = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.DeleteSupPan.SuspendLayout();
+            this.OBSuppliersPan.SuspendLayout();
+            this.tableLayoutPanelAddSup.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersView)).BeginInit();
+            this.tableLayoutFilterSup.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -276,14 +307,14 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.buttonMinimize);
             this.panel4.Controls.Add(this.pictureBox7);
-            this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.pictureBox4);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.pictureEye);
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.SearchBoxSuppliers);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.button8);
             this.panel4.Location = new System.Drawing.Point(340, 12);
@@ -291,6 +322,16 @@
             this.panel4.Size = new System.Drawing.Size(1269, 208);
             this.panel4.TabIndex = 9;
             this.panel4.Resize += new System.EventHandler(this.panel4_Resize);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(640, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 30);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Search";
             // 
             // buttonMinimize
             // 
@@ -316,29 +357,18 @@
             this.pictureBox7.TabIndex = 9;
             this.pictureBox7.TabStop = false;
             // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(1148, 54);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
-            // 
             // pictureBox4
             // 
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1117, 54);
+            this.pictureBox4.Location = new System.Drawing.Point(1148, 54);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(25, 25);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // pictureBox3
             // 
@@ -351,38 +381,41 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1086, 54);
+            this.pictureBox2.Location = new System.Drawing.Point(1117, 54);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(25, 25);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureEye
             // 
             this.pictureEye.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureEye.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureEye.Image = ((System.Drawing.Image)(resources.GetObject("pictureEye.Image")));
-            this.pictureEye.Location = new System.Drawing.Point(1052, 54);
+            this.pictureEye.Location = new System.Drawing.Point(1086, 54);
             this.pictureEye.Name = "pictureEye";
             this.pictureEye.Size = new System.Drawing.Size(25, 25);
             this.pictureEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureEye.TabIndex = 7;
             this.pictureEye.TabStop = false;
+            this.pictureEye.Click += new System.EventHandler(this.pictureEye_Click);
             // 
-            // textBox1
+            // SearchBoxSuppliers
             // 
-            this.textBox1.Location = new System.Drawing.Point(707, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(308, 33);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "Search";
+            this.SearchBoxSuppliers.Location = new System.Drawing.Point(722, 48);
+            this.SearchBoxSuppliers.Name = "SearchBoxSuppliers";
+            this.SearchBoxSuppliers.Size = new System.Drawing.Size(308, 33);
+            this.SearchBoxSuppliers.TabIndex = 6;
+            this.SearchBoxSuppliers.TextChanged += new System.EventHandler(this.SearchBoxSuppliers_TextChanged);
             // 
             // label3
             // 
@@ -411,10 +444,333 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.OBSuppliersPan);
+            this.panel3.Controls.Add(this.SuppliersView);
             this.panel3.Location = new System.Drawing.Point(356, 106);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1239, 792);
             this.panel3.TabIndex = 10;
+            // 
+            // DeleteSupPan
+            // 
+            this.DeleteSupPan.AutoScroll = true;
+            this.DeleteSupPan.ColumnCount = 2;
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteSupPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteSupPan.Controls.Add(this.SupNameDelete, 1, 1);
+            this.DeleteSupPan.Controls.Add(this.SupIDDelete, 0, 1);
+            this.DeleteSupPan.Controls.Add(this.label16, 1, 0);
+            this.DeleteSupPan.Controls.Add(this.label18, 0, 0);
+            this.DeleteSupPan.Location = new System.Drawing.Point(0, 39);
+            this.DeleteSupPan.Name = "DeleteSupPan";
+            this.DeleteSupPan.RowCount = 2;
+            this.DeleteSupPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DeleteSupPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DeleteSupPan.Size = new System.Drawing.Size(1213, 115);
+            this.DeleteSupPan.TabIndex = 25;
+            this.DeleteSupPan.Visible = false;
+            // 
+            // SupNameDelete
+            // 
+            this.SupNameDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupNameDelete.Location = new System.Drawing.Point(848, 69);
+            this.SupNameDelete.Name = "SupNameDelete";
+            this.SupNameDelete.Size = new System.Drawing.Size(123, 33);
+            this.SupNameDelete.TabIndex = 31;
+            this.SupNameDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SupIDDelete
+            // 
+            this.SupIDDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupIDDelete.Location = new System.Drawing.Point(241, 69);
+            this.SupIDDelete.Name = "SupIDDelete";
+            this.SupIDDelete.Size = new System.Drawing.Size(123, 33);
+            this.SupIDDelete.TabIndex = 26;
+            this.SupIDDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SupIDDelete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SupIDDelete_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.label16.Location = new System.Drawing.Point(881, 18);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 21);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Name";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.label18.Location = new System.Drawing.Point(268, 18);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(69, 21);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Item_ID";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // OBSuppliersPan
+            // 
+            this.OBSuppliersPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.OBSuppliersPan.Controls.Add(this.DeleteSupPan);
+            this.OBSuppliersPan.Controls.Add(this.tableLayoutFilterSup);
+            this.OBSuppliersPan.Controls.Add(this.OBlapelSup);
+            this.OBSuppliersPan.Controls.Add(this.tableLayoutPanelAddSup);
+            this.OBSuppliersPan.Controls.Add(this.OBbuttonSup);
+            this.OBSuppliersPan.Controls.Add(this.OBcloseSup);
+            this.OBSuppliersPan.Location = new System.Drawing.Point(11, 588);
+            this.OBSuppliersPan.Name = "OBSuppliersPan";
+            this.OBSuppliersPan.Size = new System.Drawing.Size(1213, 197);
+            this.OBSuppliersPan.TabIndex = 9;
+            // 
+            // OBlapelSup
+            // 
+            this.OBlapelSup.AutoSize = true;
+            this.OBlapelSup.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
+            this.OBlapelSup.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.OBlapelSup.Location = new System.Drawing.Point(3, 3);
+            this.OBlapelSup.Name = "OBlapelSup";
+            this.OBlapelSup.Size = new System.Drawing.Size(117, 25);
+            this.OBlapelSup.TabIndex = 5;
+            this.OBlapelSup.Text = "Add Suplier";
+            // 
+            // tableLayoutPanelAddSup
+            // 
+            this.tableLayoutPanelAddSup.AutoScroll = true;
+            this.tableLayoutPanelAddSup.ColumnCount = 3;
+            this.tableLayoutPanelAddSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelAddSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelAddSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelAddSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelAddSup.Controls.Add(this.InsertNameBoxSup, 0, 1);
+            this.tableLayoutPanelAddSup.Controls.Add(this.SupplierContact, 2, 0);
+            this.tableLayoutPanelAddSup.Controls.Add(this.QuantityNameBox, 2, 1);
+            this.tableLayoutPanelAddSup.Controls.Add(this.SupplierName, 0, 0);
+            this.tableLayoutPanelAddSup.Controls.Add(this.IsertSizeBoxS, 1, 1);
+            this.tableLayoutPanelAddSup.Controls.Add(this.SupplierLocation, 1, 0);
+            this.tableLayoutPanelAddSup.Location = new System.Drawing.Point(0, 41);
+            this.tableLayoutPanelAddSup.Name = "tableLayoutPanelAddSup";
+            this.tableLayoutPanelAddSup.RowCount = 2;
+            this.tableLayoutPanelAddSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAddSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAddSup.Size = new System.Drawing.Size(1213, 115);
+            this.tableLayoutPanelAddSup.TabIndex = 9;
+            // 
+            // InsertNameBoxSup
+            // 
+            this.InsertNameBoxSup.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.InsertNameBoxSup.Location = new System.Drawing.Point(140, 69);
+            this.InsertNameBoxSup.Name = "InsertNameBoxSup";
+            this.InsertNameBoxSup.Size = new System.Drawing.Size(123, 33);
+            this.InsertNameBoxSup.TabIndex = 31;
+            this.InsertNameBoxSup.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SupplierContact
+            // 
+            this.SupplierContact.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierContact.AutoSize = true;
+            this.SupplierContact.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.SupplierContact.Location = new System.Drawing.Point(944, 18);
+            this.SupplierContact.Name = "SupplierContact";
+            this.SupplierContact.Size = new System.Drawing.Size(133, 21);
+            this.SupplierContact.TabIndex = 30;
+            this.SupplierContact.Text = "SupplierContact";
+            // 
+            // QuantityNameBox
+            // 
+            this.QuantityNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.QuantityNameBox.Location = new System.Drawing.Point(949, 69);
+            this.QuantityNameBox.Name = "QuantityNameBox";
+            this.QuantityNameBox.Size = new System.Drawing.Size(123, 33);
+            this.QuantityNameBox.TabIndex = 29;
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierName.AutoSize = true;
+            this.SupplierName.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.SupplierName.Location = new System.Drawing.Point(142, 18);
+            this.SupplierName.Name = "SupplierName";
+            this.SupplierName.Size = new System.Drawing.Size(120, 21);
+            this.SupplierName.TabIndex = 13;
+            this.SupplierName.Text = "SupplierName";
+            // 
+            // IsertSizeBoxS
+            // 
+            this.IsertSizeBoxS.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.IsertSizeBoxS.Location = new System.Drawing.Point(544, 69);
+            this.IsertSizeBoxS.Name = "IsertSizeBoxS";
+            this.IsertSizeBoxS.Size = new System.Drawing.Size(123, 33);
+            this.IsertSizeBoxS.TabIndex = 19;
+            // 
+            // SupplierLocation
+            // 
+            this.SupplierLocation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierLocation.AutoSize = true;
+            this.SupplierLocation.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.SupplierLocation.Location = new System.Drawing.Point(536, 18);
+            this.SupplierLocation.Name = "SupplierLocation";
+            this.SupplierLocation.Size = new System.Drawing.Size(140, 21);
+            this.SupplierLocation.TabIndex = 14;
+            this.SupplierLocation.Text = "SupplierLocation";
+            // 
+            // OBbuttonSup
+            // 
+            this.OBbuttonSup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.OBbuttonSup.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OBbuttonSup.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.OBbuttonSup.FlatAppearance.BorderSize = 10;
+            this.OBbuttonSup.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.OBbuttonSup.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OBbuttonSup.ForeColor = System.Drawing.Color.White;
+            this.OBbuttonSup.Location = new System.Drawing.Point(557, 161);
+            this.OBbuttonSup.Name = "OBbuttonSup";
+            this.OBbuttonSup.Size = new System.Drawing.Size(123, 35);
+            this.OBbuttonSup.TabIndex = 24;
+            this.OBbuttonSup.Text = "Add";
+            this.OBbuttonSup.UseVisualStyleBackColor = false;
+            this.OBbuttonSup.Click += new System.EventHandler(this.OBbuttonSup_Click);
+            // 
+            // OBcloseSup
+            // 
+            this.OBcloseSup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.OBcloseSup.FlatAppearance.BorderSize = 0;
+            this.OBcloseSup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OBcloseSup.Location = new System.Drawing.Point(1175, 3);
+            this.OBcloseSup.Name = "OBcloseSup";
+            this.OBcloseSup.Size = new System.Drawing.Size(35, 39);
+            this.OBcloseSup.TabIndex = 4;
+            this.OBcloseSup.Text = "X";
+            this.OBcloseSup.UseVisualStyleBackColor = false;
+            this.OBcloseSup.Click += new System.EventHandler(this.OBcloseSup_Click);
+            // 
+            // SuppliersView
+            // 
+            this.SuppliersView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SuppliersView.Location = new System.Drawing.Point(0, 0);
+            this.SuppliersView.Name = "SuppliersView";
+            this.SuppliersView.RowHeadersWidth = 82;
+            this.SuppliersView.RowTemplate.Height = 35;
+            this.SuppliersView.Size = new System.Drawing.Size(1236, 582);
+            this.SuppliersView.TabIndex = 1;
+            // 
+            // tableLayoutFilterSup
+            // 
+            this.tableLayoutFilterSup.AutoScroll = true;
+            this.tableLayoutFilterSup.ColumnCount = 4;
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterSup.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierNameFilBox, 1, 1);
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierContactFil, 3, 0);
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierIDFilBox, 0, 1);
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierContactFilBox, 3, 1);
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierNameFil, 1, 0);
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierLocationFilBox, 2, 1);
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierLocationFil, 2, 0);
+            this.tableLayoutFilterSup.Controls.Add(this.SupplierIDFil, 0, 0);
+            this.tableLayoutFilterSup.Location = new System.Drawing.Point(0, 38);
+            this.tableLayoutFilterSup.Name = "tableLayoutFilterSup";
+            this.tableLayoutFilterSup.RowCount = 2;
+            this.tableLayoutFilterSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFilterSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFilterSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterSup.Size = new System.Drawing.Size(1213, 115);
+            this.tableLayoutFilterSup.TabIndex = 25;
+            // 
+            // SupplierNameFilBox
+            // 
+            this.SupplierNameFilBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierNameFilBox.Location = new System.Drawing.Point(393, 69);
+            this.SupplierNameFilBox.Name = "SupplierNameFilBox";
+            this.SupplierNameFilBox.Size = new System.Drawing.Size(123, 33);
+            this.SupplierNameFilBox.TabIndex = 31;
+            this.SupplierNameFilBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // SupplierContactFil
+            // 
+            this.SupplierContactFil.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierContactFil.AutoSize = true;
+            this.SupplierContactFil.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.SupplierContactFil.Location = new System.Drawing.Point(994, 18);
+            this.SupplierContactFil.Name = "SupplierContactFil";
+            this.SupplierContactFil.Size = new System.Drawing.Size(133, 21);
+            this.SupplierContactFil.TabIndex = 30;
+            this.SupplierContactFil.Text = "SupplierContact";
+            // 
+            // SupplierIDFilBox
+            // 
+            this.SupplierIDFilBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierIDFilBox.Location = new System.Drawing.Point(90, 69);
+            this.SupplierIDFilBox.Name = "SupplierIDFilBox";
+            this.SupplierIDFilBox.Size = new System.Drawing.Size(123, 33);
+            this.SupplierIDFilBox.TabIndex = 26;
+            this.SupplierIDFilBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.SupplierIDFilBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SupplierIDFilBox_KeyPress);
+            // 
+            // SupplierContactFilBox
+            // 
+            this.SupplierContactFilBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierContactFilBox.Location = new System.Drawing.Point(999, 69);
+            this.SupplierContactFilBox.Name = "SupplierContactFilBox";
+            this.SupplierContactFilBox.Size = new System.Drawing.Size(123, 33);
+            this.SupplierContactFilBox.TabIndex = 29;
+            // 
+            // SupplierNameFil
+            // 
+            this.SupplierNameFil.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierNameFil.AutoSize = true;
+            this.SupplierNameFil.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.SupplierNameFil.Location = new System.Drawing.Point(394, 18);
+            this.SupplierNameFil.Name = "SupplierNameFil";
+            this.SupplierNameFil.Size = new System.Drawing.Size(120, 21);
+            this.SupplierNameFil.TabIndex = 13;
+            this.SupplierNameFil.Text = "SupplierName";
+            // 
+            // SupplierLocationFilBox
+            // 
+            this.SupplierLocationFilBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierLocationFilBox.Location = new System.Drawing.Point(696, 69);
+            this.SupplierLocationFilBox.Name = "SupplierLocationFilBox";
+            this.SupplierLocationFilBox.Size = new System.Drawing.Size(123, 33);
+            this.SupplierLocationFilBox.TabIndex = 19;
+            // 
+            // SupplierLocationFil
+            // 
+            this.SupplierLocationFil.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierLocationFil.AutoSize = true;
+            this.SupplierLocationFil.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.SupplierLocationFil.Location = new System.Drawing.Point(687, 18);
+            this.SupplierLocationFil.Name = "SupplierLocationFil";
+            this.SupplierLocationFil.Size = new System.Drawing.Size(140, 21);
+            this.SupplierLocationFil.TabIndex = 14;
+            this.SupplierLocationFil.Text = "SupplierLocation";
+            // 
+            // SupplierIDFil
+            // 
+            this.SupplierIDFil.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.SupplierIDFil.AutoSize = true;
+            this.SupplierIDFil.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.SupplierIDFil.Location = new System.Drawing.Point(102, 18);
+            this.SupplierIDFil.Name = "SupplierIDFil";
+            this.SupplierIDFil.Size = new System.Drawing.Size(98, 21);
+            this.SupplierIDFil.TabIndex = 27;
+            this.SupplierIDFil.Text = "Supplier_ID";
+            this.SupplierIDFil.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Suppliers
             // 
@@ -426,6 +782,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Suppliers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Suppliers";
             this.Load += new System.EventHandler(this.Suppliers_Load);
             this.panel1.ResumeLayout(false);
@@ -435,11 +792,20 @@
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.DeleteSupPan.ResumeLayout(false);
+            this.DeleteSupPan.PerformLayout();
+            this.OBSuppliersPan.ResumeLayout(false);
+            this.OBSuppliersPan.PerformLayout();
+            this.tableLayoutPanelAddSup.ResumeLayout(false);
+            this.tableLayoutPanelAddSup.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersView)).EndInit();
+            this.tableLayoutFilterSup.ResumeLayout(false);
+            this.tableLayoutFilterSup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -458,12 +824,11 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureEye;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox SearchBoxSuppliers;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel3;
@@ -471,5 +836,32 @@
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button buttonMinimize;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView SuppliersView;
+        private System.Windows.Forms.Panel OBSuppliersPan;
+        private System.Windows.Forms.TableLayoutPanel DeleteSupPan;
+        private System.Windows.Forms.TextBox SupNameDelete;
+        private System.Windows.Forms.TextBox SupIDDelete;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label OBlapelSup;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAddSup;
+        private System.Windows.Forms.TextBox InsertNameBoxSup;
+        private System.Windows.Forms.Label SupplierContact;
+        private System.Windows.Forms.TextBox QuantityNameBox;
+        private System.Windows.Forms.Label SupplierName;
+        private System.Windows.Forms.TextBox IsertSizeBoxS;
+        private System.Windows.Forms.Label SupplierLocation;
+        private System.Windows.Forms.Button OBbuttonSup;
+        private System.Windows.Forms.Button OBcloseSup;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutFilterSup;
+        private System.Windows.Forms.TextBox SupplierNameFilBox;
+        private System.Windows.Forms.Label SupplierContactFil;
+        private System.Windows.Forms.TextBox SupplierIDFilBox;
+        private System.Windows.Forms.TextBox SupplierContactFilBox;
+        private System.Windows.Forms.Label SupplierNameFil;
+        private System.Windows.Forms.TextBox SupplierLocationFilBox;
+        private System.Windows.Forms.Label SupplierLocationFil;
+        private System.Windows.Forms.Label SupplierIDFil;
     }
 }

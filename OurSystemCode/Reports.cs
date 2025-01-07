@@ -176,6 +176,31 @@ namespace OurSystemCode
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void panel4_Resize(object sender, EventArgs e)
+        {
+            OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
+        }
+
+        private void panel6_Resize(object sender, EventArgs e)
+        {
+            OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
+        }
+
+        private void panel5_Resize(object sender, EventArgs e)
+        {
+            OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
+        }
+
+        private void panel7_Resize(object sender, EventArgs e)
+        {
+            OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
+        }
+
+        private void button9_Resize(object sender, EventArgs e)
+        {
+            OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
+        }
     }
 
 }
