@@ -26,11 +26,8 @@ namespace OurSystemCode
         public ForgetPassword()
         {
             InitializeComponent();
-
+            
         }
-
-      
-        
 
         public void ForgetPassword_MouseDown(object sender, MouseEventArgs e)
         {
@@ -158,6 +155,7 @@ namespace OurSystemCode
             this.MouseDown += new MouseEventHandler(ForgetPassword_MouseDown);
             this.MouseMove += new MouseEventHandler(ForgetPassword_MouseMove);
             this.MouseUp += new MouseEventHandler(ForgetPassword_MouseUp);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
     }
 }

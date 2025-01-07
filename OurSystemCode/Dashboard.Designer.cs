@@ -53,6 +53,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.CategoriesBox = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -61,25 +62,24 @@
             this.label15 = new System.Windows.Forms.Label();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.ProductsReadyBox = new System.Windows.Forms.TextBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.LowStockBox = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.UpcomingDelBox = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.TotalItemsBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.TotalItemsBox = new System.Windows.Forms.TextBox();
-            this.CategoriesBox = new System.Windows.Forms.TextBox();
-            this.UpcomingDelBox = new System.Windows.Forms.TextBox();
-            this.LowStockBox = new System.Windows.Forms.TextBox();
-            this.ProductsReadyBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -415,6 +415,16 @@
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             this.panel8.Resize += new System.EventHandler(this.panel6_Resize);
             // 
+            // CategoriesBox
+            // 
+            this.CategoriesBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CategoriesBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.CategoriesBox.Location = new System.Drawing.Point(54, 106);
+            this.CategoriesBox.Name = "CategoriesBox";
+            this.CategoriesBox.Size = new System.Drawing.Size(100, 29);
+            this.CategoriesBox.TabIndex = 6;
+            this.CategoriesBox.Text = "Null";
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
@@ -509,6 +519,16 @@
             this.panel14.Paint += new System.Windows.Forms.PaintEventHandler(this.panel14_Paint);
             this.panel14.Resize += new System.EventHandler(this.panel6_Resize);
             // 
+            // ProductsReadyBox
+            // 
+            this.ProductsReadyBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ProductsReadyBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.ProductsReadyBox.Location = new System.Drawing.Point(56, 113);
+            this.ProductsReadyBox.Name = "ProductsReadyBox";
+            this.ProductsReadyBox.Size = new System.Drawing.Size(100, 29);
+            this.ProductsReadyBox.TabIndex = 7;
+            this.ProductsReadyBox.Text = "Null";
+            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
@@ -553,6 +573,16 @@
             this.panel10.TabIndex = 0;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             this.panel10.Resize += new System.EventHandler(this.panel6_Resize);
+            // 
+            // LowStockBox
+            // 
+            this.LowStockBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LowStockBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.LowStockBox.Location = new System.Drawing.Point(56, 99);
+            this.LowStockBox.Name = "LowStockBox";
+            this.LowStockBox.Size = new System.Drawing.Size(100, 29);
+            this.LowStockBox.TabIndex = 7;
+            this.LowStockBox.Text = "Null";
             // 
             // pictureBox4
             // 
@@ -599,6 +629,16 @@
             this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
             this.panel12.Resize += new System.EventHandler(this.panel6_Resize);
             // 
+            // UpcomingDelBox
+            // 
+            this.UpcomingDelBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.UpcomingDelBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.UpcomingDelBox.Location = new System.Drawing.Point(61, 106);
+            this.UpcomingDelBox.Name = "UpcomingDelBox";
+            this.UpcomingDelBox.Size = new System.Drawing.Size(100, 29);
+            this.UpcomingDelBox.TabIndex = 7;
+            this.UpcomingDelBox.Text = "Null";
+            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
@@ -642,6 +682,16 @@
             this.panel6.TabIndex = 0;
             this.panel6.Resize += new System.EventHandler(this.panel6_Resize);
             // 
+            // TotalItemsBox
+            // 
+            this.TotalItemsBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.TotalItemsBox.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.TotalItemsBox.Location = new System.Drawing.Point(56, 106);
+            this.TotalItemsBox.Name = "TotalItemsBox";
+            this.TotalItemsBox.Size = new System.Drawing.Size(100, 29);
+            this.TotalItemsBox.TabIndex = 5;
+            this.TotalItemsBox.Text = "Null";
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -663,56 +713,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Total Items";
             // 
-            // TotalItemsBox
-            // 
-            this.TotalItemsBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TotalItemsBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.TotalItemsBox.Location = new System.Drawing.Point(56, 106);
-            this.TotalItemsBox.Name = "TotalItemsBox";
-            this.TotalItemsBox.Size = new System.Drawing.Size(100, 29);
-            this.TotalItemsBox.TabIndex = 5;
-            this.TotalItemsBox.Text = "Null";
-            // 
-            // CategoriesBox
-            // 
-            this.CategoriesBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CategoriesBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.CategoriesBox.Location = new System.Drawing.Point(54, 106);
-            this.CategoriesBox.Name = "CategoriesBox";
-            this.CategoriesBox.Size = new System.Drawing.Size(100, 29);
-            this.CategoriesBox.TabIndex = 6;
-            this.CategoriesBox.Text = "Null";
-            // 
-            // UpcomingDelBox
-            // 
-            this.UpcomingDelBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpcomingDelBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.UpcomingDelBox.Location = new System.Drawing.Point(61, 106);
-            this.UpcomingDelBox.Name = "UpcomingDelBox";
-            this.UpcomingDelBox.Size = new System.Drawing.Size(100, 29);
-            this.UpcomingDelBox.TabIndex = 7;
-            this.UpcomingDelBox.Text = "Null";
-            // 
-            // LowStockBox
-            // 
-            this.LowStockBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LowStockBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.LowStockBox.Location = new System.Drawing.Point(56, 99);
-            this.LowStockBox.Name = "LowStockBox";
-            this.LowStockBox.Size = new System.Drawing.Size(100, 29);
-            this.LowStockBox.TabIndex = 7;
-            this.LowStockBox.Text = "Null";
-            // 
-            // ProductsReadyBox
-            // 
-            this.ProductsReadyBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ProductsReadyBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.ProductsReadyBox.Location = new System.Drawing.Point(56, 113);
-            this.ProductsReadyBox.Name = "ProductsReadyBox";
-            this.ProductsReadyBox.Size = new System.Drawing.Size(100, 29);
-            this.ProductsReadyBox.TabIndex = 7;
-            this.ProductsReadyBox.Text = "Null";
-            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -724,6 +724,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.panel1.ResumeLayout(false);

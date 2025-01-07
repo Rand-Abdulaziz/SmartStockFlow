@@ -10,6 +10,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Printing;
 //using WMS;
 
 namespace OurSystemCode
@@ -26,6 +27,8 @@ namespace OurSystemCode
         {
             InitializeComponent();
             this.Size = new Size(811, 490);
+            this.StartPosition = FormStartPosition.CenterScreen;
+           
         }
 
         String name;
@@ -68,8 +71,11 @@ namespace OurSystemCode
             usernameBox.TabStop = false;
             userroleBox.TabStop = false;
 
-            AddItemPan.Visible = false;
+            OBItemPan.Visible = false;
 
+            FilExpirationDateInsertBox.Format = DateTimePickerFormat.Custom;
+            FilExpirationDateInsertBox.CustomFormat = " "; // تعيين تنسيق فارغ
+            FilExpirationDateInsertBox.ShowCheckBox = true;
 
             if (string.IsNullOrEmpty(role))
             {
@@ -237,12 +243,15 @@ namespace OurSystemCode
 
         private void button6_Click(object sender, EventArgs e)
         {
-            AddItemPan.Visible = false;
+            OBItemPan.Visible = false;
+            
         }
 
         private void pictureEye_Click(object sender, EventArgs e)
         {
-            AddItemPan.Visible = true;
+            OBItemPan.Visible = true;
+            tableLayoutPanelAdd.Visible = true;
+           
         }
 
         private void AddItemPan_Resize(object sender, EventArgs e)
@@ -250,17 +259,17 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
         }
 
-
-
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void AddItem()
         {
             try
             {
                 string itemName = InsertNameBox.Text;
                 decimal cost = decimal.Parse(CostInsertBox.Text);
-                string expirationText = ExpirationDateInsertBox.Text;  // تاريخ الانتهاء كنص
+                string expirationText = ExpirationDateInsertBox.Text;
                 string size = IsertSizeBox.Text;
                 string quantity = QuantityNameBox.Text;
+                string category = CatogeryIDInsertBox.Text;
+                string location = LocationIDInsertBox.Text;
 
                 // التأكد من صحة البيانات المدخلة
                 if (!string.IsNullOrEmpty(itemName) &&
@@ -268,28 +277,59 @@ namespace OurSystemCode
                     !string.IsNullOrEmpty(expirationText) &&
                     !string.IsNullOrEmpty(size) &&
                     decimal.TryParse(cost.ToString(), out cost) &&
-                    int.TryParse(quantity, out int quantityCount))
+                    int.TryParse(category, out int categoryID) &&
+                    int.TryParse(quantity, out int quantityCount) &&
+                    int.TryParse(location, out int locationID))
                 {
-                    // محاولة تحويل النص إلى تاريخ
                     DateTime expirationDate;
                     if (DateTime.TryParse(expirationText, out expirationDate))
                     {
-                        query = $"SELECT * FROM whms_schema.Item WHERE Item_ID = '{ItemIDInsert.Text}'";
+                        // التحقق من وجود Category_ID في قاعدة البيانات
+                        query = $"SELECT * FROM whms_schema.Categories WHERE Category_ID = '{categoryID}'";
                         ds = dbOps.getData(query);
-
-                        if (ds != null && ds.Tables[0].Rows.Count == 0)
+                        if (ds == null || ds.Tables[0].Rows.Count == 0)
                         {
-                            // إدخال البيانات الجديدة
-                            query = $"INSERT INTO whms_schema.Item (Name, Size, Quantity, Cost, ExpirationDate) " +
-                                    "VALUES ('" + itemName + "', '" + size + "', '" + quantityCount + "', '" + cost + "', '" + expirationDate.ToString("yyyy-MM-dd") + "')";
-                            dbOps.setData(query, null);
+                            MessageBox.Show("The specified Category ID does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
 
-                            MessageBox.Show("Item added successfully.");
-                        }
-                        else
+                        // التحقق من وجود Location_ID في قاعدة البيانات
+                        query = $"SELECT * FROM whms_schema.Locations WHERE Location_ID = '{locationID}'";
+                        ds = dbOps.getData(query);
+                        if (ds == null || ds.Tables[0].Rows.Count == 0)
                         {
-                            MessageBox.Show("This item already exists in the database.");
+                            MessageBox.Show("The specified Location ID does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
+
+                        // إضافة العنصر في جدول Item
+                        query = $"INSERT INTO whms_schema.Item (Name, Size, Quantity, Cost, ExpirationDate, Category_ID, Locational_ID) " +
+                                $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost}, '{expirationDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID})";
+                        dbOps.setData(query, "Item added successfully.");
+
+                        DataEntryView.Update();
+
+                        MessageBox.Show("Item added successfully.");
+
+                        // إضافة بيانات إلى الجداول المرتبطة (InventoryAlerts, AuditTrail, PurchaseOrders)
+                        //int itemID = dbOps.GetLastInsertedID(); // افترض وجود طريقة للحصول على الـ ID الأخير المضاف
+                        //if (itemID > 0)
+                        //{
+                        //    // إضافة بيانات إلى جدول InventoryAlerts
+                        //    query = $"INSERT INTO whms_schema.InventoryAlerts (Item_ID) VALUES ({itemID})";
+                        //    dbOps.setData(query, "Inventory alert created.");
+
+                        //    // إضافة بيانات إلى جدول AuditTrail
+                        //    query = $"INSERT INTO whms_schema.AuditTrail (Item_ID, User_ID, ActionType) " +
+                        //            $"VALUES ({itemID}, {userID}, 'Added')";
+                        //    dbOps.setData(query, "Audit trail created.");
+
+                        //    // إضافة بيانات إلى جدول PurchaseOrders
+                        //    query = $"INSERT INTO whms_schema.PurchaseOrders (Item_ID, Supplier_ID) " +
+                        //            $"VALUES ({itemID}, {supplierID})"; // افترض أنه لديك Supplier_ID
+                        //    dbOps.setData(query, "Purchase order created.");
+                        //}
+
                     }
                     else
                     {
@@ -298,7 +338,7 @@ namespace OurSystemCode
                 }
                 else
                 {
-                    MessageBox.Show("Please ensure all fields are filled correctly, and that Quantity and Cost are numeric.");
+                    MessageBox.Show("Please ensure all fields are filled correctly, and that Quantity, Category ID, Location ID, and Cost are numeric.");
                 }
             }
             catch (Exception ex)
@@ -307,7 +347,205 @@ namespace OurSystemCode
             }
         }
 
+        private void DeleteItem()
+        {
+            try
+            {
+                string itemName = ItemNameDelete.Text; // يمكن إدخال اسم العنصر للحذف
+                string itemID = ItemIDDelete.Text; // يمكن إدخال معرف العنصر للحذف
 
+                // التأكد من أن المستخدم أدخل إما الـ ItemID أو الـ ItemName
+                if (!string.IsNullOrEmpty(itemID) || !string.IsNullOrEmpty(itemName))
+                {
+                    // إذا كان الـ ItemID مدخلًا، نتحقق أولًا من وجوده في قاعدة البيانات
+                    if (!string.IsNullOrEmpty(itemID))
+                    {
+                        query = $"SELECT * FROM whms_schema.Item WHERE Item_ID = '{itemID}'";
+                        ds = dbOps.getData(query);
+                        if (ds == null || ds.Tables[0].Rows.Count == 0)
+                        {
+                            MessageBox.Show("The specified Item ID does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // حذف العنصر بناءً على الـ ItemID
+                        query = $"DELETE FROM whms_schema.Item WHERE Item_ID = '{itemID}'";
+                        dbOps.setData(query, "Item deleted successfully.");
+                    }
+                    // إذا لم يكن الـ ItemID مدخلًا، نبحث باستخدام الـ ItemName
+                    else if (!string.IsNullOrEmpty(itemName))
+                    {
+                        query = $"SELECT * FROM whms_schema.Item WHERE Name = '{itemName}'";
+                        ds = dbOps.getData(query);
+                        if (ds == null || ds.Tables[0].Rows.Count == 0)
+                        {
+                            MessageBox.Show("The specified Item Name does not exist in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        // حذف العنصر بناءً على الـ ItemName
+                        query = $"DELETE FROM whms_schema.Item WHERE Name = '{itemName}'";
+                        dbOps.setData(query, "Item deleted successfully.");
+                    }
+
+                    // تحديث DataGridView بعد الحذف
+                    DataEntryView.Update();
+
+                    //// حذف البيانات المرتبطة بالعنصر من الجداول الأخرى
+                    //// افترض أن لدينا طريقة للحصول على الـ ItemID بعد الحذف
+                    //int itemIDToDelete = int.Parse(itemID); // استخدم الـ ItemID المأخوذ من المدخلات
+                    //if (itemIDToDelete > 0)
+                    //{
+                    //    // حذف بيانات العنصر من جداول أخرى مثل InventoryAlerts, AuditTrail, PurchaseOrders
+                    //    query = $"DELETE FROM whms_schema.InventoryAlerts WHERE Item_ID = {itemIDToDelete}";
+                    //    dbOps.setData(query, "Inventory alert deleted.");
+
+                    //    query = $"DELETE FROM whms_schema.AuditTrail WHERE Item_ID = {itemIDToDelete}";
+                    //    dbOps.setData(query, "Audit trail deleted.");
+
+                    //    query = $"DELETE FROM whms_schema.PurchaseOrders WHERE Item_ID = {itemIDToDelete}";
+                    //    dbOps.setData(query, "Purchase order deleted.");
+                    //}
+
+                    MessageBox.Show("Item and related data deleted successfully.");
+                }
+                else
+                {
+                    MessageBox.Show("Please provide either Item ID or Item Name.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting item: " + ex.Message);
+            }
+        }
+
+        private void FilterItem()
+        {
+            try
+            {
+                string itemmID = FilterIDBox.Text;
+                string itemName = FilterNameBox.Text;
+                string costText = FilCostInsertBox.Text;
+                string expirationText = FilExpirationDateInsertBox.Text;
+                string size = FilSizeBox.Text;
+                string quantityText = FilQuantityNameBox.Text;
+                string categoryText = FilCatogeryIDInsertBox.Text;
+                string locationText = FilLocationIDInsertBox.Text;
+
+                // بناء الجملة الاستعلامية بشكل ديناميكي استنادًا إلى المدخلات
+                string query = "SELECT * FROM whms_schema.Item WHERE 1=1"; // شرط دائم (كل شيء صحيح)
+
+                bool hasCondition = false;  // لمعرفة ما إذا تم إضافة أي شرط
+
+                // تحقق من كل حقل على حدة وأضف الشرط في الاستعلام إذا كان الحقل غير فارغ
+                if (!string.IsNullOrEmpty(itemmID) && int.TryParse(itemmID, out int ItemID))
+                {
+                    query += $" AND Item_ID LIKE '%{ItemID}%'";
+                    hasCondition = true;
+                }
+                if (!string.IsNullOrEmpty(itemName))
+                {
+                    query += $" AND Name LIKE '%{itemName}%'";
+                    hasCondition = true;
+                }
+                if (!string.IsNullOrEmpty(costText) && decimal.TryParse(costText, out decimal cost))
+                {
+                    query += $" AND Cost = {cost}";
+                    hasCondition = true;
+                }
+                if (!string.IsNullOrWhiteSpace(expirationText) &&
+                            DateTime.TryParse(expirationText, out DateTime expirationDate) &&
+                            expirationDate != DateTime.MinValue)
+                {
+                    query += $" AND ExpirationDate = '{expirationDate.ToString("yyyy-MM-dd")}'";
+                    hasCondition = true;
+                }
+                if (!string.IsNullOrEmpty(size))
+                {
+                    query += $" AND Size LIKE '%{size}%'";
+                    hasCondition = true;
+                }
+                if (!string.IsNullOrEmpty(quantityText) && int.TryParse(quantityText, out int quantity))
+                {
+                    query += $" AND Quantity = {quantity}";
+                    hasCondition = true;
+                }
+                if (!string.IsNullOrEmpty(categoryText) && int.TryParse(categoryText, out int categoryID))
+                {
+                    query += $" AND Category_ID = {categoryID}";
+                    hasCondition = true;
+                }
+                if (!string.IsNullOrEmpty(locationText) && int.TryParse(locationText, out int locationID))
+                {
+                    query += $" AND Locational_ID = {locationID}";
+                    hasCondition = true;
+                }
+
+                // إذا لم يتم إضافة أي شرط، استخدم استعلامًا بسيطًا بدون شروط
+                if (!hasCondition)
+                {
+                    query = "SELECT * FROM whms_schema.Item"; // بدون شروط إذا كانت الحقول فارغة
+                }
+
+                // تنفيذ الاستعلام
+                var ds = dbOps.getData(query);
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    // تحديث واجهة المستخدم لعرض النتائج
+                    DataEntryView.DataSource = ds.Tables[0];
+                    FilExpirationDateInsertBox.CustomFormat = " ";
+                }
+                else
+                {
+                    MessageBox.Show("No items found with the given filters.", "No Results", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error filtering items: " + ex.Message);
+            }
+        }
+
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (OBbutton.Text == "Add")
+                {
+                    AddItem();
+                }
+                else if (OBbutton.Text == "Delete")
+                {
+                    DeleteItem();
+                }
+                else if (OBbutton.Text == "Filter")
+                {
+                    FilterItem();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Custom item: " + ex.Message);
+            }
+        }
+
+        private void PrintEntryData()
+        {
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrintPage += new PrintPageEventHandler(PrintDoc_PrintPage);
+
+            PrintPreviewDialog previewDialog = new PrintPreviewDialog();
+            previewDialog.Document = printDoc;
+            previewDialog.ShowDialog();
+        }
+        private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            Bitmap bitmap = new Bitmap(this.DataEntryView.Width, this.DataEntryView.Height);
+            DataEntryView.DrawToBitmap(bitmap, new Rectangle(0, 0, this.DataEntryView.Width, this.DataEntryView.Height));
+            e.Graphics.DrawImage(bitmap, 0, 0);
+        }
 
 
         private void ItemIDInsert_KeyPress(object sender, KeyPressEventArgs e)
@@ -330,6 +568,42 @@ namespace OurSystemCode
         private void CostInsertBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             Utility.onlyNumber(e);
+        }
+
+        private void QuantityNameBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Utility.onlyNumber(e);
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            OBItemPan.Visible = true;
+            DeleteItemPan.Visible = true;
+            OBbutton.Text= "Delete";
+            OBlapel.Text = "Delete Item";
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            OBItemPan.Visible = true;
+        }
+
+        private void pictureBox4_Click_1(object sender, EventArgs e)
+        {
+            OBItemPan.Visible = true;
+            tableLayoutFilter.Visible = true;
+            OBbutton.Text = "Filter";
+            OBlapel.Text = "Filter";
+        }
+
+        private void FilExpirationDateInsertBox_ValueChanged(object sender, EventArgs e)
+        {
+            FilExpirationDateInsertBox.CustomFormat = "yyyy-MM-dd";
+        }
+
+        private void EntryDataPrint_Click(object sender, EventArgs e)
+        {
+            PrintEntryData();
         }
     }
 }

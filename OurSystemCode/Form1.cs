@@ -27,7 +27,8 @@ namespace OurSystemCode
         {
             int cornerRadius = 20;
             ApplyRoundedCorners(this, cornerRadius);
-            
+            this.StartPosition = FormStartPosition.CenterScreen;
+
             this.MouseDown += new MouseEventHandler(FormLogin_MouseDown);
             this.MouseMove += new MouseEventHandler(FormLogin_MouseMove);
             this.MouseUp += new MouseEventHandler(FormLogin_MouseUp);
