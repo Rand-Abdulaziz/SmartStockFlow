@@ -373,7 +373,7 @@
             this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this.button11.Location = new System.Drawing.Point(361, 33);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(267, 54);
+            this.button11.Size = new System.Drawing.Size(279, 54);
             this.button11.TabIndex = 10;
             this.button11.Text = "Change Email";
             this.button11.UseVisualStyleBackColor = true;
@@ -384,9 +384,9 @@
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.button12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button12.Location = new System.Drawing.Point(60, 31);
+            this.button12.Location = new System.Drawing.Point(40, 31);
             this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(267, 54);
+            this.button12.Size = new System.Drawing.Size(287, 54);
             this.button12.TabIndex = 9;
             this.button12.Text = "Change Password";
             this.button12.UseVisualStyleBackColor = true;
@@ -410,7 +410,7 @@
             this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this.button10.Location = new System.Drawing.Point(403, 31);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(167, 54);
+            this.button10.Size = new System.Drawing.Size(167, 68);
             this.button10.TabIndex = 10;
             this.button10.Text = "Restore";
             this.button10.UseVisualStyleBackColor = true;
@@ -422,7 +422,7 @@
             this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this.button9.Location = new System.Drawing.Point(114, 31);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(167, 54);
+            this.button9.Size = new System.Drawing.Size(167, 68);
             this.button9.TabIndex = 9;
             this.button9.Text = "Backup";
             this.button9.UseVisualStyleBackColor = true;

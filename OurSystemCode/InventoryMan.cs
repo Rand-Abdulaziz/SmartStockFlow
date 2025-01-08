@@ -110,12 +110,12 @@ namespace OurSystemCode
         {
             try
             {
-                // الخطوة 1: جلب البيانات من جدول Item
+               
                 string query = "SELECT Name, Quantity, Locational_ID, ExpirationDate FROM whms_schema.Item";
                 DatabaseOperations dbOps = new DatabaseOperations();
                 DataSet ds = dbOps.getData(query);
 
-                // التحقق من وجود الأعمدة قبل الإضافة
+              
                 if (!ds.Tables[0].Columns.Contains("Product State (Expiration)"))
                     ds.Tables[0].Columns.Add("Product State (Expiration)", typeof(string));
 
@@ -125,26 +125,25 @@ namespace OurSystemCode
                 if (!ds.Tables[0].Columns.Contains("Location Name"))
                     ds.Tables[0].Columns.Add("Location Name", typeof(string));
 
-                // الخطوة 2: حساب حالة المنتج (انتهاء الصلاحية والمخزون) وجلب اسم الموقع لكل صف
+                
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    // فحص قيمة تاريخ انتهاء الصلاحية
+                    
                     var expirationDateObj = row["ExpirationDate"];
                     row["Product State (Expiration)"] = GetExpirationState(expirationDateObj);
 
-                    // فحص قيمة الكمية
+                   
                     int quantity = row["Quantity"] == DBNull.Value ? 0 : Convert.ToInt32(row["Quantity"]);
                     row["Product State (Stock)"] = GetStockState(quantity);
 
-                    // فحص قيمة ID الموقع
+                   
                     int locationID = row["Locational_ID"] == DBNull.Value ? 0 : Convert.ToInt32(row["Locational_ID"]);
                     row["Location Name"] = GetLocationName(locationID);
                 }
 
-                // عرض البيانات في DataGridView
+               
                 InventoryView.DataSource = ds.Tables[0];
-
-                // إضافة حدث لتغيير اللون بناءً على الحالة
+               
                 InventoryView.CellFormatting += InventoryView_CellFormatting;
             }
             catch (Exception ex)
@@ -158,15 +157,14 @@ namespace OurSystemCode
 
         private void InventoryView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            // تنسيق حالة المخزون
+           
             if (InventoryView.Columns[e.ColumnIndex].Name == "Product State (Stock)")
             {
-                if (e.Value != null)  // التأكد من أن e.Value ليست null
+                if (e.Value != null)  
                 {
                     string state = e.Value.ToString();
                     state = e.Value.ToString();
 
-                    // تعيين الألوان بناءً على حالة المخزون
                     switch (state)
                     {
                         case "In Stock":
@@ -198,16 +196,16 @@ namespace OurSystemCode
                 
             }
 
-            // تنسيق حالة الصلاحية
+          
             if (InventoryView.Columns[e.ColumnIndex].Name == "Product State (Expiration)")
             {
                 
-                if (e.Value != null)  // التأكد من أن e.Value ليست null
+                if (e.Value != null) 
                 {
                     string state = e.Value.ToString();
                     state = e.Value.ToString();
 
-                    // تعيين الألوان بناءً على حالة الصلاحية
+                   
                     switch (state)
                     {
                         case "Good":
@@ -230,7 +228,7 @@ namespace OurSystemCode
                 }
                 else
                 {
-                    // التعامل مع الحالة عندما تكون e.Value هي null
+                  
                     e.CellStyle.BackColor = Color.White;
                     e.CellStyle.ForeColor = Color.Black;
                 }
@@ -243,34 +241,34 @@ namespace OurSystemCode
         {
             if (expirationDateObj == DBNull.Value)
             {
-                return "No Expiration Date"; // أو قيمة افتراضية أخرى
+                return "No Expiration Date";
             }
 
             DateTime expirationDate = Convert.ToDateTime(expirationDateObj);
             TimeSpan timeToExpire = expirationDate - DateTime.Now;
 
             if (timeToExpire.TotalDays <= 0)
-                return "Expired"; // المنتج انتهت صلاحيته
+                return "Expired"; 
             else if (timeToExpire.TotalDays <= 30)
-                return "Expiring Soon"; // المنتج سينتهي قريبا
+                return "Expiring Soon"; 
             else
-                return "Good"; // المنتج صالح
+                return "Good";
         }
 
 
-        // دالة لحساب حالة المنتج بناءً على الكمية
+        
         private string GetStockState(int quantity)
         {
             if (quantity == 0)
-                return "Out of Stock"; // غير متوفر
+                return "Out of Stock";
             else if (quantity < 50)
-                return "Low Stock"; // مخزون منخفض
+                return "Low Stock"; 
             else
-                return "In Stock"; // متوفر
+                return "In Stock"; 
         }
 
 
-        // دالة لجلب اسم الموقع من جدول Locations
+       
         private string GetLocationName(int locationID)
         {
             try
@@ -285,7 +283,7 @@ namespace OurSystemCode
                 }
                 else
                 {
-                    return "Unknown"; // في حالة عدم العثور على الموقع
+                    return "Unknown"; 
                 }
             }
             catch (Exception ex)

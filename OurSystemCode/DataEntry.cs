@@ -74,7 +74,7 @@ namespace OurSystemCode
             OBItemPan.Visible = false;
 
             FilExpirationDateInsertBox.Format = DateTimePickerFormat.Custom;
-            FilExpirationDateInsertBox.CustomFormat = " "; // تعيين تنسيق فارغ
+            FilExpirationDateInsertBox.CustomFormat = " "; 
             FilExpirationDateInsertBox.ShowCheckBox = true;
 
             if (string.IsNullOrEmpty(role))
@@ -285,7 +285,7 @@ namespace OurSystemCode
                     DateTime expirationDate;
                     if (DateTime.TryParse(expirationText, out expirationDate))
                     {
-                        // التحقق من وجود Category_ID في قاعدة البيانات
+                        
                         query = $"SELECT * FROM whms_schema.Categories WHERE Category_ID = '{categoryID}'";
                         ds = dbOps.getData(query);
                         if (ds == null || ds.Tables[0].Rows.Count == 0)
@@ -294,7 +294,7 @@ namespace OurSystemCode
                             return;
                         }
 
-                        // التحقق من وجود Location_ID في قاعدة البيانات
+                       
                         query = $"SELECT * FROM whms_schema.Locations WHERE Location_ID = '{locationID}'";
                         ds = dbOps.getData(query);
                         if (ds == null || ds.Tables[0].Rows.Count == 0)
@@ -303,7 +303,7 @@ namespace OurSystemCode
                             return;
                         }
 
-                        // إضافة العنصر في جدول Item
+                       
                         query = $"INSERT INTO whms_schema.Item (Name, Size, Quantity, Cost, ExpirationDate, Category_ID, Locational_ID) " +
                                 $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost}, '{expirationDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID})";
                         dbOps.setData(query, "Item added successfully.");
@@ -352,13 +352,13 @@ namespace OurSystemCode
         {
             try
             {
-                string itemName = ItemNameDelete.Text; // يمكن إدخال اسم العنصر للحذف
-                string itemID = ItemIDDelete.Text; // يمكن إدخال معرف العنصر للحذف
+                string itemName = ItemNameDelete.Text; 
+                string itemID = ItemIDDelete.Text; 
 
-                // التأكد من أن المستخدم أدخل إما الـ ItemID أو الـ ItemName
+             
                 if (!string.IsNullOrEmpty(itemID) || !string.IsNullOrEmpty(itemName))
                 {
-                    // إذا كان الـ ItemID مدخلًا، نتحقق أولًا من وجوده في قاعدة البيانات
+                    
                     if (!string.IsNullOrEmpty(itemID))
                     {
                         query = $"SELECT * FROM whms_schema.Item WHERE Item_ID = '{itemID}'";
@@ -369,11 +369,11 @@ namespace OurSystemCode
                             return;
                         }
 
-                        // حذف العنصر بناءً على الـ ItemID
+                       
                         query = $"DELETE FROM whms_schema.Item WHERE Item_ID = '{itemID}'";
                         dbOps.setData(query, "Item deleted successfully.");
                     }
-                    // إذا لم يكن الـ ItemID مدخلًا، نبحث باستخدام الـ ItemName
+                    
                     else if (!string.IsNullOrEmpty(itemName))
                     {
                         query = $"SELECT * FROM whms_schema.Item WHERE Name = '{itemName}'";
@@ -384,12 +384,12 @@ namespace OurSystemCode
                             return;
                         }
 
-                        // حذف العنصر بناءً على الـ ItemName
+                        
                         query = $"DELETE FROM whms_schema.Item WHERE Name = '{itemName}'";
                         dbOps.setData(query, "Item deleted successfully.");
                     }
 
-                    // تحديث DataGridView بعد الحذف
+                  
                     DataEntryView.Update();
 
                     //// حذف البيانات المرتبطة بالعنصر من الجداول الأخرى
@@ -434,12 +434,12 @@ namespace OurSystemCode
                 string categoryText = FilCatogeryIDInsertBox.Text;
                 string locationText = FilLocationIDInsertBox.Text;
 
-                // بناء الجملة الاستعلامية بشكل ديناميكي استنادًا إلى المدخلات
-                string query = "SELECT * FROM whms_schema.Item WHERE 1=1"; // شرط دائم (كل شيء صحيح)
+               
+                string query = "SELECT * FROM whms_schema.Item WHERE 1=1"; 
 
-                bool hasCondition = false;  // لمعرفة ما إذا تم إضافة أي شرط
+                bool hasCondition = false;  
 
-                // تحقق من كل حقل على حدة وأضف الشرط في الاستعلام إذا كان الحقل غير فارغ
+           
                 if (!string.IsNullOrEmpty(itemmID) && int.TryParse(itemmID, out int ItemID))
                 {
                     query += $" AND Item_ID LIKE '%{ItemID}%'";
@@ -483,17 +483,17 @@ namespace OurSystemCode
                     hasCondition = true;
                 }
 
-                // إذا لم يتم إضافة أي شرط، استخدم استعلامًا بسيطًا بدون شروط
+               
                 if (!hasCondition)
                 {
-                    query = "SELECT * FROM whms_schema.Item"; // بدون شروط إذا كانت الحقول فارغة
+                    query = "SELECT * FROM whms_schema.Item"; 
                 }
 
-                // تنفيذ الاستعلام
+               
                 var ds = dbOps.getData(query);
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    // تحديث واجهة المستخدم لعرض النتائج
+                   
                     DataEntryView.DataSource = ds.Tables[0];
                     FilExpirationDateInsertBox.CustomFormat = " ";
                 }
