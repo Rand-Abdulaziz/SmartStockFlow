@@ -43,25 +43,38 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.OBInvenPan = new System.Windows.Forms.Panel();
+            this.OBlapelInven = new System.Windows.Forms.Label();
+            this.tableLayoutFilterInven = new System.Windows.Forms.TableLayoutPanel();
+            this.InsertNameBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.ItemIDInsert = new System.Windows.Forms.TextBox();
+            this.QuantityNameBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.IsertSizeBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.itemID = new System.Windows.Forms.Label();
+            this.OBbuttonInven = new System.Windows.Forms.Button();
+            this.OBclose = new System.Windows.Forms.Button();
+            this.InventoryView = new System.Windows.Forms.DataGridView();
             this.button8 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.pictureEye = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.SearchBoxInven = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonMinimize = new System.Windows.Forms.Button();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.OBInvenPan.SuspendLayout();
+            this.tableLayoutFilterInven.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InventoryView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
@@ -276,10 +289,183 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.OBInvenPan);
+            this.panel3.Controls.Add(this.InventoryView);
             this.panel3.Location = new System.Drawing.Point(356, 106);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1239, 792);
             this.panel3.TabIndex = 9;
+            // 
+            // OBInvenPan
+            // 
+            this.OBInvenPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.OBInvenPan.Controls.Add(this.OBlapelInven);
+            this.OBInvenPan.Controls.Add(this.tableLayoutFilterInven);
+            this.OBInvenPan.Controls.Add(this.OBbuttonInven);
+            this.OBInvenPan.Controls.Add(this.OBclose);
+            this.OBInvenPan.Location = new System.Drawing.Point(11, 588);
+            this.OBInvenPan.Name = "OBInvenPan";
+            this.OBInvenPan.Size = new System.Drawing.Size(1213, 197);
+            this.OBInvenPan.TabIndex = 9;
+            this.OBInvenPan.Visible = false;
+            // 
+            // OBlapelInven
+            // 
+            this.OBlapelInven.AutoSize = true;
+            this.OBlapelInven.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
+            this.OBlapelInven.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.OBlapelInven.Location = new System.Drawing.Point(3, 3);
+            this.OBlapelInven.Name = "OBlapelInven";
+            this.OBlapelInven.Size = new System.Drawing.Size(94, 25);
+            this.OBlapelInven.TabIndex = 5;
+            this.OBlapelInven.Text = "Add Item";
+            // 
+            // tableLayoutFilterInven
+            // 
+            this.tableLayoutFilterInven.AutoScroll = true;
+            this.tableLayoutFilterInven.ColumnCount = 4;
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutFilterInven.Controls.Add(this.InsertNameBox, 1, 1);
+            this.tableLayoutFilterInven.Controls.Add(this.label10, 3, 0);
+            this.tableLayoutFilterInven.Controls.Add(this.ItemIDInsert, 0, 1);
+            this.tableLayoutFilterInven.Controls.Add(this.QuantityNameBox, 3, 1);
+            this.tableLayoutFilterInven.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutFilterInven.Controls.Add(this.IsertSizeBox, 2, 1);
+            this.tableLayoutFilterInven.Controls.Add(this.label5, 2, 0);
+            this.tableLayoutFilterInven.Controls.Add(this.itemID, 0, 0);
+            this.tableLayoutFilterInven.Location = new System.Drawing.Point(0, 41);
+            this.tableLayoutFilterInven.Name = "tableLayoutFilterInven";
+            this.tableLayoutFilterInven.RowCount = 2;
+            this.tableLayoutFilterInven.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFilterInven.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutFilterInven.Size = new System.Drawing.Size(1213, 115);
+            this.tableLayoutFilterInven.TabIndex = 9;
+            this.tableLayoutFilterInven.Visible = false;
+            // 
+            // InsertNameBox
+            // 
+            this.InsertNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.InsertNameBox.Location = new System.Drawing.Point(393, 69);
+            this.InsertNameBox.Name = "InsertNameBox";
+            this.InsertNameBox.Size = new System.Drawing.Size(123, 33);
+            this.InsertNameBox.TabIndex = 31;
+            this.InsertNameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(1023, 18);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(76, 21);
+            this.label10.TabIndex = 30;
+            this.label10.Text = "Location";
+            // 
+            // ItemIDInsert
+            // 
+            this.ItemIDInsert.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ItemIDInsert.Location = new System.Drawing.Point(90, 69);
+            this.ItemIDInsert.Name = "ItemIDInsert";
+            this.ItemIDInsert.Size = new System.Drawing.Size(123, 33);
+            this.ItemIDInsert.TabIndex = 26;
+            this.ItemIDInsert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // QuantityNameBox
+            // 
+            this.QuantityNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.QuantityNameBox.Location = new System.Drawing.Point(999, 69);
+            this.QuantityNameBox.Name = "QuantityNameBox";
+            this.QuantityNameBox.Size = new System.Drawing.Size(123, 33);
+            this.QuantityNameBox.TabIndex = 29;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(371, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(167, 21);
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Product State(Stock)";
+            // 
+            // IsertSizeBox
+            // 
+            this.IsertSizeBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.IsertSizeBox.Location = new System.Drawing.Point(696, 69);
+            this.IsertSizeBox.Name = "IsertSizeBox";
+            this.IsertSizeBox.Size = new System.Drawing.Size(123, 33);
+            this.IsertSizeBox.TabIndex = 19;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(655, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(204, 21);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Product State(Expiration)";
+            // 
+            // itemID
+            // 
+            this.itemID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.itemID.AutoSize = true;
+            this.itemID.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.itemID.Location = new System.Drawing.Point(91, 18);
+            this.itemID.Name = "itemID";
+            this.itemID.Size = new System.Drawing.Size(120, 21);
+            this.itemID.TabIndex = 27;
+            this.itemID.Text = "Product Name";
+            this.itemID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // OBbuttonInven
+            // 
+            this.OBbuttonInven.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.OBbuttonInven.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.OBbuttonInven.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.OBbuttonInven.FlatAppearance.BorderSize = 10;
+            this.OBbuttonInven.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.OBbuttonInven.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OBbuttonInven.ForeColor = System.Drawing.Color.White;
+            this.OBbuttonInven.Location = new System.Drawing.Point(550, 159);
+            this.OBbuttonInven.Name = "OBbuttonInven";
+            this.OBbuttonInven.Size = new System.Drawing.Size(123, 35);
+            this.OBbuttonInven.TabIndex = 24;
+            this.OBbuttonInven.Text = "Add";
+            this.OBbuttonInven.UseVisualStyleBackColor = false;
+            // 
+            // OBclose
+            // 
+            this.OBclose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.OBclose.FlatAppearance.BorderSize = 0;
+            this.OBclose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OBclose.Location = new System.Drawing.Point(1175, 3);
+            this.OBclose.Name = "OBclose";
+            this.OBclose.Size = new System.Drawing.Size(35, 39);
+            this.OBclose.TabIndex = 4;
+            this.OBclose.Text = "X";
+            this.OBclose.UseVisualStyleBackColor = false;
+            this.OBclose.Click += new System.EventHandler(this.OBclose_Click);
+            // 
+            // InventoryView
+            // 
+            this.InventoryView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.InventoryView.Location = new System.Drawing.Point(0, 0);
+            this.InventoryView.Name = "InventoryView";
+            this.InventoryView.RowHeadersWidth = 82;
+            this.InventoryView.RowTemplate.Height = 35;
+            this.InventoryView.Size = new System.Drawing.Size(1236, 581);
+            this.InventoryView.TabIndex = 1;
             // 
             // button8
             // 
@@ -305,37 +491,12 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Invontry management";
             // 
-            // textBox1
+            // SearchBoxInven
             // 
-            this.textBox1.Location = new System.Drawing.Point(707, 48);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(308, 33);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "Search";
-            // 
-            // pictureEye
-            // 
-            this.pictureEye.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureEye.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.pictureEye.Image = ((System.Drawing.Image)(resources.GetObject("pictureEye.Image")));
-            this.pictureEye.Location = new System.Drawing.Point(1052, 54);
-            this.pictureEye.Name = "pictureEye";
-            this.pictureEye.Size = new System.Drawing.Size(25, 25);
-            this.pictureEye.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureEye.TabIndex = 7;
-            this.pictureEye.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1086, 54);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
+            this.SearchBoxInven.Location = new System.Drawing.Point(722, 48);
+            this.SearchBoxInven.Name = "SearchBoxInven";
+            this.SearchBoxInven.Size = new System.Drawing.Size(308, 33);
+            this.SearchBoxInven.TabIndex = 6;
             // 
             // pictureBox3
             // 
@@ -348,42 +509,30 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // pictureBox4
             // 
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1117, 54);
+            this.pictureBox4.Location = new System.Drawing.Point(1148, 54);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(25, 25);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 7;
             this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(1148, 54);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.buttonMinimize);
             this.panel4.Controls.Add(this.pictureBox7);
-            this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.pictureBox4);
             this.panel4.Controls.Add(this.pictureBox3);
-            this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Controls.Add(this.pictureEye);
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.SearchBoxInven);
             this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.button8);
             this.panel4.Location = new System.Drawing.Point(340, 12);
@@ -392,15 +541,15 @@
             this.panel4.TabIndex = 8;
             this.panel4.Resize += new System.EventHandler(this.panel4_Resize);
             // 
-            // pictureBox7
+            // label1
             // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(1196, 7);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(30, 27);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 9;
-            this.pictureBox7.TabStop = false;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(640, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 30);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Search";
             // 
             // buttonMinimize
             // 
@@ -416,6 +565,16 @@
             this.buttonMinimize.UseVisualStyleBackColor = false;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
             // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(1196, 7);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(30, 27);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 9;
+            this.pictureBox7.TabStop = false;
+            // 
             // InventoryMan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -426,17 +585,21 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InventoryMan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InventoryMan";
             this.Load += new System.EventHandler(this.InventoryMan_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.OBInvenPan.ResumeLayout(false);
+            this.OBInvenPan.PerformLayout();
+            this.tableLayoutFilterInven.ResumeLayout(false);
+            this.tableLayoutFilterInven.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InventoryView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
@@ -460,16 +623,28 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.PictureBox pictureEye;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox SearchBoxInven;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button buttonMinimize;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView InventoryView;
+        private System.Windows.Forms.Panel OBInvenPan;
+        private System.Windows.Forms.Label OBlapelInven;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutFilterInven;
+        private System.Windows.Forms.TextBox InsertNameBox;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox ItemIDInsert;
+        private System.Windows.Forms.TextBox QuantityNameBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox IsertSizeBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label itemID;
+        private System.Windows.Forms.Button OBbuttonInven;
+        private System.Windows.Forms.Button OBclose;
     }
 }

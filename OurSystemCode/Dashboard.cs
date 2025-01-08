@@ -74,6 +74,13 @@ namespace OurSystemCode
                 btnEmployeeMang.Visible = false;
                 btnSittings.Location = new System.Drawing.Point(5, 459);
             }
+            else if ("IT".Equals(role, StringComparison.OrdinalIgnoreCase))
+            {
+
+                DashTitle.Text = "IT Dashboard ";
+                btnEmployeeMang.Visible = false;
+                btnSittings.Location = new System.Drawing.Point(5, 459);
+            }
             else
             {
 

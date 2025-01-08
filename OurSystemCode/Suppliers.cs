@@ -34,7 +34,7 @@ namespace OurSystemCode
             this.Size = new Size(811, 490);
             this.role = role;
             this.name= name;
-
+           
         }
 
         private void panel4_Resize(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace OurSystemCode
             }
 
             
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase) || "IT".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
                 btnEmployeeMang.Visible = false;
@@ -95,7 +95,7 @@ namespace OurSystemCode
 
             try
             {
-                SuppliersView.Dock = DockStyle.Fill; 
+               
                 string query = "SELECT * FROM whms_schema.Suppliers;;";
 
 
@@ -290,18 +290,18 @@ namespace OurSystemCode
                 string supplierLocation = IsertSizeBoxS.Text;
                 string supplierContact = QuantityNameBox.Text;
 
-                // التأكد من صحة البيانات المدخلة
+               
                 if (!string.IsNullOrEmpty(supplierName) &&
                     !string.IsNullOrEmpty(supplierLocation) &&
                     !string.IsNullOrEmpty(supplierContact))
                 {
-                    // إضافة المورد في جدول Suppliers
+                   
                     string query = $"INSERT INTO whms_schema.Suppliers (SupplierName, SupplierLocation, SupplierContact) " +
                                    $"VALUES ('{supplierName}', '{supplierLocation}', '{supplierContact}')";
                     DatabaseOperations dbOps = new DatabaseOperations();
                     dbOps.setData(query, "Supplier added successfully.");
 
-                    // تحديث واجهة البيانات لعرض المورد الجديد
+                  
                     SuppliersView.Update();
 
                     MessageBox.Show("Supplier added successfully.");
@@ -337,13 +337,13 @@ namespace OurSystemCode
         {
             try
             {
-                string supplierName = SupNameDelete.Text; // يمكن إدخال اسم المورد للحذف
-                string supplierID = SupIDDelete.Text; // يمكن إدخال معرف المورد للحذف
+                string supplierName = SupNameDelete.Text; 
+                string supplierID = SupIDDelete.Text; 
 
-                // التأكد من أن المستخدم أدخل إما الـ SupplierID أو الـ SupplierName
+                
                 if (!string.IsNullOrEmpty(supplierID) || !string.IsNullOrEmpty(supplierName))
                 {
-                    // إذا كان الـ SupplierID مدخلًا، نتحقق أولًا من وجوده في قاعدة البيانات
+                    
                     if (!string.IsNullOrEmpty(supplierID))
                     {
                         query = $"SELECT * FROM whms_schema.Suppliers WHERE Supplier_ID = '{supplierID}'";
@@ -354,11 +354,11 @@ namespace OurSystemCode
                             return;
                         }
 
-                        // حذف المورد بناءً على الـ SupplierID
+                        
                         query = $"DELETE FROM whms_schema.Suppliers WHERE Supplier_ID = '{supplierID}'";
                         dbOps.setData(query, "Supplier deleted successfully.");
                     }
-                    // إذا لم يكن الـ SupplierID مدخلًا، نبحث باستخدام الـ SupplierName
+                   
                     else if (!string.IsNullOrEmpty(supplierName))
                     {
                         query = $"SELECT * FROM whms_schema.Suppliers WHERE SupplierName = '{supplierName}'";
@@ -369,12 +369,12 @@ namespace OurSystemCode
                             return;
                         }
 
-                        // حذف المورد بناءً على الـ SupplierName
+                      
                         query = $"DELETE FROM whms_schema.Suppliers WHERE SupplierName = '{supplierName}'";
                         dbOps.setData(query, "Supplier deleted successfully.");
                     }
 
-                    // تحديث DataGridView بعد الحذف
+                    
                     SuppliersView.Update();
 
                     //// حذف البيانات المرتبطة بالمورد من الجداول الأخرى
@@ -412,12 +412,12 @@ namespace OurSystemCode
                 string supplierLocation = SupplierLocationFilBox.Text;
                 string supplierContact = SupplierContactFilBox.Text;
 
-                // بناء الجملة الاستعلامية بشكل ديناميكي استنادًا إلى المدخلات
-                string query = "SELECT * FROM whms_schema.Suppliers WHERE 1=1"; // شرط دائم (كل شيء صحيح)
+              
+                string query = "SELECT * FROM whms_schema.Suppliers WHERE 1=1"; 
 
-                bool hasCondition = false;  // لمعرفة ما إذا تم إضافة أي شرط
+                bool hasCondition = false;  
 
-                // تحقق من كل حقل على حدة وأضف الشرط في الاستعلام إذا كان الحقل غير فارغ
+              
                 if (!string.IsNullOrEmpty(SupID) && int.TryParse(SupID, out int SuppID))
                 {
                     query += $" AND Item_ID LIKE '%{SuppID}%'";
@@ -439,17 +439,17 @@ namespace OurSystemCode
                     hasCondition = true;
                 }
 
-                // إذا لم يتم إضافة أي شرط، استخدم استعلامًا بسيطًا بدون شروط
+               
                 if (!hasCondition)
                 {
-                    query = "SELECT * FROM whms_schema.Suppliers"; // بدون شروط إذا كانت الحقول فارغة
+                    query = "SELECT * FROM whms_schema.Suppliers"; 
                 }
 
-                // تنفيذ الاستعلام
+               
                 var ds = dbOps.getData(query);
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                    // تحديث واجهة المستخدم لعرض النتائج
+                   
                     SuppliersView.DataSource = ds.Tables[0];
                 }
                 else

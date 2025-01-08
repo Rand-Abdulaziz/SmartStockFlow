@@ -66,7 +66,7 @@ namespace OurSystemCode
             }
 
             
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase) || "IT".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
                 btnEmployeeMang.Visible = false;

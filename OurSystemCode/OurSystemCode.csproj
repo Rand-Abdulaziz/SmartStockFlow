@@ -63,6 +63,12 @@
     <Compile Include="AdminSittings.Designer.cs">
       <DependentUpon>AdminSittings.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeEmail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeEmail.Designer.cs">
+      <DependentUpon>ChangeEmail.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,6 +129,9 @@
     <Compile Include="Utility.cs" />
     <EmbeddedResource Include="AdminSittings.resx">
       <DependentUpon>AdminSittings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeEmail.resx">
+      <DependentUpon>ChangeEmail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>

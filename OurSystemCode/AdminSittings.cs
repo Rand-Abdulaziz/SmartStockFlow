@@ -101,7 +101,7 @@ namespace OurSystemCode
             }
 
          
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase) || "IT".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
                 btnEmployeeMang.Visible = false;
@@ -201,6 +201,22 @@ namespace OurSystemCode
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            ForgetPassword changePass = new ForgetPassword();
+            this.Hide();
+            changePass.FormClosed += (s, args) => this.Show(); 
+            changePass.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ChangeEmail changeEmail = new ChangeEmail();
+            this.Hide();
+            changeEmail.FormClosed += (s, args) => this.Show(); 
+            changeEmail.Show();
         }
     }
 }

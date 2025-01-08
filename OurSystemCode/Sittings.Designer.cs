@@ -50,7 +50,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.ChangePasswordBtn = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -353,7 +353,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel7.Controls.Add(this.button10);
-            this.panel7.Controls.Add(this.button9);
+            this.panel7.Controls.Add(this.ChangePasswordBtn);
             this.panel7.Location = new System.Drawing.Point(294, 120);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(655, 115);
@@ -365,24 +365,26 @@
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button10.Location = new System.Drawing.Point(361, 33);
+            this.button10.Location = new System.Drawing.Point(358, 31);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(267, 54);
+            this.button10.Size = new System.Drawing.Size(280, 54);
             this.button10.TabIndex = 10;
             this.button10.Text = "Change Email";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // button9
+            // ChangePasswordBtn
             // 
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button9.Location = new System.Drawing.Point(60, 31);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(267, 54);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Change Password";
-            this.button9.UseVisualStyleBackColor = true;
+            this.ChangePasswordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangePasswordBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.ChangePasswordBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.ChangePasswordBtn.Location = new System.Drawing.Point(21, 31);
+            this.ChangePasswordBtn.Name = "ChangePasswordBtn";
+            this.ChangePasswordBtn.Size = new System.Drawing.Size(306, 54);
+            this.ChangePasswordBtn.TabIndex = 9;
+            this.ChangePasswordBtn.Text = "Change Password";
+            this.ChangePasswordBtn.UseVisualStyleBackColor = true;
+            this.ChangePasswordBtn.Click += new System.EventHandler(this.ChangePasswordBtn_Click);
             // 
             // panel5
             // 
@@ -484,6 +486,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Sittings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sittings";
             this.Load += new System.EventHandler(this.Sittings_Load);
             this.panel1.ResumeLayout(false);
@@ -530,7 +533,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button ChangePasswordBtn;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.PictureBox pictureBox7;
