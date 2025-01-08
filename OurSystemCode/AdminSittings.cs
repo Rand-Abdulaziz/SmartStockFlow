@@ -209,6 +209,7 @@ namespace OurSystemCode
             this.Hide();
             changePass.FormClosed += (s, args) => this.Show(); 
             changePass.Show();
+
         }
 
         private void button11_Click(object sender, EventArgs e)

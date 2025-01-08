@@ -272,7 +272,7 @@ namespace OurSystemCode
                 string category = CatogeryIDInsertBox.Text;
                 string location = LocationIDInsertBox.Text;
 
-                // التأكد من صحة البيانات المدخلة
+               
                 if (!string.IsNullOrEmpty(itemName) &&
                     !string.IsNullOrEmpty(quantity) &&
                     !string.IsNullOrEmpty(expirationText) &&
@@ -580,6 +580,8 @@ namespace OurSystemCode
         {
             OBItemPan.Visible = true;
             DeleteItemPan.Visible = true;
+            tableLayoutFilter.Visible = false;
+            tableLayoutPanelAdd.Visible = false;
             OBbutton.Text= "Delete";
             OBlapel.Text = "Delete Item";
         }
@@ -593,6 +595,8 @@ namespace OurSystemCode
         {
             OBItemPan.Visible = true;
             tableLayoutFilter.Visible = true;
+            DeleteItemPan.Visible = false;
+            tableLayoutPanelAdd.Visible = false;
             OBbutton.Text = "Filter";
             OBlapel.Text = "Filtering Items";
         }

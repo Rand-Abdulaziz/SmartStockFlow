@@ -120,13 +120,13 @@ namespace OurSystemCode
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            if (textBoxPassword.PasswordChar != '\0')
+            if (textBoxConfirm.PasswordChar != '\0')
             {
-                textBoxPassword.PasswordChar = '\0';
+                textBoxConfirm.PasswordChar = '\0';
             }
             else
             {
-                textBoxPassword.PasswordChar = '*';
+                textBoxConfirm.PasswordChar = '*';
             }
         }
 

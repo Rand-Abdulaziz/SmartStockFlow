@@ -85,7 +85,6 @@
             this.ExpirationDateInsertBox = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.CatogeryIDInsertBox = new System.Windows.Forms.TextBox();
-            this.ItemIDInsert = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.QuantityNameBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -94,7 +93,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.IsertSizeBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.itemID = new System.Windows.Forms.Label();
             this.OBbutton = new System.Windows.Forms.Button();
             this.OBclose = new System.Windows.Forms.Button();
             this.DataEntryView = new System.Windows.Forms.DataGridView();
@@ -515,7 +513,7 @@
             this.tableLayoutFilter.Controls.Add(this.FilSizeBox, 2, 1);
             this.tableLayoutFilter.Controls.Add(this.label17, 2, 0);
             this.tableLayoutFilter.Controls.Add(this.label19, 0, 0);
-            this.tableLayoutFilter.Location = new System.Drawing.Point(0, 41);
+            this.tableLayoutFilter.Location = new System.Drawing.Point(-1, 39);
             this.tableLayoutFilter.Name = "tableLayoutFilter";
             this.tableLayoutFilter.RowCount = 2;
             this.tableLayoutFilter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -702,7 +700,7 @@
             this.DeleteItemPan.Controls.Add(this.ItemIDDelete, 0, 1);
             this.DeleteItemPan.Controls.Add(this.label16, 1, 0);
             this.DeleteItemPan.Controls.Add(this.label18, 0, 0);
-            this.DeleteItemPan.Location = new System.Drawing.Point(0, 41);
+            this.DeleteItemPan.Location = new System.Drawing.Point(-1, 38);
             this.DeleteItemPan.Name = "DeleteItemPan";
             this.DeleteItemPan.RowCount = 2;
             this.DeleteItemPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -767,31 +765,29 @@
             // tableLayoutPanelAdd
             // 
             this.tableLayoutPanelAdd.AutoScroll = true;
-            this.tableLayoutPanelAdd.ColumnCount = 8;
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanelAdd.Controls.Add(this.CostInsertBox, 6, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.InsertNameBox, 1, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.label10, 3, 0);
-            this.tableLayoutPanelAdd.Controls.Add(this.ExpirationDateInsertBox, 7, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.label9, 7, 0);
-            this.tableLayoutPanelAdd.Controls.Add(this.CatogeryIDInsertBox, 4, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.ItemIDInsert, 0, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.label8, 6, 0);
-            this.tableLayoutPanelAdd.Controls.Add(this.QuantityNameBox, 3, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.label7, 5, 0);
-            this.tableLayoutPanelAdd.Controls.Add(this.LocationIDInsertBox, 5, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.label6, 4, 0);
-            this.tableLayoutPanelAdd.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanelAdd.Controls.Add(this.IsertSizeBox, 2, 1);
-            this.tableLayoutPanelAdd.Controls.Add(this.label5, 2, 0);
-            this.tableLayoutPanelAdd.Controls.Add(this.itemID, 0, 0);
+            this.tableLayoutPanelAdd.ColumnCount = 7;
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanelAdd.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelAdd.Controls.Add(this.CostInsertBox, 5, 1);
+            this.tableLayoutPanelAdd.Controls.Add(this.InsertNameBox, 0, 1);
+            this.tableLayoutPanelAdd.Controls.Add(this.label10, 2, 0);
+            this.tableLayoutPanelAdd.Controls.Add(this.ExpirationDateInsertBox, 6, 1);
+            this.tableLayoutPanelAdd.Controls.Add(this.label9, 6, 0);
+            this.tableLayoutPanelAdd.Controls.Add(this.CatogeryIDInsertBox, 3, 1);
+            this.tableLayoutPanelAdd.Controls.Add(this.label8, 5, 0);
+            this.tableLayoutPanelAdd.Controls.Add(this.QuantityNameBox, 2, 1);
+            this.tableLayoutPanelAdd.Controls.Add(this.label7, 4, 0);
+            this.tableLayoutPanelAdd.Controls.Add(this.LocationIDInsertBox, 4, 1);
+            this.tableLayoutPanelAdd.Controls.Add(this.label6, 3, 0);
+            this.tableLayoutPanelAdd.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanelAdd.Controls.Add(this.IsertSizeBox, 1, 1);
+            this.tableLayoutPanelAdd.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanelAdd.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutPanelAdd.Name = "tableLayoutPanelAdd";
             this.tableLayoutPanelAdd.RowCount = 2;
@@ -799,11 +795,12 @@
             this.tableLayoutPanelAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelAdd.Size = new System.Drawing.Size(1213, 115);
             this.tableLayoutPanelAdd.TabIndex = 9;
+            this.tableLayoutPanelAdd.Visible = false;
             // 
             // CostInsertBox
             // 
             this.CostInsertBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CostInsertBox.Location = new System.Drawing.Point(920, 69);
+            this.CostInsertBox.Location = new System.Drawing.Point(890, 69);
             this.CostInsertBox.Name = "CostInsertBox";
             this.CostInsertBox.Size = new System.Drawing.Size(123, 33);
             this.CostInsertBox.TabIndex = 32;
@@ -811,7 +808,7 @@
             // InsertNameBox
             // 
             this.InsertNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.InsertNameBox.Location = new System.Drawing.Point(165, 69);
+            this.InsertNameBox.Location = new System.Drawing.Point(25, 69);
             this.InsertNameBox.Name = "InsertNameBox";
             this.InsertNameBox.Size = new System.Drawing.Size(123, 33);
             this.InsertNameBox.TabIndex = 31;
@@ -822,7 +819,7 @@
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(490, 18);
+            this.label10.Location = new System.Drawing.Point(394, 18);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(77, 21);
             this.label10.TabIndex = 30;
@@ -832,7 +829,7 @@
             // 
             this.ExpirationDateInsertBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ExpirationDateInsertBox.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.ExpirationDateInsertBox.Location = new System.Drawing.Point(1063, 71);
+            this.ExpirationDateInsertBox.Location = new System.Drawing.Point(1053, 71);
             this.ExpirationDateInsertBox.Name = "ExpirationDateInsertBox";
             this.ExpirationDateInsertBox.Size = new System.Drawing.Size(144, 29);
             this.ExpirationDateInsertBox.TabIndex = 25;
@@ -842,7 +839,7 @@
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(1072, 18);
+            this.label9.Location = new System.Drawing.Point(1063, 18);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(125, 21);
             this.label9.TabIndex = 18;
@@ -852,28 +849,18 @@
             // CatogeryIDInsertBox
             // 
             this.CatogeryIDInsertBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.CatogeryIDInsertBox.Location = new System.Drawing.Point(618, 69);
+            this.CatogeryIDInsertBox.Location = new System.Drawing.Point(544, 69);
             this.CatogeryIDInsertBox.Name = "CatogeryIDInsertBox";
             this.CatogeryIDInsertBox.Size = new System.Drawing.Size(123, 33);
             this.CatogeryIDInsertBox.TabIndex = 20;
             this.CatogeryIDInsertBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CatogeryIDInsertBox_KeyPress);
-            // 
-            // ItemIDInsert
-            // 
-            this.ItemIDInsert.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ItemIDInsert.Location = new System.Drawing.Point(14, 69);
-            this.ItemIDInsert.Name = "ItemIDInsert";
-            this.ItemIDInsert.Size = new System.Drawing.Size(123, 33);
-            this.ItemIDInsert.TabIndex = 26;
-            this.ItemIDInsert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ItemIDInsert.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemIDInsert_KeyPress);
             // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(960, 18);
+            this.label8.Location = new System.Drawing.Point(930, 18);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 21);
             this.label8.TabIndex = 17;
@@ -882,7 +869,7 @@
             // QuantityNameBox
             // 
             this.QuantityNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.QuantityNameBox.Location = new System.Drawing.Point(467, 69);
+            this.QuantityNameBox.Location = new System.Drawing.Point(371, 69);
             this.QuantityNameBox.Name = "QuantityNameBox";
             this.QuantityNameBox.Size = new System.Drawing.Size(123, 33);
             this.QuantityNameBox.TabIndex = 29;
@@ -893,7 +880,7 @@
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(773, 18);
+            this.label7.Location = new System.Drawing.Point(721, 18);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(114, 21);
             this.label7.TabIndex = 16;
@@ -902,7 +889,7 @@
             // LocationIDInsertBox
             // 
             this.LocationIDInsertBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.LocationIDInsertBox.Location = new System.Drawing.Point(769, 69);
+            this.LocationIDInsertBox.Location = new System.Drawing.Point(717, 69);
             this.LocationIDInsertBox.Name = "LocationIDInsertBox";
             this.LocationIDInsertBox.Size = new System.Drawing.Size(123, 33);
             this.LocationIDInsertBox.TabIndex = 21;
@@ -913,7 +900,7 @@
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label6.Location = new System.Drawing.Point(627, 18);
+            this.label6.Location = new System.Drawing.Point(553, 18);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 21);
             this.label6.TabIndex = 15;
@@ -924,7 +911,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(198, 18);
+            this.label2.Location = new System.Drawing.Point(58, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 21);
             this.label2.TabIndex = 13;
@@ -933,7 +920,7 @@
             // IsertSizeBox
             // 
             this.IsertSizeBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.IsertSizeBox.Location = new System.Drawing.Point(316, 69);
+            this.IsertSizeBox.Location = new System.Drawing.Point(198, 69);
             this.IsertSizeBox.Name = "IsertSizeBox";
             this.IsertSizeBox.Size = new System.Drawing.Size(123, 33);
             this.IsertSizeBox.TabIndex = 19;
@@ -943,23 +930,11 @@
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(357, 18);
+            this.label5.Location = new System.Drawing.Point(239, 18);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 21);
             this.label5.TabIndex = 14;
             this.label5.Text = "Size";
-            // 
-            // itemID
-            // 
-            this.itemID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.itemID.AutoSize = true;
-            this.itemID.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.itemID.Location = new System.Drawing.Point(41, 18);
-            this.itemID.Name = "itemID";
-            this.itemID.Size = new System.Drawing.Size(69, 21);
-            this.itemID.TabIndex = 27;
-            this.itemID.Text = "Item_ID";
-            this.itemID.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OBbutton
             // 
@@ -1089,8 +1064,6 @@
         private System.Windows.Forms.DateTimePicker ExpirationDateInsertBox;
         private System.Windows.Forms.TextBox QuantityNameBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label itemID;
-        private System.Windows.Forms.TextBox ItemIDInsert;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAdd;
         private System.Windows.Forms.TextBox InsertNameBox;
         private System.Windows.Forms.TextBox CostInsertBox;

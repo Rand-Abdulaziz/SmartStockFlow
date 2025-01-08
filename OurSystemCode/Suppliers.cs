@@ -232,13 +232,15 @@ namespace OurSystemCode
             tableLayoutPanelAddSup.Visible = true;
             DeleteSupPan.Visible = false;
             tableLayoutFilterSup.Visible = false;
-           
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             OBSuppliersPan.Visible = true;
             DeleteSupPan.Visible = true;
+            tableLayoutPanelAddSup.Visible = false;
+            tableLayoutFilterSup.Visible = false;
             OBbuttonSup.Text = "Delete";
             OBlapelSup.Text = "Delete Suppler";
         }
@@ -247,6 +249,8 @@ namespace OurSystemCode
         {
             OBSuppliersPan.Visible = true;
             tableLayoutFilterSup.Visible = true;
+            DeleteSupPan.Visible = false;
+            tableLayoutPanelAddSup.Visible = false;
             OBbuttonSup.Text = "Filter";
             OBlapelSup.Text = "Filtering Suppler";
            

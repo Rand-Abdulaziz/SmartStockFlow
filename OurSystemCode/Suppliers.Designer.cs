@@ -54,6 +54,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.SuppliersView = new System.Windows.Forms.DataGridView();
             this.OBSuppliersPan = new System.Windows.Forms.Panel();
             this.DeleteSupPan = new System.Windows.Forms.TableLayoutPanel();
             this.SupNameDelete = new System.Windows.Forms.TextBox();
@@ -79,7 +80,6 @@
             this.SupplierLocation = new System.Windows.Forms.Label();
             this.OBbuttonSup = new System.Windows.Forms.Button();
             this.OBcloseSup = new System.Windows.Forms.Button();
-            this.SuppliersView = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -90,11 +90,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersView)).BeginInit();
             this.OBSuppliersPan.SuspendLayout();
             this.DeleteSupPan.SuspendLayout();
             this.tableLayoutFilterSup.SuspendLayout();
             this.tableLayoutPanelAddSup.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SuppliersView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -451,6 +451,17 @@
             this.panel3.Size = new System.Drawing.Size(1239, 792);
             this.panel3.TabIndex = 10;
             // 
+            // SuppliersView
+            // 
+            this.SuppliersView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.SuppliersView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SuppliersView.Location = new System.Drawing.Point(0, 0);
+            this.SuppliersView.Name = "SuppliersView";
+            this.SuppliersView.RowHeadersWidth = 82;
+            this.SuppliersView.RowTemplate.Height = 35;
+            this.SuppliersView.Size = new System.Drawing.Size(1236, 581);
+            this.SuppliersView.TabIndex = 0;
+            // 
             // OBSuppliersPan
             // 
             this.OBSuppliersPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
@@ -481,7 +492,7 @@
             this.DeleteSupPan.Controls.Add(this.SupIDDelete, 0, 1);
             this.DeleteSupPan.Controls.Add(this.label16, 1, 0);
             this.DeleteSupPan.Controls.Add(this.label18, 0, 0);
-            this.DeleteSupPan.Location = new System.Drawing.Point(0, 39);
+            this.DeleteSupPan.Location = new System.Drawing.Point(0, 37);
             this.DeleteSupPan.Name = "DeleteSupPan";
             this.DeleteSupPan.RowCount = 2;
             this.DeleteSupPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -552,7 +563,7 @@
             this.tableLayoutFilterSup.Controls.Add(this.SupplierLocationFilBox, 2, 1);
             this.tableLayoutFilterSup.Controls.Add(this.SupplierLocationFil, 2, 0);
             this.tableLayoutFilterSup.Controls.Add(this.SupplierIDFil, 0, 0);
-            this.tableLayoutFilterSup.Location = new System.Drawing.Point(0, 38);
+            this.tableLayoutFilterSup.Location = new System.Drawing.Point(0, 36);
             this.tableLayoutFilterSup.Name = "tableLayoutFilterSup";
             this.tableLayoutFilterSup.RowCount = 2;
             this.tableLayoutFilterSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -560,6 +571,7 @@
             this.tableLayoutFilterSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutFilterSup.Size = new System.Drawing.Size(1213, 115);
             this.tableLayoutFilterSup.TabIndex = 25;
+            this.tableLayoutFilterSup.Visible = false;
             // 
             // SupplierNameFilBox
             // 
@@ -673,6 +685,7 @@
             this.tableLayoutPanelAddSup.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelAddSup.Size = new System.Drawing.Size(1213, 115);
             this.tableLayoutPanelAddSup.TabIndex = 9;
+            this.tableLayoutPanelAddSup.Visible = false;
             // 
             // InsertNameBoxSup
             // 
@@ -762,17 +775,6 @@
             this.OBcloseSup.UseVisualStyleBackColor = false;
             this.OBcloseSup.Click += new System.EventHandler(this.OBcloseSup_Click);
             // 
-            // SuppliersView
-            // 
-            this.SuppliersView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.SuppliersView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SuppliersView.Location = new System.Drawing.Point(0, 0);
-            this.SuppliersView.Name = "SuppliersView";
-            this.SuppliersView.RowHeadersWidth = 82;
-            this.SuppliersView.RowTemplate.Height = 35;
-            this.SuppliersView.Size = new System.Drawing.Size(1236, 581);
-            this.SuppliersView.TabIndex = 0;
-            // 
             // Suppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -798,6 +800,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.SuppliersView)).EndInit();
             this.OBSuppliersPan.ResumeLayout(false);
             this.OBSuppliersPan.PerformLayout();
             this.DeleteSupPan.ResumeLayout(false);
@@ -806,7 +809,6 @@
             this.tableLayoutFilterSup.PerformLayout();
             this.tableLayoutPanelAddSup.ResumeLayout(false);
             this.tableLayoutPanelAddSup.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SuppliersView)).EndInit();
             this.ResumeLayout(false);
 
         }

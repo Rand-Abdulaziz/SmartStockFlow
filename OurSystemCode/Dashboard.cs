@@ -331,7 +331,7 @@ namespace OurSystemCode
 
         private void panel6_Resize(object sender, EventArgs e)
         {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel6, 20);
+            OurSystemCode.Form1.ApplyRoundedCorners(panel16, 20);
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)

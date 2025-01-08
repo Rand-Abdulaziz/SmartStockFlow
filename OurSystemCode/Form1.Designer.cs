@@ -159,6 +159,7 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(344, 26);
             this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // textBoxEmail
             // 
@@ -167,7 +168,7 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(344, 26);
             this.textBoxEmail.TabIndex = 0;
-            this.textBoxEmail.TextChanged += new System.EventHandler(this.Form1_Load);
+            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
             // 
             // pictureBox1
             // 
