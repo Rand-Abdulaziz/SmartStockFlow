@@ -358,26 +358,12 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel8.Controls.Add(this.button11);
             this.panel8.Controls.Add(this.button12);
             this.panel8.Location = new System.Drawing.Point(295, 208);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(655, 115);
             this.panel8.TabIndex = 8;
             this.panel8.Resize += new System.EventHandler(this.panel8_Resize);
-            // 
-            // button11
-            // 
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button11.Location = new System.Drawing.Point(361, 33);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(279, 54);
-            this.button11.TabIndex = 10;
-            this.button11.Text = "Change Email";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -505,7 +491,7 @@
             this.radioButton2.Size = new System.Drawing.Size(226, 31);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Enaple Expiry Alert";
+            this.radioButton2.Text = "Enable Expiry Alert";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1

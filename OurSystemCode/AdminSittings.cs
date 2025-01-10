@@ -211,13 +211,5 @@ namespace OurSystemCode
             changePass.Show();
 
         }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            ChangeEmail changeEmail = new ChangeEmail();
-            this.Hide();
-            changeEmail.FormClosed += (s, args) => this.Show(); 
-            changeEmail.Show();
-        }
     }
 }

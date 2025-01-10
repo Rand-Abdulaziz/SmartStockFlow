@@ -2,15 +2,8 @@
 {
     partial class Reports
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,10 +15,6 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Reports));
@@ -49,8 +38,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button9 = new System.Windows.Forms.Button();
+            this.buttonExportToExcel = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
@@ -354,37 +342,13 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel7.Controls.Add(this.comboBox1);
-            this.panel7.Controls.Add(this.button9);
+            this.panel7.Controls.Add(this.buttonExportToExcel);
             this.panel7.Location = new System.Drawing.Point(289, 576);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(655, 115);
             this.panel7.TabIndex = 7;
             this.panel7.Resize += new System.EventHandler(this.panel7_Resize);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(361, 41);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(267, 33);
-            this.comboBox1.TabIndex = 8;
-            this.comboBox1.Text = "Export to...";
-            // 
-            // button9
-            // 
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button9.Location = new System.Drawing.Point(60, 31);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(267, 54);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Show";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Resize += new System.EventHandler(this.button9_Resize);
+            this.panel7.Visible = true; 
             // 
             // panel5
             // 
@@ -486,7 +450,7 @@
             this.radioButton2.Size = new System.Drawing.Size(257, 31);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Damage| Expiry items";
+            this.radioButton2.Text = "Expiry items";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
@@ -497,7 +461,7 @@
             this.radioButton1.Size = new System.Drawing.Size(230, 31);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Add | Update items";
+            this.radioButton1.Text = "Items";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // Reports
@@ -528,7 +492,21 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.ResumeLayout(false);
-
+            //
+            //buttonExportToExcel
+            //
+            this.buttonExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportToExcel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.buttonExportToExcel.Location = new System.Drawing.Point(5, 5); // Adjust as needed
+            this.buttonExportToExcel.Name = "buttonExportToExcel";
+            this.buttonExportToExcel.Size = new System.Drawing.Size(190, 54);
+            this.buttonExportToExcel.TabIndex = 10;
+            this.buttonExportToExcel.Text = "Export to Excel";
+            this.buttonExportToExcel.UseVisualStyleBackColor = true;
+            this.buttonExportToExcel.Visible = true;
+            this.buttonExportToExcel.Click += new System.EventHandler(this.buttonExportToExcel_Click);
+            
         }
 
         #endregion
@@ -549,7 +527,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button buttonExportToExcel;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RadioButton radioButton3;
@@ -560,10 +538,10 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.RadioButton radioButton6;
         private System.Windows.Forms.RadioButton radioButton5;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button buttonMinimize;
+
     }
 }

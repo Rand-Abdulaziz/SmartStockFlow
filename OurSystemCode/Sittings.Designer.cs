@@ -352,26 +352,12 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel7.Controls.Add(this.button10);
             this.panel7.Controls.Add(this.ChangePasswordBtn);
             this.panel7.Location = new System.Drawing.Point(294, 120);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(655, 115);
             this.panel7.TabIndex = 7;
             this.panel7.Resize += new System.EventHandler(this.panel7_Resize);
-            // 
-            // button10
-            // 
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button10.Location = new System.Drawing.Point(358, 31);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(280, 54);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "Change Email";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // ChangePasswordBtn
             // 

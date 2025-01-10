@@ -153,8 +153,13 @@ namespace OurSystemCode
             Reports ReportsScreen = new Reports(role,name);
             this.Hide();
             ReportsScreen.Show();
-        }
 
+            //from raghad
+            var reportsForm = new Reports();
+            reportsForm.DataEntryGrid = this.DataEntryView; // Pass the DataGridView reference
+            reportsForm.Show();
+        }
+       
         private void button3_Click(object sender, EventArgs e)
         {
             Suppliers SuppliersScreen = new Suppliers(role, name);
