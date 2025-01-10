@@ -163,6 +163,8 @@ namespace OurSystemCode
             Reports ReportsScreen = new Reports(role, name);
             this.Hide();
             ReportsScreen.Show();
+
+          
         }
 
         private void button3_Click(object sender, EventArgs e)

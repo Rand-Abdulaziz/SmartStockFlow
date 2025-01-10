@@ -49,7 +49,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
             this.ChangePasswordBtn = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.button10 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -364,7 +364,7 @@
             this.ChangePasswordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ChangePasswordBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.ChangePasswordBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.ChangePasswordBtn.Location = new System.Drawing.Point(21, 31);
+            this.ChangePasswordBtn.Location = new System.Drawing.Point(170, 33);
             this.ChangePasswordBtn.Name = "ChangePasswordBtn";
             this.ChangePasswordBtn.Size = new System.Drawing.Size(306, 54);
             this.ChangePasswordBtn.TabIndex = 9;
@@ -461,6 +461,13 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Enable Stock Alert";
             this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(0, 0);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(75, 23);
+            this.button10.TabIndex = 0;
             // 
             // Sittings
             // 

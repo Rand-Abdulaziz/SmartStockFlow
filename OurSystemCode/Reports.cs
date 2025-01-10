@@ -23,19 +23,19 @@ namespace OurSystemCode
         {
             InitializeComponent();
          
-            // DEBUG: Check if DataEntryGrid is assigned
-            if (DataEntryGrid == null)
-            {
-                Console.WriteLine("DataEntryGrid is null. Did you forget to assign it?");
-            }
         }
-
-        
 
         String name;
         String role;
         public Reports(String role ,String name)
         {
+
+            // DEBUG: Check if DataEntryGrid is assigned
+            if (DataEntryGrid == null)
+            {
+                Console.WriteLine("DataEntryGrid is null. Did you forget to assign it?");
+            }
+
             InitializeComponent();
             this.Size = new Size(811, 490);
             this.role = role;

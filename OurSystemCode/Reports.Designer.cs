@@ -348,7 +348,19 @@
             this.panel7.Size = new System.Drawing.Size(655, 115);
             this.panel7.TabIndex = 7;
             this.panel7.Resize += new System.EventHandler(this.panel7_Resize);
-            this.panel7.Visible = true; 
+            // 
+            // buttonExportToExcel
+            // 
+            this.buttonExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonExportToExcel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.buttonExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.buttonExportToExcel.Location = new System.Drawing.Point(192, 30);
+            this.buttonExportToExcel.Name = "buttonExportToExcel";
+            this.buttonExportToExcel.Size = new System.Drawing.Size(283, 54);
+            this.buttonExportToExcel.TabIndex = 10;
+            this.buttonExportToExcel.Text = "Export to Excel";
+            this.buttonExportToExcel.UseVisualStyleBackColor = true;
+            this.buttonExportToExcel.Click += new System.EventHandler(this.buttonExportToExcel_Click);
             // 
             // panel5
             // 
@@ -447,7 +459,7 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(361, 104);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(257, 31);
+            this.radioButton2.Size = new System.Drawing.Size(161, 31);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Expiry items";
@@ -458,7 +470,7 @@
             this.radioButton1.AutoSize = true;
             this.radioButton1.Location = new System.Drawing.Point(361, 50);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(230, 31);
+            this.radioButton1.Size = new System.Drawing.Size(98, 31);
             this.radioButton1.TabIndex = 0;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Items";
@@ -492,21 +504,7 @@
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.ResumeLayout(false);
-            //
-            //buttonExportToExcel
-            //
-            this.buttonExportToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExportToExcel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.buttonExportToExcel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.buttonExportToExcel.Location = new System.Drawing.Point(5, 5); // Adjust as needed
-            this.buttonExportToExcel.Name = "buttonExportToExcel";
-            this.buttonExportToExcel.Size = new System.Drawing.Size(190, 54);
-            this.buttonExportToExcel.TabIndex = 10;
-            this.buttonExportToExcel.Text = "Export to Excel";
-            this.buttonExportToExcel.UseVisualStyleBackColor = true;
-            this.buttonExportToExcel.Visible = true;
-            this.buttonExportToExcel.Click += new System.EventHandler(this.buttonExportToExcel_Click);
-            
+
         }
 
         #endregion

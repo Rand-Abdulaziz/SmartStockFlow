@@ -23,6 +23,8 @@ namespace OurSystemCode
 
         private bool isDragging = false;
         private Point mouseOffset;
+
+       
         public DataEntry()
         {
             InitializeComponent();
@@ -41,6 +43,8 @@ namespace OurSystemCode
             this.name = name;
 
         }
+
+
 
         private void panel4_Resize(object sender, EventArgs e)
         {
@@ -150,13 +154,11 @@ namespace OurSystemCode
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Reports ReportsScreen = new Reports(role,name);
-            this.Hide();
-            ReportsScreen.Show();
-
+           
             //from raghad
-            var reportsForm = new Reports();
+            var reportsForm = new Reports(role, name);//Rand : I pass the role and name to the reports form
             reportsForm.DataEntryGrid = this.DataEntryView; // Pass the DataGridView reference
+            this.Hide();
             reportsForm.Show();
         }
        
