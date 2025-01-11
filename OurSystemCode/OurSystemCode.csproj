@@ -114,12 +114,6 @@
     <Compile Include="AdminSittings.Designer.cs">
       <DependentUpon>AdminSittings.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeEmail.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChangeEmail.Designer.cs">
-      <DependentUpon>ChangeEmail.cs</DependentUpon>
-    </Compile>
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,17 +127,17 @@
     <Compile Include="DataEntry.Designer.cs">
       <DependentUpon>DataEntry.cs</DependentUpon>
     </Compile>
+    <Compile Include="Employees tasks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees tasks.Designer.cs">
+      <DependentUpon>Employees tasks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Employees.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Employees.Designer.cs">
       <DependentUpon>Employees.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EmployeeTasks.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmployeeTasks.Designer.cs">
-      <DependentUpon>EmployeeTasks.cs</DependentUpon>
     </Compile>
     <Compile Include="ForgetPassword.cs">
       <SubType>Form</SubType>
@@ -187,20 +181,17 @@
     <EmbeddedResource Include="AdminSittings.resx">
       <DependentUpon>AdminSittings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeEmail.resx">
-      <DependentUpon>ChangeEmail.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataEntry.resx">
       <DependentUpon>DataEntry.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Employees tasks.resx">
+      <DependentUpon>Employees tasks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Employees.resx">
       <DependentUpon>Employees.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeTasks.resx">
-      <DependentUpon>EmployeeTasks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ForgetPassword.resx">
       <DependentUpon>ForgetPassword.cs</DependentUpon>

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Printing;
-//using WMS;
+
 
 namespace OurSystemCode
 {
@@ -20,6 +20,8 @@ namespace OurSystemCode
         DatabaseOperations dbOps = new DatabaseOperations();
         string query;
         DataSet ds;
+        String name;
+        String role;
 
         private bool isDragging = false;
         private Point mouseOffset;
@@ -33,8 +35,7 @@ namespace OurSystemCode
            
         }
 
-        String name;
-        String role;
+       
         public DataEntry(String role , String name)
         {
             InitializeComponent();
@@ -56,17 +57,7 @@ namespace OurSystemCode
             Application.Exit();
         }
 
-        private void BtnDashboard_Click(object sender, EventArgs e)
-        {
-            Dashboard DashboardScreen = new Dashboard(role,name);
-            this.Hide();
-            DashboardScreen.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Show();
-        }
+       
 
         private void DataEntry_Load(object sender, EventArgs e)
         {
@@ -92,13 +83,13 @@ namespace OurSystemCode
             {
 
                 btnEmployeeMang.Visible = false;
-                btnSittings.Location = new System.Drawing.Point(5, 459);
+                btnSittings.Location = new System.Drawing.Point(5, 509);
             }
             else
             {
 
                 btnEmployeeMang.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 509);
+                btnSittings.Location = new System.Drawing.Point(5, 559);
             }
 
             int cornerRadius = 20;
@@ -162,60 +153,7 @@ namespace OurSystemCode
             reportsForm.Show();
         }
        
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Suppliers SuppliersScreen = new Suppliers(role, name);
-            this.Hide();
-            SuppliersScreen.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            InventoryMan InventoryManScreen = new InventoryMan(role, name);
-            this.Hide();
-            InventoryManScreen.Show();
-        }
-
-        private void btnSittings_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-                Sittings SittingsScreen = new Sittings(role , name );
-                this.Hide();
-                SittingsScreen.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
-
-        }
-
-        private void btnEmployeeMang_Click(object sender, EventArgs e)
-        {
-            Employees EmployeesScreen = new Employees(role, name);
-            this.Hide();
-            EmployeesScreen.Show();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Form1 LogoutScreen = new Form1();
-            this.Close();
-            LogoutScreen.Show();
-        }
-
+      
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -641,6 +579,85 @@ namespace OurSystemCode
         private void FilLocationIDInsertBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             Utility.onlyNumber(e);
+        }
+
+        private void BtnDashboard_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboardScreen = new Dashboard(role, name);
+            this.Hide();
+            dashboardScreen.Show();
+        }
+
+        private void BtnDataEntry_Click(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void BtnReports_Click(object sender, EventArgs e)
+        {
+            Reports reportsScreen = new Reports(role, name);
+            this.Hide();
+            reportsScreen.Show();
+        }
+
+        private void BtnSuoliers_Click(object sender, EventArgs e)
+        {
+            Suppliers suppliersScreen = new Suppliers(role, name);
+            this.Hide();
+            suppliersScreen.Show();
+        }
+
+        private void BtnInventoryMan_Click(object sender, EventArgs e)
+        {
+            InventoryMan inventoryManScreen = new InventoryMan(role, name);
+            this.Hide();
+            inventoryManScreen.Show();
+        }
+
+        private void btnEmployeesTasks_Click(object sender, EventArgs e)
+        {
+            Employees_tasks EmployeesTasksScreen = new Employees_tasks(role, name);
+            this.Hide();
+            EmployeesTasksScreen.Show();
+        }
+
+        private void btnEmployeeMang_Click(object sender, EventArgs e)
+        {
+            Employees EmployeesScreen = new Employees(role, name);
+            this.Hide();
+            EmployeesScreen.Show();
+        }
+
+        private void btnSittings_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(role))
+            {
+                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
+            {
+                Sittings SittingsScreen = new Sittings(role, name);
+                this.Hide();
+                SittingsScreen.Show();
+
+            }
+            else
+            {
+
+                AdminSittings ASittingsScreen = new AdminSittings(role, name);
+                this.Hide();
+                ASittingsScreen.Show();
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Form1 logoutScreen = new Form1();
+            this.Close();
+            logoutScreen.Show();
         }
     }
 }

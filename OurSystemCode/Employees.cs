@@ -15,24 +15,31 @@ namespace OurSystemCode
     {
         private bool isDragging = false;
         private Point mouseOffset;
-
         private string name;
         private string role;
 
         public Employees()
         {
+            
             InitializeComponent();
+            this.Size = new Size(811, 490);
+
         }
 
         public Employees(string role, string name)
         {
+           
             InitializeComponent();
+            this.Size = new Size(811, 490);
             this.role = role;
             this.name = name;
+            
         }
 
         private void Employees_Load(object sender, EventArgs e)
         {
+            Form1.ApplyRoundedCorners(this, 20);
+            this.Size = new Size(811, 490);
             usernameBox.Text = name;
             userroleBox.Text = role;
             usernameBox.TabStop = false;
@@ -45,6 +52,8 @@ namespace OurSystemCode
             LoadEmployeeTasks();
             dgvEmployeeTasks.CellDoubleClick += dgvEmployeeTasks_CellDoubleClick;
         }
+
+
 
         private void Employees_MouseDown(object sender, MouseEventArgs e)
         {
@@ -124,6 +133,23 @@ namespace OurSystemCode
 
         // Button Click Events (Navigation)
 
+      
+
+        private void button8_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void buttonMinimize_Click_1(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void panel4_Resize(object sender, EventArgs e)
+        {
+            OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
+        }
+
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
             Dashboard dashboardScreen = new Dashboard(role, name);
@@ -131,39 +157,51 @@ namespace OurSystemCode
             dashboardScreen.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnDataEntry_Click(object sender, EventArgs e)
         {
             DataEntry dataEntryScreen = new DataEntry(role, name);
             this.Hide();
             dataEntryScreen.Show();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnReports_Click(object sender, EventArgs e)
         {
             Reports reportsScreen = new Reports(role, name);
             this.Hide();
             reportsScreen.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void BtnSuoliers_Click(object sender, EventArgs e)
         {
             Suppliers suppliersScreen = new Suppliers(role, name);
             this.Hide();
             suppliersScreen.Show();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void BtnInventoryMan_Click(object sender, EventArgs e)
         {
             InventoryMan inventoryManScreen = new InventoryMan(role, name);
             this.Hide();
             inventoryManScreen.Show();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnEmployeesTasks_Click(object sender, EventArgs e)
         {
-            AdminSittings adminSettingsScreen = new AdminSittings(role, name);
+            Employees_tasks EmployeesTasksScreen = new Employees_tasks(role, name);
             this.Hide();
-            adminSettingsScreen.Show();
+            EmployeesTasksScreen.Show();
+        }
+
+        private void btnEmployeeMang_Click(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void btnSittings_Click(object sender, EventArgs e)
+        {
+            AdminSittings ASittingsScreen = new AdminSittings(role, name);
+            this.Hide();
+            ASittingsScreen.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -171,16 +209,6 @@ namespace OurSystemCode
             Form1 logoutScreen = new Form1();
             this.Close();
             logoutScreen.Show();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void buttonMinimize_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
         }
     }
 }

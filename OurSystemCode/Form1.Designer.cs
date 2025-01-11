@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panelBlogin = new System.Windows.Forms.Panel();
-            this.checkBoxRemember = new System.Windows.Forms.CheckBox();
             this.Forget = new System.Windows.Forms.Label();
             this.pictureEye = new System.Windows.Forms.PictureBox();
             this.buttonLogin = new System.Windows.Forms.Button();
@@ -52,7 +51,6 @@
             // panelBlogin
             // 
             this.panelBlogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panelBlogin.Controls.Add(this.checkBoxRemember);
             this.panelBlogin.Controls.Add(this.Forget);
             this.panelBlogin.Controls.Add(this.pictureEye);
             this.panelBlogin.Controls.Add(this.buttonLogin);
@@ -67,22 +65,11 @@
             this.panelBlogin.TabIndex = 0;
             this.panelBlogin.Resize += new System.EventHandler(this.panel1_Resize);
             // 
-            // checkBoxRemember
-            // 
-            this.checkBoxRemember.AutoSize = true;
-            this.checkBoxRemember.Font = new System.Drawing.Font("Calibri", 6F, System.Drawing.FontStyle.Bold);
-            this.checkBoxRemember.Location = new System.Drawing.Point(185, 411);
-            this.checkBoxRemember.Name = "checkBoxRemember";
-            this.checkBoxRemember.Size = new System.Drawing.Size(144, 27);
-            this.checkBoxRemember.TabIndex = 12;
-            this.checkBoxRemember.Text = "Remember  me";
-            this.checkBoxRemember.UseVisualStyleBackColor = true;
-            // 
             // Forget
             // 
             this.Forget.AutoSize = true;
             this.Forget.Font = new System.Drawing.Font("Calibri", 6F, System.Drawing.FontStyle.Bold);
-            this.Forget.Location = new System.Drawing.Point(383, 414);
+            this.Forget.Location = new System.Drawing.Point(280, 418);
             this.Forget.Name = "Forget";
             this.Forget.Size = new System.Drawing.Size(122, 19);
             this.Forget.TabIndex = 11;
@@ -159,7 +146,6 @@
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(344, 26);
             this.textBoxPassword.TabIndex = 1;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // textBoxEmail
             // 
@@ -168,7 +154,6 @@
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(344, 26);
             this.textBoxEmail.TabIndex = 0;
-            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
             // 
             // pictureBox1
             // 
@@ -254,7 +239,6 @@
         private System.Windows.Forms.Button buttonLogin;
         private System.Windows.Forms.PictureBox pictureEye;
         private System.Windows.Forms.Label Forget;
-        private System.Windows.Forms.CheckBox checkBoxRemember;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button buttonMinimize;

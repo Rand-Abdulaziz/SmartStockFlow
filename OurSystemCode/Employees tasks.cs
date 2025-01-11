@@ -10,72 +10,34 @@ using System.Windows.Forms;
 
 namespace OurSystemCode
 {
-    public partial class AdminSittings : Form
+    public partial class Employees_tasks : Form
     {
-
         private bool isDragging = false;
         private Point mouseOffset;
-        public AdminSittings()
-        {
+        private string name;
+        private string role;
+        public Employees_tasks()
+        { 
             InitializeComponent();
             this.Size = new Size(811, 490);
         }
 
-        String name;
-        String role;
-        public AdminSittings(String role,String name)
+        public Employees_tasks(string role, string name)
         {
+           
             InitializeComponent();
             this.Size = new Size(811, 490);
             this.role = role;
             this.name = name;
 
-        }
-
-
-        private void panel3_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel3, 20);
-        }
-
-        private void panel7_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel7, 20);
-        }
-
-        private void panel8_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel8, 20);
-        }
-
-        private void panel6_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel6, 20);
-        }
-
-        private void panel5_Resize(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void panel4_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel5, 20);
-        }
-
-       
-        private void AdminSittings_Load_1(object sender, EventArgs e)
-        {
-         
             usernameBox.Text = name;
             userroleBox.Text = role;
             usernameBox.TabStop = false;
             userroleBox.TabStop = false;
+
+            this.MouseDown += new MouseEventHandler(Employees_tasks_MouseDown);
+            this.MouseMove += new MouseEventHandler(Employees_tasks_MouseMove);
+            this.MouseUp += new MouseEventHandler(Employees_tasks_MouseUp);
 
             if (string.IsNullOrEmpty(role))
             {
@@ -83,7 +45,7 @@ namespace OurSystemCode
                 return;
             }
 
-         
+
             if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase) || "IT".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
@@ -97,18 +59,10 @@ namespace OurSystemCode
                 btnSittings.Location = new System.Drawing.Point(5, 559);
             }
 
-            int cornerRadius = 20;
-            Form1.ApplyRoundedCorners(this, cornerRadius);
-
-
-            this.MouseDown += new MouseEventHandler(AdminSittings_MouseDown);
-            this.MouseMove += new MouseEventHandler(AdminSittings_MouseMove);
-            this.MouseUp += new MouseEventHandler(AdminSittings_MouseUp);
-
 
         }
 
-        private void AdminSittings_MouseDown(object sender, MouseEventArgs e)
+        private void Employees_tasks_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -117,20 +71,24 @@ namespace OurSystemCode
             }
         }
 
-
-        private void AdminSittings_MouseMove(object sender, MouseEventArgs e)
+        private void Employees_tasks_MouseMove(object sender, MouseEventArgs e)
         {
             if (isDragging)
             {
-                this.Left = this.Left + (e.X - mouseOffset.X);
-                this.Top = this.Top + (e.Y - mouseOffset.Y);
+                this.Left += e.X - mouseOffset.X;
+                this.Top += e.Y - mouseOffset.Y;
             }
         }
 
-
-        private void AdminSittings_MouseUp(object sender, MouseEventArgs e)
+        private void Employees_tasks_MouseUp(object sender, MouseEventArgs e)
         {
             isDragging = false;
+        }
+
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         private void buttonMinimize_Click(object sender, EventArgs e)
@@ -138,13 +96,10 @@ namespace OurSystemCode
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void button12_Click(object sender, EventArgs e)
+        private void Employees_tasks_Load(object sender, EventArgs e)
         {
-            ForgetPassword changePass = new ForgetPassword();
-            this.Hide();
-            changePass.FormClosed += (s, args) => this.Show(); 
-            changePass.Show();
-
+            this.Size = new Size(811, 490);
+            Form1.ApplyRoundedCorners(this, 20);
         }
 
         private void BtnDashboard_Click(object sender, EventArgs e)
@@ -154,39 +109,65 @@ namespace OurSystemCode
             dashboardScreen.Show();
         }
 
-        private void BtnDataEntry_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             DataEntry dataEntryScreen = new DataEntry(role, name);
             this.Hide();
             dataEntryScreen.Show();
         }
 
-        private void BtnReports_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             Reports reportsScreen = new Reports(role, name);
             this.Hide();
             reportsScreen.Show();
         }
 
-        private void BtnSuoliers_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             Suppliers suppliersScreen = new Suppliers(role, name);
             this.Hide();
             suppliersScreen.Show();
         }
 
-        private void BtnInventoryMan_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
             InventoryMan inventoryManScreen = new InventoryMan(role, name);
             this.Hide();
             inventoryManScreen.Show();
         }
 
-        private void btnEmployeesTasks_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)
         {
-            Employees_tasks EmployeesTasksScreen = new Employees_tasks(role, name);
-            this.Hide();
-            EmployeesTasksScreen.Show();
+            Form1 logoutScreen = new Form1();
+            this.Close();
+            logoutScreen.Show();
+        }
+
+
+        private void btnSittings_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(role))
+            {
+                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
+            {
+                Sittings SittingsScreen = new Sittings(role, name);
+                this.Hide();
+                SittingsScreen.Show();
+
+            }
+            else
+            {
+
+                AdminSittings ASittingsScreen = new AdminSittings(role, name);
+                this.Hide();
+                ASittingsScreen.Show();
+            }
         }
 
         private void btnEmployeeMang_Click(object sender, EventArgs e)
@@ -196,16 +177,9 @@ namespace OurSystemCode
             EmployeesScreen.Show();
         }
 
-        private void btnSittings_Click(object sender, EventArgs e)
+        private void btnEmployeesTasks_Click(object sender, EventArgs e)
         {
             this.Show();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Form1 logoutScreen = new Form1();
-            this.Close();
-            logoutScreen.Show();
         }
     }
 }

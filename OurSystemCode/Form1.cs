@@ -29,12 +29,6 @@ namespace OurSystemCode
             this.MouseMove += new MouseEventHandler(FormLogin_MouseMove);
             this.MouseUp += new MouseEventHandler(FormLogin_MouseUp);
 
-            if (Properties.Settings.Default.UserEmail != string.Empty)
-            {
-                textBoxEmail.Text = Properties.Settings.Default.UserEmail;
-                textBoxPassword.Text = Properties.Settings.Default.UserPassword;
-                checkBoxRemember.Checked = true;
-            }
         }
 
         public static void ApplyRoundedCorners(Control control, int cornerRadius)
@@ -106,21 +100,26 @@ namespace OurSystemCode
             this.Hide();
         }
 
+        // تعريف المتغيرات
+        private int failedAttempts = 0;
+        private DateTime lockoutEndTime = DateTime.MinValue;
+        private bool passwordResetRequired = false;  // إضافة متغير لتحديد ما إذا كان يجب تغيير كلمة المرور
+
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            if (checkBoxRemember.Checked == true)
+            // تحقق من الوقت الحالي وإذا كانت هناك فترة حظر
+            if (DateTime.Now < lockoutEndTime)
             {
-                Properties.Settings.Default.UserEmail = textBoxEmail.Text;
-                Properties.Settings.Default.UserPassword = textBoxPassword.Text;
-                Properties.Settings.Default.RememberMe = true;
-                Properties.Settings.Default.Save();
+                // إذا كان الوقت الحالي أقل من وقت الحظر، لا يسمح للمستخدم بالدخول
+                MessageBox.Show("You are locked out. Please try again later.", "Locked Out", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // لا نستمر في عملية الدخول
             }
-            else
+
+            if (passwordResetRequired)
             {
-                Properties.Settings.Default.UserEmail = "";
-                Properties.Settings.Default.UserPassword = "";
-                Properties.Settings.Default.RememberMe = false;
-                Properties.Settings.Default.Save();
+                // إذا تم تحديد أن المستخدم يجب أن يغير كلمة المرور
+                MessageBox.Show("Your password is incorrect multiple times. Please reset your password.", "Password Reset Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return; // لا نستمر في عملية الدخول
             }
 
             try
@@ -133,6 +132,10 @@ namespace OurSystemCode
                     string storedPassword = ds.Tables[0].Rows[0]["Password"].ToString();
                     if (storedPassword == textBoxPassword.Text)
                     {
+                        // إذا كانت كلمة المرور صحيحة، يتم إلغاء عدد المحاولات
+                        failedAttempts = 0;
+                        passwordResetRequired = false;
+
                         string name = ds.Tables[0].Rows[0]["UserName"].ToString();
                         string role = ds.Tables[0].Rows[0]["Role"].ToString();
                         Console.WriteLine("Role: " + role);
@@ -154,7 +157,19 @@ namespace OurSystemCode
                     }
                     else
                     {
-                        MessageBox.Show("Incorrect password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        // إذا كانت كلمة المرور غير صحيحة، زيادة عدد المحاولات
+                        failedAttempts++;
+
+                        if (failedAttempts >= 3)
+                        {
+                            // إذا فشل المستخدم 3 مرات، إغلاق إمكانية الدخول لمدة دقيقة
+                            lockoutEndTime = DateTime.Now.AddMinutes(1);
+                            MessageBox.Show("Incorrect password. You have been locked out for 1 minute.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
                 else
@@ -169,6 +184,7 @@ namespace OurSystemCode
             }
         }
 
+
         private void button8_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -179,25 +195,6 @@ namespace OurSystemCode
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void textBoxEmail_TextChanged(object sender, EventArgs e)
-        {
-            ClearSettingsIfEmpty();
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-            ClearSettingsIfEmpty();
-        }
-
-        private void ClearSettingsIfEmpty()
-        {
-            if (string.IsNullOrWhiteSpace(textBoxEmail.Text) && string.IsNullOrWhiteSpace(textBoxPassword.Text))
-            {
-                Properties.Settings.Default.UserEmail = "";
-                Properties.Settings.Default.UserPassword = "";
-                Properties.Settings.Default.RememberMe = false;
-                Properties.Settings.Default.Save();
-            }
-        }
+        
     }
 }
