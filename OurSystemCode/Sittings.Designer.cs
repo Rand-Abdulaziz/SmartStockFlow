@@ -69,7 +69,7 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
@@ -448,7 +448,7 @@
             this.radioButton2.Size = new System.Drawing.Size(226, 31);
             this.radioButton2.TabIndex = 1;
             this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Enaple Expiry Alert";
+            this.radioButton2.Text = "Enable Expiry Alert";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton1
@@ -531,5 +531,6 @@
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button buttonMinimize;
+
     }
 }
