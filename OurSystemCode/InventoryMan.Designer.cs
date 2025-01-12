@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InventoryMan));
             this.panel3 = new System.Windows.Forms.Panel();
             this.OBInvenPan = new System.Windows.Forms.Panel();
@@ -67,6 +68,7 @@
             this.userroleBox = new System.Windows.Forms.TextBox();
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel3.SuspendLayout();
             this.OBInvenPan.SuspendLayout();
             this.tableLayoutFilterInven.SuspendLayout();
@@ -666,5 +668,6 @@
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

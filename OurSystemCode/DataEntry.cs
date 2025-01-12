@@ -89,7 +89,9 @@ namespace OurSystemCode
             {
 
                 btnEmployeeMang.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 559);
+                btnEmployeesTasks.Visible = false;
+                btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
+                btnSittings.Location = new System.Drawing.Point(5, 509);
             }
 
             int cornerRadius = 20;
@@ -114,6 +116,13 @@ namespace OurSystemCode
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+            toolTip1.SetToolTip(pictureEye, "Add Item");
+            toolTip1.SetToolTip(pictureBox2, "Delete Item");
+            toolTip1.SetToolTip(pictureBox4, "Filtering Items");
+            toolTip1.SetToolTip(EntryDataPrint, "Print");
 
 
         }
@@ -252,10 +261,17 @@ namespace OurSystemCode
                         query = $"INSERT INTO whms_schema.Item (Name, Size, Quantity, Cost, ExpirationDate, Category_ID, Locational_ID) " +
                                 $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost}, '{expirationDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID})";
                         dbOps.setData(query, "Item added successfully.");
+                        DataEntryView.AutoGenerateColumns = true;
+                        DataEntryView.DataSource = null;
 
-                        DataEntryView.Update();
-
+                        DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
+                        if (ds2 != null && ds2.Tables.Count > 0)
+                        {
+                            DataEntryView.DataSource = ds2.Tables[0];
+                        }
+                        DataEntryView.Refresh();
                         MessageBox.Show("Item added successfully.");
+                       
 
                         // إضافة بيانات إلى الجداول المرتبطة (InventoryAlerts, AuditTrail, PurchaseOrders)
                         //int itemID = dbOps.GetLastInsertedID(); // افترض وجود طريقة للحصول على الـ ID الأخير المضاف
@@ -317,6 +333,16 @@ namespace OurSystemCode
                        
                         query = $"DELETE FROM whms_schema.Item WHERE Item_ID = '{itemID}'";
                         dbOps.setData(query, "Item deleted successfully.");
+                        DataEntryView.DataSource = dbOps.getData("SELECT * FROM whms_schema.Item");
+                        DataEntryView.AutoGenerateColumns = true;
+                        DataEntryView.DataSource = null;
+
+                        DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
+                        if (ds2 != null && ds2.Tables.Count > 0)
+                        {
+                            DataEntryView.DataSource = ds2.Tables[0];
+                        }
+                        DataEntryView.Refresh();
                     }
                     
                     else if (!string.IsNullOrEmpty(itemName))
@@ -332,10 +358,20 @@ namespace OurSystemCode
                         
                         query = $"DELETE FROM whms_schema.Item WHERE Name = '{itemName}'";
                         dbOps.setData(query, "Item deleted successfully.");
+                        DataEntryView.AutoGenerateColumns = true;
+                        DataEntryView.DataSource = null;
+
+                        DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
+                        if (ds2 != null && ds2.Tables.Count > 0)
+                        {
+                            DataEntryView.DataSource = ds2.Tables[0];
+                        }
+                        DataEntryView.Refresh();
                     }
 
                   
-                    DataEntryView.Update();
+                  
+                 
 
                     //// حذف البيانات المرتبطة بالعنصر من الجداول الأخرى
                     //// افترض أن لدينا طريقة للحصول على الـ ItemID بعد الحذف

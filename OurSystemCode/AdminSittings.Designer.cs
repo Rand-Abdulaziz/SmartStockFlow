@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminSittings));
             this.button8 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,8 +39,8 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.RestoreBtn = new System.Windows.Forms.Button();
+            this.BackupBtn = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -63,6 +64,7 @@
             this.userroleBox = new System.Windows.Forms.TextBox();
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
@@ -175,37 +177,37 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel7.Controls.Add(this.button10);
-            this.panel7.Controls.Add(this.button9);
+            this.panel7.Controls.Add(this.RestoreBtn);
+            this.panel7.Controls.Add(this.BackupBtn);
             this.panel7.Location = new System.Drawing.Point(295, 82);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(655, 115);
             this.panel7.TabIndex = 7;
             this.panel7.Resize += new System.EventHandler(this.panel7_Resize);
             // 
-            // button10
+            // RestoreBtn
             // 
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 13.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button10.Location = new System.Drawing.Point(403, 31);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(167, 68);
-            this.button10.TabIndex = 10;
-            this.button10.Text = "Restore";
-            this.button10.UseVisualStyleBackColor = true;
+            this.RestoreBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RestoreBtn.Font = new System.Drawing.Font("Segoe UI", 13.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RestoreBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.RestoreBtn.Location = new System.Drawing.Point(403, 31);
+            this.RestoreBtn.Name = "RestoreBtn";
+            this.RestoreBtn.Size = new System.Drawing.Size(167, 68);
+            this.RestoreBtn.TabIndex = 10;
+            this.RestoreBtn.Text = "Restore";
+            this.RestoreBtn.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // BackupBtn
             // 
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 13.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.button9.Location = new System.Drawing.Point(114, 31);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(167, 68);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Backup";
-            this.button9.UseVisualStyleBackColor = true;
+            this.BackupBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackupBtn.Font = new System.Drawing.Font("Segoe UI", 13.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BackupBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.BackupBtn.Location = new System.Drawing.Point(114, 31);
+            this.BackupBtn.Name = "BackupBtn";
+            this.BackupBtn.Size = new System.Drawing.Size(167, 68);
+            this.BackupBtn.TabIndex = 9;
+            this.BackupBtn.Text = "Backup";
+            this.BackupBtn.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
@@ -575,8 +577,8 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button RestoreBtn;
+        private System.Windows.Forms.Button BackupBtn;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
@@ -596,5 +598,6 @@
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

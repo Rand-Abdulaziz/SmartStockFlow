@@ -156,6 +156,10 @@ namespace OurSystemCode
             this.MouseMove += new MouseEventHandler(ForgetPassword_MouseMove);
             this.MouseUp += new MouseEventHandler(ForgetPassword_MouseUp);
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+        
         }
     }
 }

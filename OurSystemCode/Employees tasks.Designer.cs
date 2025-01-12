@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employees_tasks));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSittings = new System.Windows.Forms.Button();
@@ -50,6 +51,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.DataEntryView = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -413,5 +415,6 @@
         private System.Windows.Forms.DataGridView DataEntryView;
         private System.Windows.Forms.Button btnSittings;
         private System.Windows.Forms.Button btnEmployeeMang;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -51,6 +51,15 @@ namespace OurSystemCode
 
             LoadEmployeeTasks();
             dgvEmployeeTasks.CellDoubleClick += dgvEmployeeTasks_CellDoubleClick;
+
+            btnEmployeesTasks.Visible = false;
+            btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
+            btnSittings.Location = new System.Drawing.Point(5, 509);
+
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+           
+
         }
 
 

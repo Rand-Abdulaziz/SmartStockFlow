@@ -88,8 +88,13 @@ namespace OurSystemCode
 
                 DashTitle.Text = "Welcome Admin !";
                 btnEmployeeMang.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 559);
+                btnEmployeesTasks.Visible = false;
+                btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
+                btnSittings.Location = new System.Drawing.Point(5, 509);
             }
+
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
 
 
         }

@@ -83,12 +83,18 @@ namespace OurSystemCode
             {
 
                 btnEmployeeMang.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 559);
+                btnEmployeesTasks.Visible = false;
+                btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
+                btnSittings.Location = new System.Drawing.Point(5, 509);
             }
 
             this.MouseDown += new MouseEventHandler(Sittings_MouseDown);
             this.MouseMove += new MouseEventHandler(Sittings_MouseMove);
             this.MouseUp += new MouseEventHandler(Sittings_MouseUp);
+
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+            toolTip1.SetToolTip(ChangePasswordBtn, "Change your password");
 
         }
 

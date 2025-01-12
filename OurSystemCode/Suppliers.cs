@@ -75,7 +75,9 @@ namespace OurSystemCode
             {
 
                 btnEmployeeMan.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 559);
+                btnEmployeesTasks.Visible = false;
+                btnEmployeeMan.Location = new System.Drawing.Point(5, 459);
+                btnSittings.Location = new System.Drawing.Point(5, 509);
             }
 
             int cornerRadius = 20;
@@ -101,6 +103,13 @@ namespace OurSystemCode
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+            toolTip1.SetToolTip(pictureEye, "Add Item");
+            toolTip1.SetToolTip(pictureBox2, "Delete Item");
+            toolTip1.SetToolTip(pictureBox4, "Filtering Supliers");
+            toolTip1.SetToolTip(pictureBox3, "Print");
 
         }
 
@@ -235,9 +244,12 @@ namespace OurSystemCode
                     DatabaseOperations dbOps = new DatabaseOperations();
                     dbOps.setData(query, "Supplier added successfully.");
 
-                  
-                    SuppliersView.Update();
-
+                    DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Suppliers");
+                    if (ds2 != null && ds2.Tables.Count > 0)
+                    {
+                        SuppliersView.DataSource = ds2.Tables[0];
+                    }
+                    SuppliersView.Refresh();
                     MessageBox.Show("Supplier added successfully.");
 
                     // إضافة بيانات إلى الجداول المرتبطة (مثل AuditTrail أو PurchaseOrders)
@@ -291,6 +303,15 @@ namespace OurSystemCode
                         
                         query = $"DELETE FROM whms_schema.Suppliers WHERE Supplier_ID = '{supplierID}'";
                         dbOps.setData(query, "Supplier deleted successfully.");
+
+                        DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Suppliers");
+                        if (ds2 != null && ds2.Tables.Count > 0)
+                        {
+                            SuppliersView.DataSource = ds2.Tables[0];
+                        }
+                        SuppliersView.Refresh();
+                        MessageBox.Show("Supplier deleted successfully.");
+
                     }
                    
                     else if (!string.IsNullOrEmpty(supplierName))
@@ -306,10 +327,18 @@ namespace OurSystemCode
                       
                         query = $"DELETE FROM whms_schema.Suppliers WHERE SupplierName = '{supplierName}'";
                         dbOps.setData(query, "Supplier deleted successfully.");
+
+                        DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Suppliers");
+                        if (ds2 != null && ds2.Tables.Count > 0)
+                        {
+                            SuppliersView.DataSource = ds2.Tables[0];
+                        }
+                        SuppliersView.Refresh();
+                        MessageBox.Show("Supplier deleted successfully.");
                     }
 
                     
-                    SuppliersView.Update();
+                 
 
                     //// حذف البيانات المرتبطة بالمورد من الجداول الأخرى
                     //// افترض أن لدينا طريقة للحصول على الـ SupplierID بعد الحذف

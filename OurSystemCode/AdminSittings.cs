@@ -12,6 +12,7 @@ namespace OurSystemCode
 {
     public partial class AdminSittings : Form
     {
+       
 
         private bool isDragging = false;
         private Point mouseOffset;
@@ -94,7 +95,9 @@ namespace OurSystemCode
             {
 
                 btnEmployeeMang.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 559);
+                btnEmployeesTasks.Visible = false;
+                btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
+                btnSittings.Location = new System.Drawing.Point(5, 509);
             }
 
             int cornerRadius = 20;
@@ -105,6 +108,11 @@ namespace OurSystemCode
             this.MouseMove += new MouseEventHandler(AdminSittings_MouseMove);
             this.MouseUp += new MouseEventHandler(AdminSittings_MouseUp);
 
+            toolTip1.SetToolTip(BackupBtn, "Database backup");
+            toolTip1.SetToolTip(RestoreBtn, "Database restore");
+            toolTip1.SetToolTip(button12, "Change your password");
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
 
         }
 
@@ -132,6 +140,9 @@ namespace OurSystemCode
         {
             isDragging = false;
         }
+
+      
+
 
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
@@ -207,5 +218,7 @@ namespace OurSystemCode
             this.Close();
             logoutScreen.Show();
         }
+
+       
     }
 }

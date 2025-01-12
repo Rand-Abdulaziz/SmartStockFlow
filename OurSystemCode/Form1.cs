@@ -29,6 +29,10 @@ namespace OurSystemCode
             this.MouseMove += new MouseEventHandler(FormLogin_MouseMove);
             this.MouseUp += new MouseEventHandler(FormLogin_MouseUp);
 
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+          
+
         }
 
         public static void ApplyRoundedCorners(Control control, int cornerRadius)

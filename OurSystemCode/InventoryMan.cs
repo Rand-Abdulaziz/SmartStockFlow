@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OurSystemCode
 {
@@ -72,7 +73,9 @@ namespace OurSystemCode
             else
             {
                 btnEmployeeMang.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 559);
+                btnEmployeesTasks.Visible = false;
+                btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
+                btnSittings.Location = new System.Drawing.Point(5, 509);
             }
 
             int cornerRadius = 20;
@@ -81,6 +84,11 @@ namespace OurSystemCode
             this.MouseDown += new MouseEventHandler(InventoryMan_MouseDown);
             this.MouseMove += new MouseEventHandler(InventoryMan_MouseMove);
             this.MouseUp += new MouseEventHandler(InventoryMan_MouseUp);
+
+            toolTip1.SetToolTip(button8, "Close applacation");
+            toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+            toolTip1.SetToolTip(pictureBox4, "Filtering Items");
+            toolTip1.SetToolTip(pictureBox3, "Print");
         }
 
         private void InventoryMan_MouseDown(object sender, MouseEventArgs e)
