@@ -23,13 +23,7 @@ namespace OurSystemCode
         String name;
         String role;
 
-        public Dashboard()
-        {
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-            this.StartPosition = FormStartPosition.CenterScreen;
-
-        }
+      
 
        
         public Dashboard(String role , String name)

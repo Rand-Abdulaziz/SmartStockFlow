@@ -196,6 +196,7 @@
             this.RestoreBtn.TabIndex = 10;
             this.RestoreBtn.Text = "Restore";
             this.RestoreBtn.UseVisualStyleBackColor = true;
+            this.RestoreBtn.Click += new System.EventHandler(this.RestoreBtn_Click);
             // 
             // BackupBtn
             // 
@@ -208,6 +209,7 @@
             this.BackupBtn.TabIndex = 9;
             this.BackupBtn.Text = "Backup";
             this.BackupBtn.UseVisualStyleBackColor = true;
+            this.BackupBtn.Click += new System.EventHandler(this.BackupBtn_Click);
             // 
             // panel5
             // 

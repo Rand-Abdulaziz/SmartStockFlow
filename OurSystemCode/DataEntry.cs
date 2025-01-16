@@ -27,15 +27,7 @@ namespace OurSystemCode
         private Point mouseOffset;
 
        
-        public DataEntry()
-        {
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-            this.StartPosition = FormStartPosition.CenterScreen;
-           
-        }
-
-       
+     
         public DataEntry(String role , String name)
         {
             InitializeComponent();
@@ -155,9 +147,9 @@ namespace OurSystemCode
         private void button2_Click(object sender, EventArgs e)
         {
            
-            //from raghad
-            var reportsForm = new Reports(role, name);//Rand : I pass the role and name to the reports form
-            reportsForm.DataEntryGrid = this.DataEntryView; // Pass the DataGridView reference
+           
+            var reportsForm = new Reports(role, name);
+            reportsForm.DataEntryGrid = this.DataEntryView;
             this.Hide();
             reportsForm.Show();
         }
@@ -197,16 +189,24 @@ namespace OurSystemCode
         private void button6_Click(object sender, EventArgs e)
         {
             OBItemPan.Visible = false;
-            
+            ResetButton();
+
+            string query = "SELECT * FROM whms_schema.Item;";
+            DatabaseOperations dbOps = new DatabaseOperations();
+            DataSet ds = dbOps.getData(query);
+            DataEntryView.DataSource = ds.Tables[0];
+
+        
         }
 
         private void pictureEye_Click(object sender, EventArgs e)
         {
+            ResetButton();
             OBItemPan.Visible = true;
             DeleteItemPan.Visible = false;
             tableLayoutFilter.Visible = false;
             tableLayoutPanelAdd.Visible = true;
-           
+          
         }
 
         private void AddItemPan_Resize(object sender, EventArgs e)
@@ -214,22 +214,25 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
         }
 
+       
+
+
         private void AddItem()
         {
             try
             {
                 string itemName = InsertNameBox.Text;
                 decimal cost = decimal.Parse(CostInsertBox.Text);
-                string expirationText = ExpirationDateInsertBox.Text;
                 string size = IsertSizeBox.Text;
                 string quantity = QuantityNameBox.Text;
                 string category = CatogeryIDInsertBox.Text;
                 string location = LocationIDInsertBox.Text;
 
-               
+          
+                DateTime createdDate = DateTime.Now;  
+
                 if (!string.IsNullOrEmpty(itemName) &&
                     !string.IsNullOrEmpty(quantity) &&
-                    !string.IsNullOrEmpty(expirationText) &&
                     !string.IsNullOrEmpty(size) &&
                     decimal.TryParse(cost.ToString(), out cost) &&
                     int.TryParse(category, out int categoryID) &&
@@ -237,9 +240,7 @@ namespace OurSystemCode
                     int.TryParse(location, out int locationID))
                 {
                     DateTime expirationDate;
-                    if (DateTime.TryParse(expirationText, out expirationDate))
-                    {
-                        
+                    
                         query = $"SELECT * FROM whms_schema.Categories WHERE Category_ID = '{categoryID}'";
                         ds = dbOps.getData(query);
                         if (ds == null || ds.Tables[0].Rows.Count == 0)
@@ -248,7 +249,6 @@ namespace OurSystemCode
                             return;
                         }
 
-                       
                         query = $"SELECT * FROM whms_schema.Locations WHERE Location_ID = '{locationID}'";
                         ds = dbOps.getData(query);
                         if (ds == null || ds.Tables[0].Rows.Count == 0)
@@ -259,7 +259,8 @@ namespace OurSystemCode
 
                        
                         query = $"INSERT INTO whms_schema.Item (Name, Size, Quantity, Cost, ExpirationDate, Category_ID, Locational_ID) " +
-                                $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost}, '{expirationDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID})";
+                                $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost},'{createdDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID})";
+
                         dbOps.setData(query, "Item added successfully.");
                         DataEntryView.AutoGenerateColumns = true;
                         DataEntryView.DataSource = null;
@@ -271,32 +272,10 @@ namespace OurSystemCode
                         }
                         DataEntryView.Refresh();
                         MessageBox.Show("Item added successfully.");
-                       
 
-                        // إضافة بيانات إلى الجداول المرتبطة (InventoryAlerts, AuditTrail, PurchaseOrders)
-                        //int itemID = dbOps.GetLastInsertedID(); // افترض وجود طريقة للحصول على الـ ID الأخير المضاف
-                        //if (itemID > 0)
-                        //{
-                        //    // إضافة بيانات إلى جدول InventoryAlerts
-                        //    query = $"INSERT INTO whms_schema.InventoryAlerts (Item_ID) VALUES ({itemID})";
-                        //    dbOps.setData(query, "Inventory alert created.");
+                    ResetButton();
 
-                        //    // إضافة بيانات إلى جدول AuditTrail
-                        //    query = $"INSERT INTO whms_schema.AuditTrail (Item_ID, User_ID, ActionType) " +
-                        //            $"VALUES ({itemID}, {userID}, 'Added')";
-                        //    dbOps.setData(query, "Audit trail created.");
 
-                        //    // إضافة بيانات إلى جدول PurchaseOrders
-                        //    query = $"INSERT INTO whms_schema.PurchaseOrders (Item_ID, Supplier_ID) " +
-                        //            $"VALUES ({itemID}, {supplierID})"; // افترض أنه لديك Supplier_ID
-                        //    dbOps.setData(query, "Purchase order created.");
-                        //}
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid date format. Please enter a valid date.");
-                    }
                 }
                 else
                 {
@@ -308,6 +287,7 @@ namespace OurSystemCode
                 MessageBox.Show("Error Add item: " + ex.Message);
             }
         }
+
 
         private void DeleteItem()
         {
@@ -369,25 +349,6 @@ namespace OurSystemCode
                         DataEntryView.Refresh();
                     }
 
-                  
-                  
-                 
-
-                    //// حذف البيانات المرتبطة بالعنصر من الجداول الأخرى
-                    //// افترض أن لدينا طريقة للحصول على الـ ItemID بعد الحذف
-                    //int itemIDToDelete = int.Parse(itemID); // استخدم الـ ItemID المأخوذ من المدخلات
-                    //if (itemIDToDelete > 0)
-                    //{
-                    //    // حذف بيانات العنصر من جداول أخرى مثل InventoryAlerts, AuditTrail, PurchaseOrders
-                    //    query = $"DELETE FROM whms_schema.InventoryAlerts WHERE Item_ID = {itemIDToDelete}";
-                    //    dbOps.setData(query, "Inventory alert deleted.");
-
-                    //    query = $"DELETE FROM whms_schema.AuditTrail WHERE Item_ID = {itemIDToDelete}";
-                    //    dbOps.setData(query, "Audit trail deleted.");
-
-                    //    query = $"DELETE FROM whms_schema.PurchaseOrders WHERE Item_ID = {itemIDToDelete}";
-                    //    dbOps.setData(query, "Purchase order deleted.");
-                    //}
 
                     MessageBox.Show("Item and related data deleted successfully.");
                 }
@@ -395,6 +356,8 @@ namespace OurSystemCode
                 {
                     MessageBox.Show("Please provide either Item ID or Item Name.");
                 }
+
+                ResetButton();
             }
             catch (Exception ex)
             {
@@ -409,18 +372,14 @@ namespace OurSystemCode
                 string itemmID = FilterIDBox.Text;
                 string itemName = FilterNameBox.Text;
                 string costText = FilCostInsertBox.Text;
-                string expirationText = FilExpirationDateInsertBox.Text;
                 string size = FilSizeBox.Text;
                 string quantityText = FilQuantityNameBox.Text;
                 string categoryText = FilCatogeryIDInsertBox.Text;
                 string locationText = FilLocationIDInsertBox.Text;
 
-               
-                string query = "SELECT * FROM whms_schema.Item WHERE 1=1"; 
+                string query = "SELECT * FROM whms_schema.Item WHERE 1=1";
+                bool hasCondition = false;
 
-                bool hasCondition = false;  
-
-           
                 if (!string.IsNullOrEmpty(itemmID) && int.TryParse(itemmID, out int ItemID))
                 {
                     query += $" AND Item_ID LIKE '%{ItemID}%'";
@@ -436,11 +395,9 @@ namespace OurSystemCode
                     query += $" AND Cost = {cost}";
                     hasCondition = true;
                 }
-                if (!string.IsNullOrWhiteSpace(expirationText) &&
-                            DateTime.TryParse(expirationText, out DateTime expirationDate) &&
-                            expirationDate != DateTime.MinValue)
+                if (FilExpirationDateInsertBox.Checked)
                 {
-                    query += $" AND ExpirationDate = '{expirationDate.ToString("yyyy-MM-dd")}'";
+                    query += $" AND ExpirationDate = '{FilExpirationDateInsertBox.Value.ToString("yyyy-MM-dd")}'";
                     hasCondition = true;
                 }
                 if (!string.IsNullOrEmpty(size))
@@ -464,17 +421,16 @@ namespace OurSystemCode
                     hasCondition = true;
                 }
 
-               
                 if (!hasCondition)
                 {
-                    query = "SELECT * FROM whms_schema.Item"; 
+                    query = "SELECT * FROM whms_schema.Item";
                 }
 
-               
+                ResetButton();
+
                 var ds = dbOps.getData(query);
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
-                   
                     DataEntryView.DataSource = ds.Tables[0];
                     FilExpirationDateInsertBox.CustomFormat = " ";
                 }
@@ -487,6 +443,26 @@ namespace OurSystemCode
             {
                 MessageBox.Show("Error filtering items: " + ex.Message);
             }
+        }
+
+
+        private void ResetButton()
+        {
+            InsertNameBox.Text = "";
+            CostInsertBox.Text = "";
+            IsertSizeBox.Text = "";
+            QuantityNameBox.Text = "";
+            CatogeryIDInsertBox.Text = "";
+            LocationIDInsertBox.Text = "";
+            ItemNameDelete.Text = "";
+            ItemIDDelete.Text = "";
+            InsertNameBox.Text = "";
+            CostInsertBox.Text = "";
+            IsertSizeBox.Text = "";
+            QuantityNameBox.Text = "";
+            CatogeryIDInsertBox.Text = "";
+            LocationIDInsertBox.Text = "";
+            FilExpirationDateInsertBox.Text = "";
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -559,12 +535,14 @@ namespace OurSystemCode
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            ResetButton();
             OBItemPan.Visible = true;
             DeleteItemPan.Visible = true;
             tableLayoutFilter.Visible = false;
             tableLayoutPanelAdd.Visible = false;
             OBbutton.Text= "Delete";
             OBlapel.Text = "Delete Item";
+           
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
@@ -574,17 +552,24 @@ namespace OurSystemCode
 
         private void pictureBox4_Click_1(object sender, EventArgs e)
         {
+            ResetButton();
             OBItemPan.Visible = true;
             tableLayoutFilter.Visible = true;
             DeleteItemPan.Visible = false;
             tableLayoutPanelAdd.Visible = false;
             OBbutton.Text = "Filter";
             OBlapel.Text = "Filtering Items";
+            
         }
+
+
 
         private void FilExpirationDateInsertBox_ValueChanged(object sender, EventArgs e)
         {
+
             FilExpirationDateInsertBox.CustomFormat = "yyyy-MM-dd";
+
+
         }
 
         private void EntryDataPrint_Click(object sender, EventArgs e)
@@ -694,6 +679,27 @@ namespace OurSystemCode
             Form1 logoutScreen = new Form1();
             this.Close();
             logoutScreen.Show();
+        }
+
+       
+       
+
+        private void FilExpirationDateInsertBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (FilExpirationDateInsertBox.Checked)
+            {
+
+                FilExpirationDateInsertBox.Checked = false;
+                FilExpirationDateInsertBox.CustomFormat = " ";
+            }
+            else
+            {
+
+                FilExpirationDateInsertBox.Checked = true;
+                FilExpirationDateInsertBox.Value = DateTime.Now;
+                FilExpirationDateInsertBox.CustomFormat = "yyyy-MM-dd";
+            }
+
         }
     }
 }

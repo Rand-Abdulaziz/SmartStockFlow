@@ -6,9 +6,10 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement; //Rand : I delete it ? 
 
 namespace OurSystemCode
 {
@@ -16,13 +17,6 @@ namespace OurSystemCode
     {
         private bool isDragging = false;
         private Point mouseOffset;
-
-        public InventoryMan()
-        {
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-        }
-
         String name;
         String role;
         public InventoryMan(String role, String name)
@@ -114,6 +108,8 @@ namespace OurSystemCode
             isDragging = false;
         }
 
+
+        DataTable originalData;
         private void LoadInventoryData()
         {
             try
@@ -149,7 +145,7 @@ namespace OurSystemCode
                     row["Location Name"] = GetLocationName(locationID);
                 }
 
-               
+                this.originalData = ds.Tables[0];
                 InventoryView.DataSource = ds.Tables[0];
                
                 InventoryView.CellFormatting += InventoryView_CellFormatting;
@@ -221,7 +217,7 @@ namespace OurSystemCode
                             e.CellStyle.ForeColor = Color.White;
                             break;
                         case "Expiring Soon":
-                            e.CellStyle.BackColor = Color.Orange;
+                            e.CellStyle.BackColor = Color.Yellow;
                             e.CellStyle.ForeColor = Color.Black;
                             break;
                         case "Expired":
@@ -329,6 +325,7 @@ namespace OurSystemCode
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+            ResrtInvenButton();
             OBInvenPan.Visible = true;
             tableLayoutFilterInven.Visible = true;
             OBbuttonInven.Text = "Filter";
@@ -337,8 +334,11 @@ namespace OurSystemCode
 
         private void OBclose_Click(object sender, EventArgs e)
         {
+            ResrtInvenButton();
             OBInvenPan.Visible = false;
+            InventoryView.DataSource = originalData;
         }
+
 
         private void BtnDashboard_Click_1(object sender, EventArgs e)
         {
@@ -419,5 +419,196 @@ namespace OurSystemCode
             this.Close();
             logoutScreen.Show();
         }
+
+        private static CancellationTokenSource _cts = new CancellationTokenSource();
+
+        private async void SearchBoxInven_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+               
+                _cts.Cancel();
+                _cts = new CancellationTokenSource();
+
+               
+                await Task.Delay(300); 
+
+                string searchText = SearchBoxInven.Text.Trim();
+
+             
+                if (string.IsNullOrEmpty(searchText))
+                {
+                    LoadFullInventoryData();
+                    return;
+                }
+
+                if (_cts.Token.IsCancellationRequested) return;
+
+                string query = "SELECT Name, Quantity, Locational_ID, ExpirationDate FROM whms_schema.Item " +
+                               "WHERE Name LIKE @searchText OR Locational_ID LIKE @searchText " +
+                               "OR ExpirationDate LIKE @searchText OR Quantity LIKE @searchText";
+
+                DatabaseOperations dbOps = new DatabaseOperations();
+                DataSet ds = dbOps.getDataWithParameter(query, new Dictionary<string, object>
+                {
+                { "@searchText", "%" + searchText + "%" }
+                });
+
+             
+                if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
+                {
+                    InventoryView.DataSource = null;
+                    return;
+                }
+
+                DataTable dataTable = ds.Tables[0];
+
+               
+                AddDefaultColumns(dataTable);
+
+                
+                UpdateProductStateColumns(dataTable);
+
+              
+                InventoryView.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void LoadFullInventoryData()
+        {
+            try
+            {
+                string query = "SELECT Name, Quantity, Locational_ID, ExpirationDate FROM whms_schema.Item";
+
+                DatabaseOperations dbOps = new DatabaseOperations();
+                DataSet ds = dbOps.getData(query);
+
+                if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
+                {
+                    InventoryView.DataSource = null;
+                    return;
+                }
+
+                DataTable dataTable = ds.Tables[0];
+
+                AddDefaultColumns(dataTable);
+
+               
+                UpdateProductStateColumns(dataTable);
+
+             
+                InventoryView.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void AddDefaultColumns(DataTable dataTable)
+        {
+            if (!dataTable.Columns.Contains("Product State (Expiration)"))
+                dataTable.Columns.Add("Product State (Expiration)", typeof(string));
+
+            if (!dataTable.Columns.Contains("Product State (Stock)"))
+                dataTable.Columns.Add("Product State (Stock)", typeof(string));
+
+            if (!dataTable.Columns.Contains("Location Name"))
+                dataTable.Columns.Add("Location Name", typeof(string));
+        }
+
+        private void UpdateProductStateColumns(DataTable dataTable)
+        {
+            foreach (DataRow row in dataTable.Rows)
+            {
+                row["Product State (Expiration)"] = GetExpirationState(row["ExpirationDate"]);
+                row["Product State (Stock)"] = GetStockState(Convert.ToInt32(row["Quantity"]));
+                row["Location Name"] = GetLocationName(Convert.ToInt32(row["Locational_ID"]));
+            }
+        }
+
+        private DataTable FilterInventory(DataTable originalData, string productState, string stockState, string location, string productName)
+        {
+            try
+            {
+           
+                DataTable filteredData = originalData.Copy();
+
+             
+                if (!string.IsNullOrEmpty(productState))
+                {
+                    filteredData = filteredData.AsEnumerable()
+                        .Where(row => row["Product State (Expiration)"].ToString().Contains(productState))
+                        .CopyToDataTable();
+                }
+
+                
+                if (!string.IsNullOrEmpty(stockState))
+                {
+                    filteredData = filteredData.AsEnumerable()
+                        .Where(row => row["Product State (Stock)"].ToString().Contains(stockState))
+                        .CopyToDataTable();
+                }
+
+           
+                if (!string.IsNullOrEmpty(location))
+                {
+                    filteredData = filteredData.AsEnumerable()
+                        .Where(row => row["Location Name"].ToString().Contains(location))
+                        .CopyToDataTable();
+                }
+
+             
+                if (!string.IsNullOrEmpty(productName))
+                {
+                    filteredData = filteredData.AsEnumerable()
+                        .Where(row => row["Name"].ToString().Contains(productName))
+                        .CopyToDataTable();
+                }
+
+                return filteredData;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null; 
+            }
+        }
+
+        private void OBbuttonInven_Click(object sender, EventArgs e)
+        {
+           
+            string productState = ProductExpirationBox.Text;
+            string stockState = ProductStockBox.Text;
+            string location = LocationNameBox.Text;
+            string productName = ProductNameInsert.Text; 
+
+            
+            DataTable filteredData = FilterInventory(originalData, productState, stockState, location, productName);
+
+            if (filteredData != null)
+            {
+               
+                InventoryView.DataSource = filteredData;
+                ResrtInvenButton();
+            }
+            else
+            {
+                MessageBox.Show("No matching data found or an error occurred.");
+            }
+        }
+
+        private void ResrtInvenButton()
+        {
+            ProductExpirationBox.Text = "";
+            ProductStockBox.Text="";
+            LocationNameBox.Text="";
+            ProductNameInsert.Text= "";
+        }
+
     }
 }

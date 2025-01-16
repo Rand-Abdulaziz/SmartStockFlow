@@ -16,12 +16,7 @@ namespace OurSystemCode
         private Point mouseOffset;
         private string name;
         private string role;
-        public Employees_tasks()
-        { 
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-        }
-
+    
         public Employees_tasks(string role, string name)
         {
            

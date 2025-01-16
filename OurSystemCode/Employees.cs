@@ -18,14 +18,6 @@ namespace OurSystemCode
         private string name;
         private string role;
 
-        public Employees()
-        {
-            
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-
-        }
-
         public Employees(string role, string name)
         {
            

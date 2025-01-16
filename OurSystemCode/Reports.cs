@@ -19,12 +19,6 @@ namespace OurSystemCode
 
         private bool isDragging = false;
         private Point mouseOffset;
-        public Reports()
-        {
-            InitializeComponent();
-         
-        }
-
         String name;
         String role;
         public Reports(String role ,String name)

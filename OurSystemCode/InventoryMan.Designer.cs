@@ -34,12 +34,12 @@
             this.OBInvenPan = new System.Windows.Forms.Panel();
             this.OBlapelInven = new System.Windows.Forms.Label();
             this.tableLayoutFilterInven = new System.Windows.Forms.TableLayoutPanel();
-            this.InsertNameBox = new System.Windows.Forms.TextBox();
+            this.ProductStockBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.ItemIDInsert = new System.Windows.Forms.TextBox();
-            this.QuantityNameBox = new System.Windows.Forms.TextBox();
+            this.ProductNameInsert = new System.Windows.Forms.TextBox();
+            this.LocationNameBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.IsertSizeBox = new System.Windows.Forms.TextBox();
+            this.ProductExpirationBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.itemID = new System.Windows.Forms.Label();
             this.OBbuttonInven = new System.Windows.Forms.Button();
@@ -128,14 +128,14 @@
             this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutFilterInven.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutFilterInven.Controls.Add(this.InsertNameBox, 1, 1);
             this.tableLayoutFilterInven.Controls.Add(this.label10, 3, 0);
-            this.tableLayoutFilterInven.Controls.Add(this.ItemIDInsert, 0, 1);
-            this.tableLayoutFilterInven.Controls.Add(this.QuantityNameBox, 3, 1);
+            this.tableLayoutFilterInven.Controls.Add(this.ProductNameInsert, 0, 1);
+            this.tableLayoutFilterInven.Controls.Add(this.LocationNameBox, 3, 1);
             this.tableLayoutFilterInven.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutFilterInven.Controls.Add(this.IsertSizeBox, 2, 1);
             this.tableLayoutFilterInven.Controls.Add(this.label5, 2, 0);
             this.tableLayoutFilterInven.Controls.Add(this.itemID, 0, 0);
+            this.tableLayoutFilterInven.Controls.Add(this.ProductStockBox, 2, 1);
+            this.tableLayoutFilterInven.Controls.Add(this.ProductExpirationBox, 1, 1);
             this.tableLayoutFilterInven.Location = new System.Drawing.Point(0, 41);
             this.tableLayoutFilterInven.Name = "tableLayoutFilterInven";
             this.tableLayoutFilterInven.RowCount = 2;
@@ -145,14 +145,14 @@
             this.tableLayoutFilterInven.TabIndex = 9;
             this.tableLayoutFilterInven.Visible = false;
             // 
-            // InsertNameBox
+            // ProductStockBox
             // 
-            this.InsertNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.InsertNameBox.Location = new System.Drawing.Point(393, 69);
-            this.InsertNameBox.Name = "InsertNameBox";
-            this.InsertNameBox.Size = new System.Drawing.Size(123, 33);
-            this.InsertNameBox.TabIndex = 31;
-            this.InsertNameBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ProductStockBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ProductStockBox.Location = new System.Drawing.Point(696, 69);
+            this.ProductStockBox.Name = "ProductStockBox";
+            this.ProductStockBox.Size = new System.Drawing.Size(123, 33);
+            this.ProductStockBox.TabIndex = 31;
+            this.ProductStockBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label10
             // 
@@ -165,52 +165,52 @@
             this.label10.TabIndex = 30;
             this.label10.Text = "Location";
             // 
-            // ItemIDInsert
+            // ProductNameInsert
             // 
-            this.ItemIDInsert.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ItemIDInsert.Location = new System.Drawing.Point(90, 69);
-            this.ItemIDInsert.Name = "ItemIDInsert";
-            this.ItemIDInsert.Size = new System.Drawing.Size(123, 33);
-            this.ItemIDInsert.TabIndex = 26;
-            this.ItemIDInsert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ProductNameInsert.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ProductNameInsert.Location = new System.Drawing.Point(90, 69);
+            this.ProductNameInsert.Name = "ProductNameInsert";
+            this.ProductNameInsert.Size = new System.Drawing.Size(123, 33);
+            this.ProductNameInsert.TabIndex = 26;
+            this.ProductNameInsert.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // QuantityNameBox
+            // LocationNameBox
             // 
-            this.QuantityNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.QuantityNameBox.Location = new System.Drawing.Point(999, 69);
-            this.QuantityNameBox.Name = "QuantityNameBox";
-            this.QuantityNameBox.Size = new System.Drawing.Size(123, 33);
-            this.QuantityNameBox.TabIndex = 29;
+            this.LocationNameBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.LocationNameBox.Location = new System.Drawing.Point(999, 69);
+            this.LocationNameBox.Name = "LocationNameBox";
+            this.LocationNameBox.Size = new System.Drawing.Size(123, 33);
+            this.LocationNameBox.TabIndex = 29;
             // 
             // label2
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(371, 18);
+            this.label2.Location = new System.Drawing.Point(352, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(167, 21);
+            this.label2.Size = new System.Drawing.Size(204, 21);
             this.label2.TabIndex = 13;
-            this.label2.Text = "Product State(Stock)";
+            this.label2.Text = "Product State(Expiration)";
             // 
-            // IsertSizeBox
+            // ProductExpirationBox
             // 
-            this.IsertSizeBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.IsertSizeBox.Location = new System.Drawing.Point(696, 69);
-            this.IsertSizeBox.Name = "IsertSizeBox";
-            this.IsertSizeBox.Size = new System.Drawing.Size(123, 33);
-            this.IsertSizeBox.TabIndex = 19;
+            this.ProductExpirationBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ProductExpirationBox.Location = new System.Drawing.Point(393, 69);
+            this.ProductExpirationBox.Name = "ProductExpirationBox";
+            this.ProductExpirationBox.Size = new System.Drawing.Size(123, 33);
+            this.ProductExpirationBox.TabIndex = 19;
             // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(655, 18);
+            this.label5.Location = new System.Drawing.Point(674, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(204, 21);
+            this.label5.Size = new System.Drawing.Size(167, 21);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Product State(Expiration)";
+            this.label5.Text = "Product State(Stock)";
             // 
             // itemID
             // 
@@ -239,6 +239,7 @@
             this.OBbuttonInven.TabIndex = 24;
             this.OBbuttonInven.Text = "Add";
             this.OBbuttonInven.UseVisualStyleBackColor = false;
+            this.OBbuttonInven.Click += new System.EventHandler(this.OBbuttonInven_Click);
             // 
             // OBclose
             // 
@@ -293,13 +294,14 @@
             this.SearchBoxInven.Name = "SearchBoxInven";
             this.SearchBoxInven.Size = new System.Drawing.Size(308, 33);
             this.SearchBoxInven.TabIndex = 6;
+            this.SearchBoxInven.TextChanged += new System.EventHandler(this.SearchBoxInven_TextChanged);
             // 
             // pictureBox3
             // 
             this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(1132, 54);
+            this.pictureBox3.Location = new System.Drawing.Point(1120, 54);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(25, 25);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -312,7 +314,7 @@
             this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(1101, 54);
+            this.pictureBox4.Location = new System.Drawing.Point(1088, 54);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(25, 25);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -644,12 +646,12 @@
         private System.Windows.Forms.Panel OBInvenPan;
         private System.Windows.Forms.Label OBlapelInven;
         private System.Windows.Forms.TableLayoutPanel tableLayoutFilterInven;
-        private System.Windows.Forms.TextBox InsertNameBox;
+        private System.Windows.Forms.TextBox ProductStockBox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox ItemIDInsert;
-        private System.Windows.Forms.TextBox QuantityNameBox;
+        private System.Windows.Forms.TextBox ProductNameInsert;
+        private System.Windows.Forms.TextBox LocationNameBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox IsertSizeBox;
+        private System.Windows.Forms.TextBox ProductExpirationBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label itemID;
         private System.Windows.Forms.Button OBbuttonInven;

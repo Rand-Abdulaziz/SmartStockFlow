@@ -14,13 +14,6 @@ namespace OurSystemCode
     {
         private bool isDragging = false;
         private Point mouseOffset;
-
-        public Sittings()
-        {
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-        }
-
         String name;
         String role;
         public Sittings(String role ,String name)

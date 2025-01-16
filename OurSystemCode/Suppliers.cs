@@ -20,11 +20,7 @@ namespace OurSystemCode
 
         private bool isDragging = false;
         private Point mouseOffset;
-        public Suppliers()
-        {
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-        }
+     
 
         String name;
         String role;
@@ -162,11 +158,18 @@ namespace OurSystemCode
        
         private void OBcloseSup_Click(object sender, EventArgs e)
         {
+            ResetSupliersButton();
             OBSuppliersPan.Visible = false;
+
+            string query = "SELECT * FROM whms_schema.Suppliers;;";
+            DatabaseOperations dbOps = new DatabaseOperations();
+            DataSet ds = dbOps.getData(query);
+            SuppliersView.DataSource = ds.Tables[0];
         }
 
         private void pictureEye_Click(object sender, EventArgs e)
         {
+            ResetSupliersButton();
             OBSuppliersPan.Visible = true;
             tableLayoutPanelAddSup.Visible = true;
             DeleteSupPan.Visible = false;
@@ -176,6 +179,7 @@ namespace OurSystemCode
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            ResetSupliersButton();
             OBSuppliersPan.Visible = true;
             DeleteSupPan.Visible = true;
             tableLayoutPanelAddSup.Visible = false;
@@ -186,6 +190,7 @@ namespace OurSystemCode
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
+            ResetSupliersButton();
             OBSuppliersPan.Visible = true;
             tableLayoutFilterSup.Visible = true;
             DeleteSupPan.Visible = false;
@@ -202,6 +207,7 @@ namespace OurSystemCode
 
         private void SearchBoxSuppliers_TextChanged(object sender, EventArgs e)
         {
+            
             try
             {
                 string query = "SELECT * FROM whms_schema.Suppliers " +
@@ -227,6 +233,7 @@ namespace OurSystemCode
 
         private void AddSupplier()
         {
+           
             try
             {
                 string supplierName = InsertNameBoxSup.Text;
@@ -252,21 +259,7 @@ namespace OurSystemCode
                     SuppliersView.Refresh();
                     MessageBox.Show("Supplier added successfully.");
 
-                    // إضافة بيانات إلى الجداول المرتبطة (مثل AuditTrail أو PurchaseOrders)
-                    //int supplierID = dbOps.GetLastInsertedID(); // افترض وجود طريقة للحصول على الـ ID الأخير المضاف
-                    //if (supplierID > 0)
-                    //{
-                    //    // إضافة بيانات إلى جدول AuditTrail
-                    //    query = $"INSERT INTO whms_schema.AuditTrail (Supplier_ID, User_ID, ActionType) " +
-                    //            $"VALUES ({supplierID}, {userID}, 'Added')";
-                    //    dbOps.setData(query, "Audit trail created.");
-
-                    //    // إضافة بيانات إلى جدول PurchaseOrders (إذا لزم الأمر)
-                    //    query = $"INSERT INTO whms_schema.PurchaseOrders (Supplier_ID) " +
-                    //            $"VALUES ({supplierID})";
-                    //    dbOps.setData(query, "Purchase order linked to supplier.");
-                    //}
-
+                    ResetSupliersButton();
                 }
                 else
                 {
@@ -279,8 +272,10 @@ namespace OurSystemCode
             }
         }
 
+      
         private void DeleteSupplier()
         {
+            
             try
             {
                 string supplierName = SupNameDelete.Text; 
@@ -311,7 +306,7 @@ namespace OurSystemCode
                         }
                         SuppliersView.Refresh();
                         MessageBox.Show("Supplier deleted successfully.");
-
+                        ResetSupliersButton();
                     }
                    
                     else if (!string.IsNullOrEmpty(supplierName))
@@ -335,23 +330,10 @@ namespace OurSystemCode
                         }
                         SuppliersView.Refresh();
                         MessageBox.Show("Supplier deleted successfully.");
+                        ResetSupliersButton();
                     }
 
-                    
-                 
-
-                    //// حذف البيانات المرتبطة بالمورد من الجداول الأخرى
-                    //// افترض أن لدينا طريقة للحصول على الـ SupplierID بعد الحذف
-                    //int supplierIDToDelete = int.Parse(supplierID); // استخدم الـ SupplierID المأخوذ من المدخلات
-                    //if (supplierIDToDelete > 0)
-                    //{
-                    //    // حذف بيانات المورد من جداول أخرى مثل AuditTrail أو PurchaseOrders
-                    //    query = $"DELETE FROM whms_schema.AuditTrail WHERE Supplier_ID = {supplierIDToDelete}";
-                    //    dbOps.setData(query, "Audit trail deleted.");
-
-                    //    query = $"DELETE FROM whms_schema.PurchaseOrders WHERE Supplier_ID = {supplierIDToDelete}";
-                    //    dbOps.setData(query, "Purchase order deleted.");
-                    //}
+                    ResetSupliersButton();
 
                     MessageBox.Show("Supplier and related data deleted successfully.");
                 }
@@ -368,6 +350,8 @@ namespace OurSystemCode
 
         private void FilterSupplier()
         {
+          
+
             try
             {
                 string SupID = SupplierIDFilBox.Text;
@@ -542,6 +526,19 @@ namespace OurSystemCode
             Form1 logoutScreen = new Form1();
             this.Close();
             logoutScreen.Show();
+        }
+
+        private void ResetSupliersButton()
+        {
+            InsertNameBoxSup.Text = "";
+            IsertSizeBoxS.Text = "";
+            QuantityNameBox.Text = "";
+            SupIDDelete.Text = "";
+            SupNameDelete.Text = "";
+            SupplierContactFilBox.Text = "";
+            SupplierLocationFilBox.Text = "";
+            SupplierNameFilBox.Text = "";
+            SupplierIDFilBox.Text = "";
         }
     }
 }

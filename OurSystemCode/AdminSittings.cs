@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,7 @@ namespace OurSystemCode
 
         private bool isDragging = false;
         private Point mouseOffset;
-        public AdminSittings()
-        {
-            InitializeComponent();
-            this.Size = new Size(811, 490);
-        }
+      
 
         String name;
         String role;
@@ -219,6 +216,58 @@ namespace OurSystemCode
             logoutScreen.Show();
         }
 
-       
+        private void BackupBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               
+                string backupPath = @"C:\Users\randx\Documents\WHMSdb_backup.bak";
+                MessageBox.Show("Backup path: " + backupPath); 
+
+                
+                if (string.IsNullOrEmpty(backupPath))
+                {
+                    MessageBox.Show("Invalid backup path.");
+                    return;
+                }
+
+             
+                DatabaseOperations dbOps = new DatabaseOperations();
+                dbOps.BackupDatabase(backupPath);
+
+               
+                MessageBox.Show("Database backup completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void RestoreBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                string backupPath = @"C:\Users\randx\OneDrive\Desktop\FirstBack\WHMSdb_backup.bak";
+                MessageBox.Show("Restore from: " + backupPath); 
+
+                if (string.IsNullOrEmpty(backupPath))
+                {
+                    MessageBox.Show("Invalid backup path.");
+                    return;
+                }
+
+                DatabaseOperations dbOps = new DatabaseOperations();
+                dbOps.RestoreDatabase(backupPath);
+
+            
+                MessageBox.Show("Database restore completed successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }
