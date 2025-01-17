@@ -117,9 +117,9 @@
             this.labelWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
             this.labelWelcome.Location = new System.Drawing.Point(260, 131);
             this.labelWelcome.Name = "labelWelcome";
-            this.labelWelcome.Size = new System.Drawing.Size(142, 39);
+            this.labelWelcome.Size = new System.Drawing.Size(158, 39);
             this.labelWelcome.TabIndex = 4;
-            this.labelWelcome.Text = "Welcom !";
+            this.labelWelcome.Text = "Welcome !";
             // 
             // labelPassword
             // 
