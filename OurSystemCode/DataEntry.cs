@@ -34,6 +34,7 @@ namespace OurSystemCode
             this.Size = new Size(811, 490);
             this.role = role;
             this.name = name;
+           
 
         }
 
@@ -57,8 +58,8 @@ namespace OurSystemCode
             userroleBox.Text = role;
             usernameBox.TabStop = false;
             userroleBox.TabStop = false;
-
             OBItemPan.Visible = false;
+            AddDeleteButtonToGrid();
 
             FilExpirationDateInsertBox.Format = DateTimePickerFormat.Custom;
             FilExpirationDateInsertBox.CustomFormat = " "; 
@@ -113,8 +114,10 @@ namespace OurSystemCode
             toolTip1.SetToolTip(buttonMinimize, "Minimize window");
             toolTip1.SetToolTip(pictureEye, "Add Item");
             toolTip1.SetToolTip(pictureBox2, "Delete Item");
+            toolTip1.SetToolTip(DeleteSelectedItemsBtn, "Delete Items");
             toolTip1.SetToolTip(pictureBox4, "Filtering Items");
             toolTip1.SetToolTip(EntryDataPrint, "Print");
+           
 
 
         }
@@ -199,14 +202,21 @@ namespace OurSystemCode
         
         }
 
+        String opeartion;
         private void pictureEye_Click(object sender, EventArgs e)
         {
+           
             ResetButton();
             OBItemPan.Visible = true;
             DeleteItemPan.Visible = false;
             tableLayoutFilter.Visible = false;
             tableLayoutPanelAdd.Visible = true;
-          
+            DeleteSelectedItemsBtn.Visible = false;
+            opeartion = "Add";
+            OBlapel.Text = "Add Item";
+            OBbutton.Text = "ADD";
+
+
         }
 
         private void AddItemPan_Resize(object sender, EventArgs e)
@@ -214,8 +224,144 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
         }
 
-       
+       private void LoadDataIntoView()
+        {
+            DataEntryView.AutoGenerateColumns = true;
+            DataEntryView.DataSource = null;
 
+            DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
+            if (ds2 != null && ds2.Tables.Count > 0)
+            {
+                DataEntryView.DataSource = ds2.Tables[0];
+            }
+            DataEntryView.Refresh();
+        }
+
+        
+        private void CheckSelectionAndTogglePanel()
+        {
+            bool hasSelection = false;
+
+            
+            foreach (DataGridViewRow row in DataEntryView.Rows)
+            {
+                if (row.Cells["Select"].Value != null && Convert.ToBoolean(row.Cells["Select"].Value) == true)
+                {
+                    hasSelection = true;
+                    break;
+                }
+            }
+
+            
+            OBItemPan.Visible = hasSelection;
+            DeleteSelectedItemsBtn.Visible = hasSelection;
+
+            OBbutton.Visible = !hasSelection;
+            DeleteItemPan.Visible = !hasSelection;
+            tableLayoutFilter.Visible = !hasSelection;
+            tableLayoutPanelAdd.Visible = !hasSelection;
+            opeartion = "CustomDelete";
+            OBlapel.Text = "Delete Items";
+            
+        }
+        private void DataEntryView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (DataEntryView.IsCurrentCellDirty)
+            {
+                DataEntryView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+        private void DataEntryView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && DataEntryView.Columns[e.ColumnIndex].Name == "Select")
+            {
+                CheckSelectionAndTogglePanel();
+            }
+        }
+
+        private void AddDeleteButtonToGrid()
+        {
+            DataSet ds = dbOps.getData("SELECT * FROM whms_schema.Item");
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                DataEntryView.DataSource = ds.Tables[0];
+
+               
+                if (!DataEntryView.Columns.Contains("Select"))
+                {
+                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn
+                    {
+                        Name = "Select",
+                        HeaderText = "🗑️",
+                        Width = 50
+                    };
+                    DataEntryView.Columns.Insert(0, selectColumn);
+                }
+
+            
+                DataEntryView.CellValueChanged += DataEntryView_CellValueChanged;
+                DataEntryView.CurrentCellDirtyStateChanged += DataEntryView_CurrentCellDirtyStateChanged;
+            }
+
+           
+            OBItemPan.Visible = false;
+            DeleteSelectedItemsBtn.Visible = false;
+
+         
+        }
+      
+
+
+        private void DeleteSelectedItems()
+        {
+            try
+            {
+                List<string> selectedIDs = new List<string>();
+
+               
+                foreach (DataGridViewRow row in DataEntryView.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["Select"].Value) == true)
+                    {
+                        string itemID = row.Cells["Item_ID"].Value?.ToString();
+                        if (!string.IsNullOrEmpty(itemID))
+                        {
+                            selectedIDs.Add($"'{itemID}'");
+                        }
+                    }
+                }
+
+                if (selectedIDs.Count > 0)
+                {
+                   
+                    string idsCondition = string.Join(",", selectedIDs);
+                    string query = $"DELETE FROM whms_schema.Item WHERE Item_ID IN ({idsCondition})";
+                    dbOps.setData(query, "Selected items deleted successfully.");
+                    MessageBox.Show("Selected items deleted successfully.");
+
+                    LoadDataIntoView();
+
+                  
+                    LogProductChange("Delete", name);
+                    if (selectedIDs.Count > 1)
+                    {
+                        ShowPanelNotification($"Multiple Products with IDs '{idsCondition}' was Deleted by {name}");
+                    }
+                    else
+                    {
+                        ShowPanelNotification($"Product with ID '{idsCondition}' was Deleted by {name}");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select items to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting selected items: " + ex.Message);
+            }
+        }
 
         private void AddItem()
         {
@@ -262,19 +408,14 @@ namespace OurSystemCode
                                 $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost},'{createdDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID})";
 
                         dbOps.setData(query, "Item added successfully.");
-                        DataEntryView.AutoGenerateColumns = true;
-                        DataEntryView.DataSource = null;
-
-                        DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
-                        if (ds2 != null && ds2.Tables.Count > 0)
-                        {
-                            DataEntryView.DataSource = ds2.Tables[0];
-                        }
-                        DataEntryView.Refresh();
+                         LoadDataIntoView();
                         MessageBox.Show("Item added successfully.");
 
                     ResetButton();
 
+                    // سجل الإضافة
+                    LogProductChange("Added", name);
+                    ShowPanelNotification($" Product '{itemName}' was Added by {name}");
 
                 }
                 else
@@ -317,12 +458,14 @@ namespace OurSystemCode
                         DataEntryView.AutoGenerateColumns = true;
                         DataEntryView.DataSource = null;
 
+                        // سجل الإضافة
+                        LogProductChange("Delete", name);
+                        ShowPanelNotification($" Product with ID '{itemID}' was Deleted by {name}");
+
+
+
                         DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
-                        if (ds2 != null && ds2.Tables.Count > 0)
-                        {
-                            DataEntryView.DataSource = ds2.Tables[0];
-                        }
-                        DataEntryView.Refresh();
+                        LoadDataIntoView();
                     }
                     
                     else if (!string.IsNullOrEmpty(itemName))
@@ -341,12 +484,12 @@ namespace OurSystemCode
                         DataEntryView.AutoGenerateColumns = true;
                         DataEntryView.DataSource = null;
 
+                        // سجل الإضافة
+                        LogProductChange("Delete", name);
+                        ShowPanelNotification($" Product '{itemName}' was Deleted by {name}");
+
                         DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
-                        if (ds2 != null && ds2.Tables.Count > 0)
-                        {
-                            DataEntryView.DataSource = ds2.Tables[0];
-                        }
-                        DataEntryView.Refresh();
+                        LoadDataIntoView();
                     }
 
 
@@ -469,19 +612,21 @@ namespace OurSystemCode
         {
             try
             {
-                if (OBbutton.Text == "Add")
+                if (opeartion == "Add")
                 {
                     AddItem();
                 }
-                else if (OBbutton.Text == "Delete")
+                else if (opeartion == "Delete")
                 {
                     DeleteItem();
+                    
                 }
-                else if (OBbutton.Text == "Filter")
+                else if (opeartion == "Filter")
                 {
                     FilterItem();
                 }
-
+                
+              
             }
             catch (Exception ex)
             {
@@ -535,15 +680,20 @@ namespace OurSystemCode
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+
             ResetButton();
             OBItemPan.Visible = true;
             DeleteItemPan.Visible = true;
             tableLayoutFilter.Visible = false;
             tableLayoutPanelAdd.Visible = false;
+            DeleteSelectedItemsBtn.Visible = false;
+            opeartion = "Delete";
             OBbutton.Text= "Delete";
             OBlapel.Text = "Delete Item";
-           
+          
         }
+
+      
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
@@ -557,9 +707,10 @@ namespace OurSystemCode
             tableLayoutFilter.Visible = true;
             DeleteItemPan.Visible = false;
             tableLayoutPanelAdd.Visible = false;
+            opeartion = "Filter";
             OBbutton.Text = "Filter";
             OBlapel.Text = "Filtering Items";
-            
+           
         }
 
 
@@ -701,5 +852,66 @@ namespace OurSystemCode
             }
 
         }
+
+        private void DeleteSelectedItemsBtn_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedItems();
+        }
+
+        
+        private void LogProductChange(string action,  string employeeName)
+        {
+           
+            string query = " INSERT INTO whms_schema.AuditLog( EmployeeName , Action) VALUES (@EmployeeName , @Action)";
+
+           
+            var parameters = new Dictionary<string, object>
+    {
+        { "@Action", action },
+        { "@EmployeeName", employeeName }
+    };
+
+            
+            DatabaseOperations dbOperations = new DatabaseOperations();
+
+           
+            int rowsAffected = dbOperations.setData(query, "Product change logged successfully.");
+
+            if (rowsAffected > 0)
+            {
+                Console.WriteLine("Log entry added successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Failed to log the product change.");
+            }
+        }
+
+        private void ShowPanelNotification(string message)
+        {
+            Notifcationlabel.Visible = true;
+            notificationPanel.Visible = true; 
+            notificationLabel.Text = message;
+
+            
+            Task.Delay(5000).ContinueWith(t =>
+            {
+                if (notificationPanel.InvokeRequired)
+                {
+                    notificationPanel.Invoke(new Action(() =>
+                    {
+                        notificationPanel.Visible = false;
+                        Notifcationlabel.Visible = true;
+                    }));
+                }
+                else
+                {
+                    notificationPanel.Visible = false;
+                    Notifcationlabel.Visible = true;
+                }
+            });
+        }
+
+
     }
 }

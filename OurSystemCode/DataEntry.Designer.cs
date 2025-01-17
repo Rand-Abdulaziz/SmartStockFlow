@@ -42,11 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.DeleteItemPan = new System.Windows.Forms.TableLayoutPanel();
-            this.ItemNameDelete = new System.Windows.Forms.TextBox();
-            this.ItemIDDelete = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.OBItemPan = new System.Windows.Forms.Panel();
             this.tableLayoutFilter = new System.Windows.Forms.TableLayoutPanel();
             this.FilCostInsertBox = new System.Windows.Forms.TextBox();
@@ -65,7 +60,12 @@
             this.FilSizeBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.OBlapel = new System.Windows.Forms.Label();
+            this.DeleteSelectedItemsBtn = new System.Windows.Forms.Button();
+            this.DeleteItemPan = new System.Windows.Forms.TableLayoutPanel();
+            this.ItemNameDelete = new System.Windows.Forms.TextBox();
+            this.ItemIDDelete = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.tableLayoutPanelAdd = new System.Windows.Forms.TableLayoutPanel();
             this.CostInsertBox = new System.Windows.Forms.TextBox();
             this.InsertNameBox = new System.Windows.Forms.TextBox();
@@ -79,6 +79,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.IsertSizeBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.OBlapel = new System.Windows.Forms.Label();
             this.OBbutton = new System.Windows.Forms.Button();
             this.OBclose = new System.Windows.Forms.Button();
             this.DataEntryView = new System.Windows.Forms.DataGridView();
@@ -99,6 +100,9 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.notificationPanel = new System.Windows.Forms.Panel();
+            this.notificationLabel = new System.Windows.Forms.Label();
+            this.Notifcationlabel = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -106,20 +110,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).BeginInit();
             this.panel3.SuspendLayout();
-            this.DeleteItemPan.SuspendLayout();
             this.OBItemPan.SuspendLayout();
             this.tableLayoutFilter.SuspendLayout();
+            this.DeleteItemPan.SuspendLayout();
             this.tableLayoutPanelAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataEntryView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.notificationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.notificationPanel);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.buttonMinimize);
             this.panel4.Controls.Add(this.pictureBox7);
@@ -264,80 +270,14 @@
             this.panel3.Size = new System.Drawing.Size(1239, 792);
             this.panel3.TabIndex = 8;
             // 
-            // DeleteItemPan
-            // 
-            this.DeleteItemPan.AutoScroll = true;
-            this.DeleteItemPan.ColumnCount = 2;
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.37098F));
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.62902F));
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.DeleteItemPan.Controls.Add(this.ItemNameDelete, 1, 1);
-            this.DeleteItemPan.Controls.Add(this.ItemIDDelete, 0, 1);
-            this.DeleteItemPan.Controls.Add(this.label16, 1, 0);
-            this.DeleteItemPan.Controls.Add(this.label18, 0, 0);
-            this.DeleteItemPan.Location = new System.Drawing.Point(0, 40);
-            this.DeleteItemPan.Name = "DeleteItemPan";
-            this.DeleteItemPan.RowCount = 2;
-            this.DeleteItemPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.DeleteItemPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.DeleteItemPan.Size = new System.Drawing.Size(1213, 115);
-            this.DeleteItemPan.TabIndex = 25;
-            this.DeleteItemPan.Visible = false;
-            // 
-            // ItemNameDelete
-            // 
-            this.ItemNameDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ItemNameDelete.Location = new System.Drawing.Point(850, 69);
-            this.ItemNameDelete.Name = "ItemNameDelete";
-            this.ItemNameDelete.Size = new System.Drawing.Size(123, 33);
-            this.ItemNameDelete.TabIndex = 31;
-            this.ItemNameDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // ItemIDDelete
-            // 
-            this.ItemIDDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ItemIDDelete.Location = new System.Drawing.Point(243, 69);
-            this.ItemIDDelete.Name = "ItemIDDelete";
-            this.ItemIDDelete.Size = new System.Drawing.Size(123, 33);
-            this.ItemIDDelete.TabIndex = 26;
-            this.ItemIDDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ItemIDDelete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemIDDelete_KeyPress);
-            // 
-            // label16
-            // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label16.Location = new System.Drawing.Point(883, 18);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(56, 21);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "Name";
-            // 
-            // label18
-            // 
-            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.label18.Location = new System.Drawing.Point(270, 18);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 21);
-            this.label18.TabIndex = 27;
-            this.label18.Text = "Item_ID";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // OBItemPan
             // 
             this.OBItemPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.OBItemPan.Controls.Add(this.DeleteItemPan);
             this.OBItemPan.Controls.Add(this.tableLayoutFilter);
-            this.OBItemPan.Controls.Add(this.OBlapel);
+            this.OBItemPan.Controls.Add(this.DeleteSelectedItemsBtn);
+            this.OBItemPan.Controls.Add(this.DeleteItemPan);
             this.OBItemPan.Controls.Add(this.tableLayoutPanelAdd);
+            this.OBItemPan.Controls.Add(this.OBlapel);
             this.OBItemPan.Controls.Add(this.OBbutton);
             this.OBItemPan.Controls.Add(this.OBclose);
             this.OBItemPan.Location = new System.Drawing.Point(11, 588);
@@ -374,7 +314,7 @@
             this.tableLayoutFilter.Controls.Add(this.FilSizeBox, 2, 1);
             this.tableLayoutFilter.Controls.Add(this.label17, 2, 0);
             this.tableLayoutFilter.Controls.Add(this.label19, 0, 0);
-            this.tableLayoutFilter.Location = new System.Drawing.Point(0, 38);
+            this.tableLayoutFilter.Location = new System.Drawing.Point(3, 36);
             this.tableLayoutFilter.Name = "tableLayoutFilter";
             this.tableLayoutFilter.RowCount = 2;
             this.tableLayoutFilter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -545,16 +485,89 @@
             this.label19.Text = "Item_ID";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // OBlapel
+            // DeleteSelectedItemsBtn
             // 
-            this.OBlapel.AutoSize = true;
-            this.OBlapel.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
-            this.OBlapel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.OBlapel.Location = new System.Drawing.Point(3, 3);
-            this.OBlapel.Name = "OBlapel";
-            this.OBlapel.Size = new System.Drawing.Size(94, 25);
-            this.OBlapel.TabIndex = 5;
-            this.OBlapel.Text = "Add Item";
+            this.DeleteSelectedItemsBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.DeleteSelectedItemsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DeleteSelectedItemsBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.DeleteSelectedItemsBtn.FlatAppearance.BorderSize = 10;
+            this.DeleteSelectedItemsBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.DeleteSelectedItemsBtn.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteSelectedItemsBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteSelectedItemsBtn.Location = new System.Drawing.Point(515, 67);
+            this.DeleteSelectedItemsBtn.Name = "DeleteSelectedItemsBtn";
+            this.DeleteSelectedItemsBtn.Size = new System.Drawing.Size(224, 74);
+            this.DeleteSelectedItemsBtn.TabIndex = 25;
+            this.DeleteSelectedItemsBtn.Text = "Delete Selected Items";
+            this.DeleteSelectedItemsBtn.UseVisualStyleBackColor = false;
+            this.DeleteSelectedItemsBtn.Click += new System.EventHandler(this.DeleteSelectedItemsBtn_Click);
+            // 
+            // DeleteItemPan
+            // 
+            this.DeleteItemPan.AutoScroll = true;
+            this.DeleteItemPan.ColumnCount = 2;
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.37098F));
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.62902F));
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteItemPan.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.DeleteItemPan.Controls.Add(this.ItemNameDelete, 1, 1);
+            this.DeleteItemPan.Controls.Add(this.ItemIDDelete, 0, 1);
+            this.DeleteItemPan.Controls.Add(this.label16, 1, 0);
+            this.DeleteItemPan.Controls.Add(this.label18, 0, 0);
+            this.DeleteItemPan.Location = new System.Drawing.Point(3, 40);
+            this.DeleteItemPan.Name = "DeleteItemPan";
+            this.DeleteItemPan.RowCount = 2;
+            this.DeleteItemPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DeleteItemPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.DeleteItemPan.Size = new System.Drawing.Size(1213, 115);
+            this.DeleteItemPan.TabIndex = 25;
+            this.DeleteItemPan.Visible = false;
+            // 
+            // ItemNameDelete
+            // 
+            this.ItemNameDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ItemNameDelete.Location = new System.Drawing.Point(850, 69);
+            this.ItemNameDelete.Name = "ItemNameDelete";
+            this.ItemNameDelete.Size = new System.Drawing.Size(123, 33);
+            this.ItemNameDelete.TabIndex = 31;
+            this.ItemNameDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // ItemIDDelete
+            // 
+            this.ItemIDDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ItemIDDelete.Location = new System.Drawing.Point(243, 69);
+            this.ItemIDDelete.Name = "ItemIDDelete";
+            this.ItemIDDelete.Size = new System.Drawing.Size(123, 33);
+            this.ItemIDDelete.TabIndex = 26;
+            this.ItemIDDelete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ItemIDDelete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemIDDelete_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.label16.Location = new System.Drawing.Point(883, 18);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(56, 21);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Name";
+            // 
+            // label18
+            // 
+            this.label18.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.label18.Location = new System.Drawing.Point(270, 18);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(69, 21);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Item_ID";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanelAdd
             // 
@@ -579,7 +592,7 @@
             this.tableLayoutPanelAdd.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanelAdd.Controls.Add(this.IsertSizeBox, 1, 1);
             this.tableLayoutPanelAdd.Controls.Add(this.label5, 1, 0);
-            this.tableLayoutPanelAdd.Location = new System.Drawing.Point(0, 41);
+            this.tableLayoutPanelAdd.Location = new System.Drawing.Point(1, 39);
             this.tableLayoutPanelAdd.Name = "tableLayoutPanelAdd";
             this.tableLayoutPanelAdd.RowCount = 2;
             this.tableLayoutPanelAdd.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -705,6 +718,17 @@
             this.label5.Size = new System.Drawing.Size(41, 21);
             this.label5.TabIndex = 14;
             this.label5.Text = "Size";
+            // 
+            // OBlapel
+            // 
+            this.OBlapel.AutoSize = true;
+            this.OBlapel.Font = new System.Drawing.Font("Segoe UI", 7F, System.Drawing.FontStyle.Bold);
+            this.OBlapel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.OBlapel.Location = new System.Drawing.Point(3, 3);
+            this.OBlapel.Name = "OBlapel";
+            this.OBlapel.Size = new System.Drawing.Size(94, 25);
+            this.OBlapel.TabIndex = 5;
+            this.OBlapel.Text = "Add Item";
             // 
             // OBbutton
             // 
@@ -976,6 +1000,38 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // notificationPanel
+            // 
+            this.notificationPanel.Controls.Add(this.Notifcationlabel);
+            this.notificationPanel.Controls.Add(this.notificationLabel);
+            this.notificationPanel.Location = new System.Drawing.Point(217, 1);
+            this.notificationPanel.Name = "notificationPanel";
+            this.notificationPanel.Size = new System.Drawing.Size(832, 43);
+            this.notificationPanel.TabIndex = 5;
+            // 
+            // notificationLabel
+            // 
+            this.notificationLabel.AutoSize = true;
+            this.notificationLabel.Font = new System.Drawing.Font("Segoe UI", 7.875F);
+            this.notificationLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.notificationLabel.Location = new System.Drawing.Point(156, 7);
+            this.notificationLabel.Name = "notificationLabel";
+            this.notificationLabel.Size = new System.Drawing.Size(19, 30);
+            this.notificationLabel.TabIndex = 0;
+            this.notificationLabel.Text = " ";
+            // 
+            // Notifcationlabel
+            // 
+            this.Notifcationlabel.AutoSize = true;
+            this.Notifcationlabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Notifcationlabel.Font = new System.Drawing.Font("Tahoma", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Notifcationlabel.Location = new System.Drawing.Point(4, 6);
+            this.Notifcationlabel.Name = "Notifcationlabel";
+            this.Notifcationlabel.Size = new System.Drawing.Size(143, 25);
+            this.Notifcationlabel.TabIndex = 1;
+            this.Notifcationlabel.Text = "Notifcation: ";
+            this.Notifcationlabel.Visible = false;
+            // 
             // DataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -997,12 +1053,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEye)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.DeleteItemPan.ResumeLayout(false);
-            this.DeleteItemPan.PerformLayout();
             this.OBItemPan.ResumeLayout(false);
             this.OBItemPan.PerformLayout();
             this.tableLayoutFilter.ResumeLayout(false);
             this.tableLayoutFilter.PerformLayout();
+            this.DeleteItemPan.ResumeLayout(false);
+            this.DeleteItemPan.PerformLayout();
             this.tableLayoutPanelAdd.ResumeLayout(false);
             this.tableLayoutPanelAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataEntryView)).EndInit();
@@ -1011,6 +1067,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.notificationPanel.ResumeLayout(false);
+            this.notificationPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1085,5 +1143,9 @@
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button DeleteSelectedItemsBtn;
+        private System.Windows.Forms.Panel notificationPanel;
+        private System.Windows.Forms.Label notificationLabel;
+        private System.Windows.Forms.Label Notifcationlabel;
     }
 }
