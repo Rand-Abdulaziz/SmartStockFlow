@@ -38,14 +38,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.ChangePasswordBtn = new System.Windows.Forms.Button();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.button10 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSittings = new System.Windows.Forms.Button();
@@ -67,8 +59,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -139,8 +129,6 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.panel6);
             this.panel3.Location = new System.Drawing.Point(356, 106);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1239, 792);
@@ -168,96 +156,6 @@
             this.ChangePasswordBtn.Text = "Change Password";
             this.ChangePasswordBtn.UseVisualStyleBackColor = true;
             this.ChangePasswordBtn.Click += new System.EventHandler(this.ChangePasswordBtn_Click);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.radioButton3);
-            this.panel5.Controls.Add(this.radioButton4);
-            this.panel5.Location = new System.Drawing.Point(290, 532);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(655, 219);
-            this.panel5.TabIndex = 7;
-            this.panel5.Resize += new System.EventHandler(this.panel5_Resize);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.label5.Location = new System.Drawing.Point(55, 87);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 50);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Offline : ";
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(297, 124);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(121, 31);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Disable ";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(297, 70);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(115, 31);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Enable ";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.radioButton2);
-            this.panel6.Controls.Add(this.radioButton1);
-            this.panel6.Location = new System.Drawing.Point(290, 274);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(655, 219);
-            this.panel6.TabIndex = 1;
-            this.panel6.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.label4.Location = new System.Drawing.Point(55, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(139, 50);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Alert : ";
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(297, 124);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(226, 31);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Enable Expiry Alert";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(297, 70);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(219, 31);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Enable Stock Alert";
-            this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // button10
             // 
@@ -510,10 +408,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -527,14 +421,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button ChangePasswordBtn;
