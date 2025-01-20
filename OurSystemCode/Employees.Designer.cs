@@ -32,17 +32,14 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employees));
             this.btnAssignTask = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvEmployeeTasks = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.DashTitle = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnDeleteSelectedTasks = new System.Windows.Forms.Button();
+            this.dgvEmployeeTasks = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSittings = new System.Windows.Forms.Button();
             this.btnEmployeeMang = new System.Windows.Forms.Button();
@@ -58,10 +55,10 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeTasks)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeTasks)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -77,49 +74,6 @@
             this.btnAssignTask.Text = "Assign Task";
             this.btnAssignTask.UseVisualStyleBackColor = true;
             this.btnAssignTask.Click += new System.EventHandler(this.btnAssignTask_Click);
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.HeaderText = "Deadline";
-            this.dataGridViewTextBoxColumn4.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Status";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Assigned To";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Task Name";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 10;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 200;
-            // 
-            // dgvEmployeeTasks
-            // 
-            this.dgvEmployeeTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEmployeeTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4});
-            this.dgvEmployeeTasks.Location = new System.Drawing.Point(0, 0);
-            this.dgvEmployeeTasks.Margin = new System.Windows.Forms.Padding(6);
-            this.dgvEmployeeTasks.Name = "dgvEmployeeTasks";
-            this.dgvEmployeeTasks.RowHeadersWidth = 82;
-            this.dgvEmployeeTasks.Size = new System.Drawing.Size(1236, 581);
-            this.dgvEmployeeTasks.TabIndex = 0;
             // 
             // panel4
             // 
@@ -185,12 +139,35 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.btnDeleteSelectedTasks);
             this.panel3.Controls.Add(this.dgvEmployeeTasks);
             this.panel3.Controls.Add(this.btnAssignTask);
             this.panel3.Location = new System.Drawing.Point(356, 106);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1239, 792);
             this.panel3.TabIndex = 9;
+            // 
+            // btnDeleteSelectedTasks
+            // 
+            this.btnDeleteSelectedTasks.Location = new System.Drawing.Point(477, 720);
+            this.btnDeleteSelectedTasks.Margin = new System.Windows.Forms.Padding(6);
+            this.btnDeleteSelectedTasks.Name = "btnDeleteSelectedTasks";
+            this.btnDeleteSelectedTasks.Size = new System.Drawing.Size(200, 58);
+            this.btnDeleteSelectedTasks.TabIndex = 5;
+            this.btnDeleteSelectedTasks.Text = "Delete Tasks";
+            this.btnDeleteSelectedTasks.UseVisualStyleBackColor = true;
+            this.btnDeleteSelectedTasks.Visible = false;
+            this.btnDeleteSelectedTasks.Click += new System.EventHandler(this.btnDeleteSelectedTasks_Click);
+            // 
+            // dgvEmployeeTasks
+            // 
+            this.dgvEmployeeTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEmployeeTasks.Location = new System.Drawing.Point(3, 1);
+            this.dgvEmployeeTasks.Name = "dgvEmployeeTasks";
+            this.dgvEmployeeTasks.RowHeadersWidth = 82;
+            this.dgvEmployeeTasks.RowTemplate.Height = 35;
+            this.dgvEmployeeTasks.Size = new System.Drawing.Size(1236, 581);
+            this.dgvEmployeeTasks.TabIndex = 4;
             // 
             // panel1
             // 
@@ -432,11 +409,11 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Employees Management";
             this.Load += new System.EventHandler(this.Employees_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeTasks)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEmployeeTasks)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -446,12 +423,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridView dgvEmployeeTasks;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button buttonMinimize;
@@ -473,5 +444,7 @@
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnDeleteSelectedTasks;
+        private System.Windows.Forms.DataGridView dgvEmployeeTasks;
     }
 }

@@ -151,6 +151,7 @@ namespace OurSystemCode
         {
             int cornerRadius = 20;
             Form1.ApplyRoundedCorners(this, cornerRadius);
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             this.MouseDown += new MouseEventHandler(ForgetPassword_MouseDown);
             this.MouseMove += new MouseEventHandler(ForgetPassword_MouseMove);
@@ -159,6 +160,7 @@ namespace OurSystemCode
 
             toolTip1.SetToolTip(button8, "Close applacation");
             toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+
         
         }
     }

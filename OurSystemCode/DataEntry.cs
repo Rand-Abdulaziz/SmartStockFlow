@@ -117,9 +117,13 @@ namespace OurSystemCode
             toolTip1.SetToolTip(DeleteSelectedItemsBtn, "Delete Items");
             toolTip1.SetToolTip(pictureBox4, "Filtering Items");
             toolTip1.SetToolTip(EntryDataPrint, "Print");
-           
 
 
+            foreach (DataGridViewColumn column in DataEntryView.Columns)
+            {
+
+                column.ReadOnly = (column.Index != 0);
+            }
         }
 
         private void DataEntry_MouseDown(object sender, MouseEventArgs e)
@@ -152,7 +156,7 @@ namespace OurSystemCode
            
            
             var reportsForm = new Reports(role, name);
-            reportsForm.DataEntryGrid = this.DataEntryView;
+            //reportsForm.DataEntryGrid = this.DataEntryView;
             this.Hide();
             reportsForm.Show();
         }
@@ -168,26 +172,58 @@ namespace OurSystemCode
             try
             {
                 
-                string query = "SELECT * FROM whms_schema.Item " +
-                        "WHERE Name LIKE '%" + SearchBoxEntry.Text + "%' " +
-                        "OR Item_ID LIKE '%" + SearchBoxEntry.Text + "%' " +
-                        "OR Size LIKE '%" + SearchBoxEntry.Text + "%' " +
-                        "OR Locational_ID LIKE '%" + SearchBoxEntry.Text + "%' " +
-                         "OR Cost LIKE '%" + SearchBoxEntry.Text + "%' " +
-                         "OR ExpirationDate LIKE '%" + SearchBoxEntry.Text + "%' " +
-                         "OR Category_ID LIKE '%" + SearchBoxEntry.Text + "%' " +
-                        "OR Quantity LIKE '%" + SearchBoxEntry.Text + "%'";
-
                 DatabaseOperations dbOps = new DatabaseOperations();
-                DataSet ds = dbOps.getData(query);
+
+               
+                string searchText = SearchBoxEntry.Text;
+
+               
+                DateTime searchDate;
+                bool isDate = DateTime.TryParse(searchText, out searchDate);
+
+               
+                string query = "SELECT * FROM whms_schema.Item " +
+                               "WHERE Name LIKE @Search " +
+                               "OR Item_ID LIKE @Search " +
+                               "OR Size LIKE @Search " +
+                               "OR Locational_ID LIKE @Search " +
+                               "OR Cost LIKE @Search " +
+                               "OR Category_ID LIKE @Search " +
+                               "OR Quantity LIKE @Search ";
+
+                
+                if (isDate)
+                {
+                    query += "OR ExpirationDate = @SearchDate ";
+                    query += "OR CreatedDate = @SearchDate"; 
+                }
+
+              
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "@Search", "%" + searchText + "%" }
+        };
+
+               
+                if (isDate)
+                {
+                    parameters.Add("@SearchDate", searchDate.ToString("yyyy-MM-dd"));
+                }
+
+                
+                DataSet ds = dbOps.getDataWithParameter(query, parameters);
+
+              
                 DataEntryView.DataSource = ds.Tables[0];
             }
             catch (Exception ex)
             {
+              
                 MessageBox.Show("Error: " + ex.Message);
             }
-
         }
+
+
 
         private void button6_Click(object sender, EventArgs e)
         {
@@ -212,11 +248,10 @@ namespace OurSystemCode
             tableLayoutFilter.Visible = false;
             tableLayoutPanelAdd.Visible = true;
             DeleteSelectedItemsBtn.Visible = false;
+            OBbutton.Visible = true;
             opeartion = "Add";
             OBlapel.Text = "Add Item";
             OBbutton.Text = "ADD";
-
-
         }
 
         private void AddItemPan_Resize(object sender, EventArgs e)
@@ -342,15 +377,7 @@ namespace OurSystemCode
                     LoadDataIntoView();
 
                   
-                    LogProductChange("Delete", name);
-                    if (selectedIDs.Count > 1)
-                    {
-                        ShowPanelNotification($"Multiple Products with IDs '{idsCondition}' was Deleted by {name}");
-                    }
-                    else
-                    {
-                        ShowPanelNotification($"Product with ID '{idsCondition}' was Deleted by {name}");
-                    }
+                   
                 }
                 else
                 {
@@ -375,7 +402,8 @@ namespace OurSystemCode
                 string location = LocationIDInsertBox.Text;
 
           
-                DateTime createdDate = DateTime.Now;  
+                DateTime createdDate = DateTime.Now;
+                DateTime currentDate = DateTime.Now;
 
                 if (!string.IsNullOrEmpty(itemName) &&
                     !string.IsNullOrEmpty(quantity) &&
@@ -385,8 +413,7 @@ namespace OurSystemCode
                     int.TryParse(quantity, out int quantityCount) &&
                     int.TryParse(location, out int locationID))
                 {
-                    DateTime expirationDate;
-                    
+                   
                         query = $"SELECT * FROM whms_schema.Categories WHERE Category_ID = '{categoryID}'";
                         ds = dbOps.getData(query);
                         if (ds == null || ds.Tables[0].Rows.Count == 0)
@@ -403,9 +430,9 @@ namespace OurSystemCode
                             return;
                         }
 
-                       
-                        query = $"INSERT INTO whms_schema.Item (Name, Size, Quantity, Cost, ExpirationDate, Category_ID, Locational_ID) " +
-                                $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost},'{createdDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID})";
+                  
+                    query = $"INSERT INTO whms_schema.Item (Name, Size, Quantity, Cost, ExpirationDate, Category_ID, Locational_ID ,CreatedDate) " +
+                                $"VALUES ('{itemName}', '{size}', {quantityCount}, {cost},'{createdDate.ToString("yyyy-MM-dd")}', {categoryID}, {locationID},'{currentDate.ToString("yyyy-MM-dd")}')";
 
                         dbOps.setData(query, "Item added successfully.");
                          LoadDataIntoView();
@@ -413,9 +440,6 @@ namespace OurSystemCode
 
                     ResetButton();
 
-                    // سجل الإضافة
-                    LogProductChange("Added", name);
-                    ShowPanelNotification($" Product '{itemName}' was Added by {name}");
 
                 }
                 else
@@ -458,11 +482,7 @@ namespace OurSystemCode
                         DataEntryView.AutoGenerateColumns = true;
                         DataEntryView.DataSource = null;
 
-                        // سجل الإضافة
-                        LogProductChange("Delete", name);
-                        ShowPanelNotification($" Product with ID '{itemID}' was Deleted by {name}");
-
-
+                        
 
                         DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
                         LoadDataIntoView();
@@ -484,9 +504,7 @@ namespace OurSystemCode
                         DataEntryView.AutoGenerateColumns = true;
                         DataEntryView.DataSource = null;
 
-                        // سجل الإضافة
-                        LogProductChange("Delete", name);
-                        ShowPanelNotification($" Product '{itemName}' was Deleted by {name}");
+                  
 
                         DataSet ds2 = dbOps.getData("SELECT * FROM whms_schema.Item");
                         LoadDataIntoView();
@@ -687,6 +705,7 @@ namespace OurSystemCode
             tableLayoutFilter.Visible = false;
             tableLayoutPanelAdd.Visible = false;
             DeleteSelectedItemsBtn.Visible = false;
+            OBbutton.Visible = true;
             opeartion = "Delete";
             OBbutton.Text= "Delete";
             OBlapel.Text = "Delete Item";
@@ -707,6 +726,7 @@ namespace OurSystemCode
             tableLayoutFilter.Visible = true;
             DeleteItemPan.Visible = false;
             tableLayoutPanelAdd.Visible = false;
+            OBbutton.Visible = true;
             opeartion = "Filter";
             OBbutton.Text = "Filter";
             OBlapel.Text = "Filtering Items";
@@ -802,27 +822,10 @@ namespace OurSystemCode
 
         private void btnSittings_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            Sittings SittingsScreen = new Sittings(role, name);
+            this.Hide();
+            SittingsScreen.Show();
 
-
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-                Sittings SittingsScreen = new Sittings(role, name);
-                this.Hide();
-                SittingsScreen.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -833,8 +836,6 @@ namespace OurSystemCode
         }
 
        
-       
-
         private void FilExpirationDateInsertBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (FilExpirationDateInsertBox.Checked)
@@ -859,58 +860,7 @@ namespace OurSystemCode
         }
 
         
-        private void LogProductChange(string action,  string employeeName)
-        {
-           
-            string query = " INSERT INTO whms_schema.AuditLog( EmployeeName , Action) VALUES (@EmployeeName , @Action)";
-
-           
-            var parameters = new Dictionary<string, object>
-    {
-        { "@Action", action },
-        { "@EmployeeName", employeeName }
-    };
-
-            
-            DatabaseOperations dbOperations = new DatabaseOperations();
-
-           
-            int rowsAffected = dbOperations.setData(query, "Product change logged successfully.");
-
-            if (rowsAffected > 0)
-            {
-                Console.WriteLine("Log entry added successfully!");
-            }
-            else
-            {
-                Console.WriteLine("Failed to log the product change.");
-            }
-        }
-
-        private void ShowPanelNotification(string message)
-        {
-            Notifcationlabel.Visible = true;
-            notificationPanel.Visible = true; 
-            notificationLabel.Text = message;
-
-            
-            Task.Delay(5000).ContinueWith(t =>
-            {
-                if (notificationPanel.InvokeRequired)
-                {
-                    notificationPanel.Invoke(new Action(() =>
-                    {
-                        notificationPanel.Visible = false;
-                        Notifcationlabel.Visible = true;
-                    }));
-                }
-                else
-                {
-                    notificationPanel.Visible = false;
-                    Notifcationlabel.Visible = true;
-                }
-            });
-        }
+    
 
 
     }

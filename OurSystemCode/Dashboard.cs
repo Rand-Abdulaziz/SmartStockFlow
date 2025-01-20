@@ -23,8 +23,6 @@ namespace OurSystemCode
         String name;
         String role;
 
-      
-
        
         public Dashboard(String role , String name)
         {
@@ -133,11 +131,11 @@ namespace OurSystemCode
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     int totalItems = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
-                    TotalItemsBox.Text = totalItems.ToString();  
+                    TotalItemsLabel.Text = totalItems.ToString();  
                 }
                 else
                 {
-                    TotalItemsBox.Text = "Null";
+                    TotalItemsLabel.Text = "Null";
                 }
             }
             catch (Exception ex)
@@ -161,11 +159,11 @@ namespace OurSystemCode
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     int IntUpcomingCount = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
-                    UpcomingDelBox.Text = IntUpcomingCount.ToString();
+                    UpcomingDelLabel.Text = IntUpcomingCount.ToString();
                 }
                 else
                 {
-                    UpcomingDelBox.Text = "Null";
+                    UpcomingDelLabel.Text = "Null";
                 }
             }
             catch (Exception ex)
@@ -189,11 +187,11 @@ namespace OurSystemCode
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     int totalCategory = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
-                    CategoriesBox.Text = totalCategory.ToString();  
+                    CategoriesLabel.Text = totalCategory.ToString();  
                 }
                 else
                 {
-                    CategoriesBox.Text = "Null";
+                    CategoriesLabel.Text = "Null";
                 }
             }
             catch (Exception ex)
@@ -216,11 +214,11 @@ namespace OurSystemCode
                 if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     int LowStockCount = ds.Tables[0].Rows.Count;
-                    LowStockBox.Text = LowStockCount.ToString();
+                    LowStockLabel.Text = LowStockCount.ToString();
                 }
                 else
                 {
-                    LowStockBox.Text = "Null";
+                    LowStockLabel.Text = "Null";
                 }
             }
             catch (Exception ex)
@@ -352,27 +350,11 @@ namespace OurSystemCode
 
         private void btnSittings_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
+            Sittings SittingsScreen = new Sittings(role, name);
+            this.Hide();
+            SittingsScreen.Show();
 
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-                Sittings SittingsScreen = new Sittings(role, name);
-                this.Hide();
-                SittingsScreen.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
         }
 
         private void button7_Click(object sender, EventArgs e)

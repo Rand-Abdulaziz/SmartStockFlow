@@ -28,15 +28,14 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.buttonExportToExcel = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.radioButtonMonthly = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.radioButtonWeekly = new System.Windows.Forms.RadioButton();
+            this.radioButtonDaily = new System.Windows.Forms.RadioButton();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButtonSuppliers = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonItems = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSittings = new System.Windows.Forms.Button();
             this.btnEmployeeMang = new System.Windows.Forms.Button();
@@ -161,26 +160,26 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel5.Controls.Add(this.radioButton6);
+            this.panel5.Controls.Add(this.radioButtonMonthly);
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Controls.Add(this.radioButton3);
-            this.panel5.Controls.Add(this.radioButton4);
+            this.panel5.Controls.Add(this.radioButtonWeekly);
+            this.panel5.Controls.Add(this.radioButtonDaily);
             this.panel5.Location = new System.Drawing.Point(289, 322);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(655, 219);
             this.panel5.TabIndex = 7;
             this.panel5.Resize += new System.EventHandler(this.panel5_Resize);
             // 
-            // radioButton6
+            // radioButtonMonthly
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(361, 143);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(119, 31);
-            this.radioButton6.TabIndex = 7;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Monthly";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButtonMonthly.AutoSize = true;
+            this.radioButtonMonthly.Location = new System.Drawing.Point(361, 143);
+            this.radioButtonMonthly.Name = "radioButtonMonthly";
+            this.radioButtonMonthly.Size = new System.Drawing.Size(119, 31);
+            this.radioButtonMonthly.TabIndex = 7;
+            this.radioButtonMonthly.TabStop = true;
+            this.radioButtonMonthly.Text = "Monthly";
+            this.radioButtonMonthly.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -193,51 +192,50 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Report duration :";
             // 
-            // radioButton3
+            // radioButtonWeekly
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(361, 91);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(114, 31);
-            this.radioButton3.TabIndex = 1;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Weekly";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButtonWeekly.AutoSize = true;
+            this.radioButtonWeekly.Location = new System.Drawing.Point(361, 91);
+            this.radioButtonWeekly.Name = "radioButtonWeekly";
+            this.radioButtonWeekly.Size = new System.Drawing.Size(114, 31);
+            this.radioButtonWeekly.TabIndex = 1;
+            this.radioButtonWeekly.TabStop = true;
+            this.radioButtonWeekly.Text = "Weekly";
+            this.radioButtonWeekly.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // radioButtonDaily
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(361, 37);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(91, 31);
-            this.radioButton4.TabIndex = 0;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Daily";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButtonDaily.AutoSize = true;
+            this.radioButtonDaily.Location = new System.Drawing.Point(361, 37);
+            this.radioButtonDaily.Name = "radioButtonDaily";
+            this.radioButtonDaily.Size = new System.Drawing.Size(91, 31);
+            this.radioButtonDaily.TabIndex = 0;
+            this.radioButtonDaily.TabStop = true;
+            this.radioButtonDaily.Text = "Daily";
+            this.radioButtonDaily.UseVisualStyleBackColor = true;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel6.Controls.Add(this.radioButton5);
+            this.panel6.Controls.Add(this.radioButtonSuppliers);
             this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.radioButton2);
-            this.panel6.Controls.Add(this.radioButton1);
+            this.panel6.Controls.Add(this.radioButtonItems);
             this.panel6.Location = new System.Drawing.Point(289, 57);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(655, 219);
             this.panel6.TabIndex = 1;
             this.panel6.Resize += new System.EventHandler(this.panel6_Resize);
             // 
-            // radioButton5
+            // radioButtonSuppliers
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(361, 155);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(131, 31);
-            this.radioButton5.TabIndex = 7;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "Suppliers";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButtonSuppliers.AutoSize = true;
+            this.radioButtonSuppliers.Location = new System.Drawing.Point(361, 146);
+            this.radioButtonSuppliers.Name = "radioButtonSuppliers";
+            this.radioButtonSuppliers.Size = new System.Drawing.Size(131, 31);
+            this.radioButtonSuppliers.TabIndex = 7;
+            this.radioButtonSuppliers.TabStop = true;
+            this.radioButtonSuppliers.Text = "Suppliers";
+            this.radioButtonSuppliers.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -250,27 +248,16 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Report type :";
             // 
-            // radioButton2
+            // radioButtonItems
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(361, 104);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(161, 31);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Expiry items";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(361, 50);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(98, 31);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Items";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButtonItems.AutoSize = true;
+            this.radioButtonItems.Location = new System.Drawing.Point(361, 89);
+            this.radioButtonItems.Name = "radioButtonItems";
+            this.radioButtonItems.Size = new System.Drawing.Size(98, 31);
+            this.radioButtonItems.TabIndex = 0;
+            this.radioButtonItems.TabStop = true;
+            this.radioButtonItems.Text = "Items";
+            this.radioButtonItems.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -538,14 +525,13 @@
         private System.Windows.Forms.Button buttonExportToExcel;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.RadioButton radioButtonWeekly;
+        private System.Windows.Forms.RadioButton radioButtonDaily;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton radioButtonItems;
+        private System.Windows.Forms.RadioButton radioButtonMonthly;
+        private System.Windows.Forms.RadioButton radioButtonSuppliers;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Panel panel1;

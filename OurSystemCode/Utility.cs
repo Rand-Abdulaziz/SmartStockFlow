@@ -19,7 +19,7 @@ namespace OurSystemCode
             }
         }
 
-        // لبعدين
+     
         public static String getUniqueID(String prefix)
         {
             long nano = 10000L * Stopwatch.GetTimestamp();

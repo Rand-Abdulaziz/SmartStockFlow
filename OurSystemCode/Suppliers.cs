@@ -107,6 +107,13 @@ namespace OurSystemCode
             toolTip1.SetToolTip(pictureBox4, "Filtering Supliers");
             toolTip1.SetToolTip(pictureBox3, "Print");
 
+            AddDeleteButtonToSuppliersGrid();
+
+            foreach (DataGridViewColumn column in SuppliersView.Columns)
+            {
+
+                column.ReadOnly = (column.Index != 0);
+            }
         }
 
         private void Suppliers_MouseDown(object sender, MouseEventArgs e)
@@ -205,26 +212,171 @@ namespace OurSystemCode
             PrintEntryData();
         }
 
-        private void SearchBoxSuppliers_TextChanged(object sender, EventArgs e)
+        private void CheckSupplierSelectionAndTogglePanel()
         {
-            
+            bool hasSelection = false;
+
+            foreach (DataGridViewRow row in SuppliersView.Rows)
+            {
+                if (row.Cells["Select"].Value != null && Convert.ToBoolean(row.Cells["Select"].Value) == true)
+                {
+                    hasSelection = true;
+                    break;
+                }
+            }
+
+            OBSuppliersPan.Visible = hasSelection;
+            DeleteSelectedSuppliersBtn.Visible = hasSelection;
+
+            OBbuttonSup.Visible = !hasSelection;
+            DeleteSupPan.Visible = !hasSelection;
+            tableLayoutFilterSup.Visible = !hasSelection;
+            tableLayoutPanelAddSup.Visible = !hasSelection;
+            OBlapelSup.Text = "Delete Suppliers";
+        }
+
+        private void SuppliersView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (SuppliersView.IsCurrentCellDirty)
+            {
+                SuppliersView.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void SuppliersView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && SuppliersView.Columns[e.ColumnIndex].Name == "Select")
+            {
+                CheckSupplierSelectionAndTogglePanel();
+            }
+        }
+
+        private void AddDeleteButtonToSuppliersGrid()
+        {
             try
             {
-                string query = "SELECT * FROM whms_schema.Suppliers " +
-                        "WHERE Supplier_ID LIKE '%" + SearchBoxSuppliers.Text + "%' " +
-                        "OR SupplierName LIKE '%" + SearchBoxSuppliers.Text + "%' " +
-                        "OR SupplierLocation LIKE '%" + SearchBoxSuppliers.Text + "%' " +
-                        "OR SupplierContact LIKE '%" + SearchBoxSuppliers.Text + "%'";
-
-                DatabaseOperations dbOps = new DatabaseOperations();
+                string query = "SELECT * FROM whms_schema.Suppliers";
                 DataSet ds = dbOps.getData(query);
+
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    SuppliersView.DataSource = ds.Tables[0];
+
+                    if (!SuppliersView.Columns.Contains("Select"))
+                    {
+                        DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn
+                        {
+                            Name = "Select",
+                            HeaderText = "🗑️",
+                            Width = 50
+                        };
+                        SuppliersView.Columns.Insert(0, selectColumn);
+                    }
+
+                    SuppliersView.CellValueChanged += SuppliersView_CellValueChanged;
+                    SuppliersView.CurrentCellDirtyStateChanged += SuppliersView_CurrentCellDirtyStateChanged;
+                }
+
+                OBSuppliersPan.Visible = false;
+                DeleteSelectedSuppliersBtn.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading suppliers: " + ex.Message);
+            }
+        }
+
+        private void DeleteSelectedSuppliers()
+        {
+            try
+            {
+                List<string> selectedIDs = new List<string>();
+
+                foreach (DataGridViewRow row in SuppliersView.Rows)
+                {
+                    if (row.Cells["Select"].Value != null && Convert.ToBoolean(row.Cells["Select"].Value) == true)
+                    {
+                        string supplierID = row.Cells["Supplier_ID"].Value?.ToString();
+                        if (!string.IsNullOrEmpty(supplierID))
+                        {
+                            selectedIDs.Add($"'{supplierID}'");
+                        }
+                    }
+                }
+
+                if (selectedIDs.Count > 0)
+                {
+                    string idsCondition = string.Join(",", selectedIDs);
+                    string query = $"DELETE FROM whms_schema.Suppliers WHERE Supplier_ID IN ({idsCondition})";
+                    dbOps.setData(query, "Selected suppliers deleted successfully.");
+                    MessageBox.Show("Selected suppliers deleted successfully.");
+
+                    AddDeleteButtonToSuppliersGrid(); 
+                }
+                else
+                {
+                    MessageBox.Show("Please select suppliers to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting selected suppliers: " + ex.Message);
+            }
+        }
+
+
+        private void SearchBoxSuppliers_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+              
+                DatabaseOperations dbOps = new DatabaseOperations();
+
+              
+                string searchText = SearchBoxSuppliers.Text;
+
+                DateTime searchDate;
+                bool isDate = DateTime.TryParse(searchText, out searchDate);
+
+                string query = "SELECT Supplier_ID, SupplierName, SupplierLocation, SupplierContact, CreatedDate " +
+                               "FROM whms_schema.Suppliers " +
+                               "WHERE Supplier_ID LIKE @Search " +
+                               "OR SupplierName LIKE @Search " +
+                               "OR SupplierLocation LIKE @Search " +
+                               "OR SupplierContact LIKE @Search ";
+
+          
+                if (isDate)
+                {
+                    query += "OR CAST(CreatedDate AS DATE) = @SearchDate"; 
+                }
+
+               
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+        {
+            { "@Search", "%" + searchText + "%" }
+        };
+
+                
+                if (isDate)
+                {
+                    parameters.Add("@SearchDate", searchDate.ToString("yyyy-MM-dd"));
+                }
+
+               
+                DataSet ds = dbOps.getDataWithParameter(query, parameters);
+
+                
                 SuppliersView.DataSource = ds.Tables[0];
             }
             catch (Exception ex)
             {
+               
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
+
 
         private void OBSuppliersPan_Resize(object sender, EventArgs e)
         {
@@ -233,7 +385,7 @@ namespace OurSystemCode
 
         private void AddSupplier()
         {
-           
+            DateTime currentDate = DateTime.Now;
             try
             {
                 string supplierName = InsertNameBoxSup.Text;
@@ -246,8 +398,8 @@ namespace OurSystemCode
                     !string.IsNullOrEmpty(supplierContact))
                 {
                    
-                    string query = $"INSERT INTO whms_schema.Suppliers (SupplierName, SupplierLocation, SupplierContact) " +
-                                   $"VALUES ('{supplierName}', '{supplierLocation}', '{supplierContact}')";
+                    string query = $"INSERT INTO whms_schema.Suppliers (SupplierName, SupplierLocation, SupplierContact,CreatedDate) " +
+                                   $"VALUES ('{supplierName}', '{supplierLocation}', '{supplierContact}','{currentDate.ToString("yyyy-MM-dd")}')";
                     DatabaseOperations dbOps = new DatabaseOperations();
                     dbOps.setData(query, "Supplier added successfully.");
 
@@ -498,27 +650,10 @@ namespace OurSystemCode
 
         private void btnSittings_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            Sittings SittingsScreen = new Sittings(role, name);
+            this.Hide();
+            SittingsScreen.Show();
 
-
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-                Sittings SittingsScreen = new Sittings(role, name);
-                this.Hide();
-                SittingsScreen.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -539,6 +674,11 @@ namespace OurSystemCode
             SupplierLocationFilBox.Text = "";
             SupplierNameFilBox.Text = "";
             SupplierIDFilBox.Text = "";
+        }
+
+        private void DeleteSelectedSuppliersBtn_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedSuppliers();
         }
     }
 }

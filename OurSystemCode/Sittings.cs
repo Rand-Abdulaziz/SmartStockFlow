@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OurSystemCode
 {
@@ -16,7 +17,7 @@ namespace OurSystemCode
         private Point mouseOffset;
         String name;
         String role;
-        public Sittings(String role ,String name)
+        public Sittings(String role, String name)
         {
             InitializeComponent();
             this.Size = new Size(811, 490);
@@ -29,15 +30,6 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel7, 20);
         }
 
-        private void panel6_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel6, 20);
-        }
-
-        private void panel5_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel5, 20);
-        }
 
         private void panel4_Resize(object sender, EventArgs e)
         {
@@ -65,7 +57,7 @@ namespace OurSystemCode
                 return;
             }
 
-            
+
             if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase) || "IT".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
@@ -125,8 +117,8 @@ namespace OurSystemCode
         private void ChangePasswordBtn_Click(object sender, EventArgs e)
         {
             ForgetPassword changePass = new ForgetPassword();
-            this.Hide(); 
-            changePass.FormClosed += (s, args) => this.Show(); 
+            this.Hide();
+            changePass.FormClosed += (s, args) => this.Show();
             changePass.Show();
         }
 
@@ -182,25 +174,7 @@ namespace OurSystemCode
         private void btnSittings_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-               this.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
+                this.Show();   
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -208,6 +182,13 @@ namespace OurSystemCode
             Form1 logoutScreen = new Form1();
             this.Close();
             logoutScreen.Show();
+        }
+
+        private void btnEmployeeMang_Click_1(object sender, EventArgs e)
+        {
+            Employees EmployeesScreen = new Employees(role, name);
+            this.Hide();
+            EmployeesScreen.Show();
         }
     }
 }

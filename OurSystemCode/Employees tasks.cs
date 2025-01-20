@@ -16,10 +16,10 @@ namespace OurSystemCode
         private Point mouseOffset;
         private string name;
         private string role;
-    
+
         public Employees_tasks(string role, string name)
         {
-           
+
             InitializeComponent();
             this.Size = new Size(811, 490);
             this.role = role;
@@ -56,9 +56,90 @@ namespace OurSystemCode
 
             toolTip1.SetToolTip(button8, "Close applacation");
             toolTip1.SetToolTip(buttonMinimize, "Minimize window");
+
+            LoadEmployeeTasks();
+
             
+            EmployeesTasksView.ReadOnly = true; 
 
         }
+        private void LoadEmployeeTasks()
+        {
+            EmployeesTasksView.AutoGenerateColumns = true;
+            EmployeesTasksView.DataSource = null;
+
+            DatabaseOperations dbOps = new DatabaseOperations();
+            DataSet ds = dbOps.getData("SELECT * FROM whms_schema.EmployeeTasks");
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                EmployeesTasksView.DataSource = ds.Tables[0];
+            }
+
+            EmployeesTasksView.Refresh();
+        }
+
+        // Update Task Status on Double Click
+        private void EmployeesTasksView_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = EmployeesTasksView.Rows[e.RowIndex];
+            string currentStatus = row.Cells["Status"].Value.ToString();
+
+            // Check if the new status is the same as the current one
+            ComboBox statusComboBox = new ComboBox();
+            statusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            statusComboBox.Items.AddRange(new string[] { "Pending", "In Progress", "Completed" });
+            statusComboBox.SelectedItem = currentStatus;
+
+            Form statusForm = new Form();
+            statusForm.Text = "Update Task Status";
+            statusForm.Size = new Size(300, 150);
+            statusForm.StartPosition = FormStartPosition.CenterScreen;
+            statusComboBox.Location = new Point(20, 20);
+
+            statusComboBox.SelectedIndexChanged += (s, args) =>
+            {
+                string newStatus = statusComboBox.SelectedItem.ToString();
+
+                // Check if the status has actually changed
+                if (newStatus == currentStatus)
+                {
+                    MessageBox.Show("The task status is already the same.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    statusForm.Close();
+                    return;
+                }
+
+                string taskName = row.Cells["TaskName"].Value.ToString();
+                string lastModifiedBy = name;
+
+                string query = "UPDATE whms_schema.EmployeeTasks SET Status = @Status, LastModifiedBy = @LastModifiedBy WHERE TaskName = @TaskName";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@Status", newStatus },
+                { "@TaskName", taskName },
+                { "@LastModifiedBy", lastModifiedBy }
+            };
+
+                DatabaseOperations dbOps = new DatabaseOperations();
+                int result = dbOps.setDataWithParameter(query, parameters);
+
+                if (result > 0)
+                {
+                    row.Cells["Status"].Value = newStatus;
+                    MessageBox.Show("Task Status Updated Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadEmployeeTasks();
+                    statusForm.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update Task Status. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            };
+
+            statusForm.Controls.Add(statusComboBox);
+            statusForm.ShowDialog();
+        }
+
 
         private void Employees_tasks_MouseDown(object sender, MouseEventArgs e)
         {
@@ -98,7 +179,10 @@ namespace OurSystemCode
         {
             this.Size = new Size(811, 490);
             Form1.ApplyRoundedCorners(this, 20);
+
         }
+
+
 
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
@@ -145,27 +229,10 @@ namespace OurSystemCode
 
         private void btnSittings_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            Sittings SittingsScreen = new Sittings(role, name);
+            this.Hide();
+            SittingsScreen.Show();
 
-
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-                Sittings SittingsScreen = new Sittings(role, name);
-                this.Hide();
-                SittingsScreen.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
         }
 
         private void btnEmployeeMang_Click(object sender, EventArgs e)
@@ -179,5 +246,8 @@ namespace OurSystemCode
         {
             this.Show();
         }
+
+
     }
 }
+

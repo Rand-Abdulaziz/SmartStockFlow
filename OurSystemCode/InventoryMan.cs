@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement; //Rand : I delete it ? 
+using System.Windows.Media.Animation;
+
 
 namespace OurSystemCode
 {
@@ -83,6 +84,8 @@ namespace OurSystemCode
             toolTip1.SetToolTip(buttonMinimize, "Minimize window");
             toolTip1.SetToolTip(pictureBox4, "Filtering Items");
             toolTip1.SetToolTip(pictureBox3, "Print");
+
+            InventoryView.ReadOnly = true;
         }
 
         private void InventoryMan_MouseDown(object sender, MouseEventArgs e)
@@ -149,13 +152,14 @@ namespace OurSystemCode
                 InventoryView.DataSource = ds.Tables[0];
                
                 InventoryView.CellFormatting += InventoryView_CellFormatting;
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
 
-
+            InventoryView.ReadOnly = true;
         }
 
 
@@ -390,27 +394,10 @@ namespace OurSystemCode
         private void btnSittings_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            Sittings SittingsScreen = new Sittings(role, name);
+            this.Hide();
+            SittingsScreen.Show();
 
-
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-                Sittings SittingsScreen = new Sittings(role, name);
-                this.Hide();
-                SittingsScreen.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -418,107 +405,6 @@ namespace OurSystemCode
             Form1 logoutScreen = new Form1();
             this.Close();
             logoutScreen.Show();
-        }
-
-        private static CancellationTokenSource _cts = new CancellationTokenSource();
-
-        private async void SearchBoxInven_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-               
-                _cts.Cancel();
-                _cts = new CancellationTokenSource();
-
-               
-                await Task.Delay(300); 
-
-                string searchText = SearchBoxInven.Text.Trim();
-
-             
-                if (string.IsNullOrEmpty(searchText))
-                {
-                    LoadFullInventoryData();
-                    return;
-                }
-
-                if (_cts.Token.IsCancellationRequested) return;
-
-                string query = "SELECT Name, Quantity, Locational_ID, ExpirationDate FROM whms_schema.Item " +
-                               "WHERE Name LIKE @searchText OR Locational_ID LIKE @searchText " +
-                               "OR ExpirationDate LIKE @searchText OR Quantity LIKE @searchText";
-
-                DatabaseOperations dbOps = new DatabaseOperations();
-                DataSet ds = dbOps.getDataWithParameter(query, new Dictionary<string, object>
-                {
-                { "@searchText", "%" + searchText + "%" }
-                });
-
-             
-                if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
-                {
-                    InventoryView.DataSource = null;
-                    return;
-                }
-
-                DataTable dataTable = ds.Tables[0];
-
-               
-                AddDefaultColumns(dataTable);
-
-                
-                UpdateProductStateColumns(dataTable);
-
-              
-                InventoryView.DataSource = dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-        private void LoadFullInventoryData()
-        {
-            try
-            {
-                string query = "SELECT Name, Quantity, Locational_ID, ExpirationDate FROM whms_schema.Item";
-
-                DatabaseOperations dbOps = new DatabaseOperations();
-                DataSet ds = dbOps.getData(query);
-
-                if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
-                {
-                    InventoryView.DataSource = null;
-                    return;
-                }
-
-                DataTable dataTable = ds.Tables[0];
-
-                AddDefaultColumns(dataTable);
-
-               
-                UpdateProductStateColumns(dataTable);
-
-             
-                InventoryView.DataSource = dataTable;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
-        private void AddDefaultColumns(DataTable dataTable)
-        {
-            if (!dataTable.Columns.Contains("Product State (Expiration)"))
-                dataTable.Columns.Add("Product State (Expiration)", typeof(string));
-
-            if (!dataTable.Columns.Contains("Product State (Stock)"))
-                dataTable.Columns.Add("Product State (Stock)", typeof(string));
-
-            if (!dataTable.Columns.Contains("Location Name"))
-                dataTable.Columns.Add("Location Name", typeof(string));
         }
 
         private void UpdateProductStateColumns(DataTable dataTable)
@@ -529,6 +415,38 @@ namespace OurSystemCode
                 row["Product State (Stock)"] = GetStockState(Convert.ToInt32(row["Quantity"]));
                 row["Location Name"] = GetLocationName(Convert.ToInt32(row["Locational_ID"]));
             }
+        }
+
+        private static CancellationTokenSource _cts = new CancellationTokenSource();
+
+        private async void SearchBoxInven_TextChanged(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                DataTable filteredData = originalData.Copy();
+                string searchText = SearchBoxInven.Text.Trim().ToLower();
+
+                if (!string.IsNullOrEmpty(searchText))
+                {
+                    filteredData = filteredData.AsEnumerable()
+                        .Where(row => row["Product State (Expiration)"].ToString().ToLower().Contains(searchText) ||
+                                     row["Product State (Stock)"].ToString().ToLower().Contains(searchText) ||
+                                     row["Location Name"].ToString().ToLower().Contains(searchText) ||
+                                     row["Name"].ToString().ToLower().Contains(searchText) ||
+                                     row["Quantity"].ToString().ToLower().Contains(searchText) ||
+                                     row["ExpirationDate"].ToString().ToLower().Contains(searchText))
+                        .CopyToDataTable();
+                }
+
+                InventoryView.DataSource = filteredData;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
+
         }
 
         private DataTable FilterInventory(DataTable originalData, string productState, string stockState, string location, string productName)

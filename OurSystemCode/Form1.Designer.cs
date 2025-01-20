@@ -74,9 +74,9 @@
             this.Forget.Font = new System.Drawing.Font("Calibri", 6F, System.Drawing.FontStyle.Bold);
             this.Forget.Location = new System.Drawing.Point(280, 418);
             this.Forget.Name = "Forget";
-            this.Forget.Size = new System.Drawing.Size(122, 19);
+            this.Forget.Size = new System.Drawing.Size(123, 19);
             this.Forget.TabIndex = 11;
-            this.Forget.Text = "Forget password";
+            this.Forget.Text = "Forgot password";
             this.Forget.Click += new System.EventHandler(this.Forget_Click);
             // 
             // pictureEye

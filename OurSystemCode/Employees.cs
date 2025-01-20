@@ -20,12 +20,12 @@ namespace OurSystemCode
 
         public Employees(string role, string name)
         {
-           
+
             InitializeComponent();
             this.Size = new Size(811, 490);
             this.role = role;
             this.name = name;
-            
+
         }
 
         private void Employees_Load(object sender, EventArgs e)
@@ -43,6 +43,7 @@ namespace OurSystemCode
 
             LoadEmployeeTasks();
             dgvEmployeeTasks.CellDoubleClick += dgvEmployeeTasks_CellDoubleClick;
+            AddDeleteButtonToGrid();
 
             btnEmployeesTasks.Visible = false;
             btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
@@ -50,7 +51,16 @@ namespace OurSystemCode
 
             toolTip1.SetToolTip(button8, "Close applacation");
             toolTip1.SetToolTip(buttonMinimize, "Minimize window");
-           
+            toolTip1.SetToolTip(btnAssignTask, "Assign Task");
+            toolTip1.SetToolTip(btnDeleteSelectedTasks, "Delete Selected Tasks");
+
+
+            foreach (DataGridViewColumn column in dgvEmployeeTasks.Columns)
+            {
+               
+                column.ReadOnly = (column.Index != 0);
+            }
+
 
         }
 
@@ -82,60 +92,241 @@ namespace OurSystemCode
         // Load Initial Employee Tasks
         private void LoadEmployeeTasks()
         {
-            dgvEmployeeTasks.Rows.Clear();
+            dgvEmployeeTasks.AutoGenerateColumns = true;
+            dgvEmployeeTasks.DataSource = null;
 
-            // Example task data
-            dgvEmployeeTasks.Rows.Add("Stock Shelves", "John Doe", "In Progress", "2025-01-15");
-            dgvEmployeeTasks.Rows.Add("Inventory Check", "Jane Smith", "Completed", "2025-01-12");
-            dgvEmployeeTasks.Rows.Add("Order Supplies", "Michael Brown", "Pending", "2025-01-20");
+            DatabaseOperations dbOps = new DatabaseOperations();
+            DataSet ds = dbOps.getData("SELECT * FROM whms_schema.EmployeeTasks");
+
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dgvEmployeeTasks.DataSource = ds.Tables[0];
+            }
+
+            dgvEmployeeTasks.Refresh();
         }
+
 
         // Assign New Task
         private void btnAssignTask_Click(object sender, EventArgs e)
         {
-            // ✅ FIXED: Using Microsoft.VisualBasic.Interaction.InputBox
             string taskName = Microsoft.VisualBasic.Interaction.InputBox("Enter Task Name:", "Assign New Task", "");
             string assignedTo = Microsoft.VisualBasic.Interaction.InputBox("Assign to Employee:", "Assign New Task", "");
-            string deadline = Microsoft.VisualBasic.Interaction.InputBox("Enter Deadline (YYYY-MM-DD):", "Assign New Task", "");
 
-            DateTime taskDeadline;
-            if (!string.IsNullOrEmpty(taskName) && !string.IsNullOrEmpty(assignedTo) && DateTime.TryParse(deadline, out taskDeadline))
+            
+            if (string.IsNullOrEmpty(taskName) || string.IsNullOrEmpty(assignedTo))
             {
-                dgvEmployeeTasks.Rows.Add(taskName, assignedTo, "Pending", taskDeadline.ToString("yyyy-MM-dd"));
+                MessageBox.Show("Please fill in all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+       
+            string currentDate = DateTime.Now.ToString("yyyy-MM-dd"); 
+
+           
+            string status = "Pending";
+
+     
+            string query = "INSERT INTO whms_schema.EmployeeTasks (TaskName, AssignedTo, DateAssigned, Status , LastModifiedBy) VALUES (@TaskName, @AssignedTo, @DateAssigned, @Status,@LastModifiedBy)";
+
+            var parameters = new Dictionary<string, object>
+            {
+                { "@TaskName", taskName },
+                { "@AssignedTo", assignedTo },
+                { "@DateAssigned", currentDate },
+                { "@Status", status },
+                { "@LastModifiedBy", name }
+            };
+
+        
+            DatabaseOperations dbOps = new DatabaseOperations();
+            int rowsAffected = dbOps.setDataWithParameter(query, parameters); 
+
+          
+            if (rowsAffected > 0)
+            {
+                LoadEmployeeTasks();
             }
             else
             {
-                MessageBox.Show("Please enter valid task details.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("An error occurred while assigning the task.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        
+
         // Update Task Status on Double Click
-        private void dgvEmployeeTasks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+       
+       private void dgvEmployeeTasks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+{
+    if (e.RowIndex >= 0)
+    {
+        DataGridViewRow row = dgvEmployeeTasks.Rows[e.RowIndex];
+        string currentStatus = row.Cells["Status"].Value.ToString();
+
+        // Check if the new status is the same as the current one
+        ComboBox statusComboBox = new ComboBox();
+        statusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+        statusComboBox.Items.AddRange(new string[] { "Pending", "In Progress", "Completed" });
+        statusComboBox.SelectedItem = currentStatus;
+
+        Form statusForm = new Form();
+        statusForm.Text = "Update Task Status";
+        statusForm.Size = new Size(300, 150);
+        statusForm.StartPosition = FormStartPosition.CenterScreen;
+        statusComboBox.Location = new Point(20, 20);
+
+        statusComboBox.SelectedIndexChanged += (s, args) =>
         {
-            if (e.RowIndex >= 0)
+            string newStatus = statusComboBox.SelectedItem.ToString();
+            
+            // Check if the status has actually changed
+            if (newStatus == currentStatus)
             {
-                DataGridViewRow row = dgvEmployeeTasks.Rows[e.RowIndex];
-                string[] statuses = { "Pending", "In Progress", "Completed" };
+                MessageBox.Show("The task status is already the same.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                statusForm.Close();
+                return;
+            }
 
-                // ✅ FIXED: Using Microsoft.VisualBasic.Interaction.InputBox
-                string currentStatus = row.Cells["Status"].Value.ToString();
-                string newStatus = Microsoft.VisualBasic.Interaction.InputBox("Update Status (Pending/In Progress/Completed):", "Update Task Status", currentStatus);
+            string taskName = row.Cells["TaskName"].Value.ToString();
+            string lastModifiedBy = name;
 
-                if (statuses.Contains(newStatus))
+            string query = "UPDATE whms_schema.EmployeeTasks SET Status = @Status, LastModifiedBy = @LastModifiedBy WHERE TaskName = @TaskName";
+            Dictionary<string, object> parameters = new Dictionary<string, object>
+            {
+                { "@Status", newStatus },
+                { "@TaskName", taskName },
+                { "@LastModifiedBy", lastModifiedBy }
+            };
+
+            DatabaseOperations dbOps = new DatabaseOperations();
+            int result = dbOps.setDataWithParameter(query, parameters);
+
+            if (result > 0)
+            {
+                row.Cells["Status"].Value = newStatus;
+                MessageBox.Show("Task Status Updated Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadEmployeeTasks();
+                statusForm.Close();
+            }
+            else
+            {
+                MessageBox.Show("Failed to update Task Status. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        };
+
+        statusForm.Controls.Add(statusComboBox);
+        statusForm.ShowDialog();
+    }
+}
+
+
+        private void dgvEmployeeTasks_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+       
+            foreach (DataGridViewColumn column in dgvEmployeeTasks.Columns)
+            {
+                column.ReadOnly = true;
+            }
+        }
+
+
+        //Delete Tasks
+        private void AddDeleteButtonToGrid()
+        {
+            DatabaseOperations dbOps = new DatabaseOperations();
+         
+            DataSet ds = dbOps.getData("SELECT * FROM whms_schema.EmployeeTasks");
+            if (ds != null && ds.Tables.Count > 0)
+            {
+                dgvEmployeeTasks.DataSource = ds.Tables[0];
+
+               
+                if (!dgvEmployeeTasks.Columns.Contains("Select"))
                 {
-                    row.Cells["Status"].Value = newStatus;
+                    DataGridViewCheckBoxColumn selectColumn = new DataGridViewCheckBoxColumn
+                    {
+                        Name = "Select",
+                        HeaderText = "🗑️",
+                        Width = 50
+                    };
+                    dgvEmployeeTasks.Columns.Insert(0, selectColumn);
+                }
+
+               
+                dgvEmployeeTasks.CellValueChanged += DgvEmployeeTasks_CellValueChanged;
+                dgvEmployeeTasks.CurrentCellDirtyStateChanged += DgvEmployeeTasks_CurrentCellDirtyStateChanged;
+            }
+
+          
+            btnDeleteSelectedTasks.Visible = false;
+        }
+
+        private void DgvEmployeeTasks_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgvEmployeeTasks.Columns["Select"].Index)
+            {
+                
+                bool anySelected = dgvEmployeeTasks.Rows.Cast<DataGridViewRow>()
+                    .Any(row => Convert.ToBoolean(row.Cells["Select"].Value) == true);
+
+               
+                btnDeleteSelectedTasks.Visible = anySelected;
+            }
+        }
+
+        private void DgvEmployeeTasks_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvEmployeeTasks.IsCurrentCellDirty)
+            {
+                dgvEmployeeTasks.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+
+
+        private void DeleteSelectedTasks()
+        {
+            try
+            {
+                List<string> selectedTaskNames = new List<string>();
+                int lastRowIndex = dgvEmployeeTasks.Rows.Count - 1;
+
+                foreach (DataGridViewRow row in dgvEmployeeTasks.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["Select"].Value) == true)
+                    {
+                        string taskName = row.Cells["TaskName"].Value?.ToString();
+                        if (!string.IsNullOrEmpty(taskName))
+                        {
+                            selectedTaskNames.Add($"'{taskName}'");
+                        }
+                    }
+                }
+
+                if (selectedTaskNames.Count > 0)
+                {
+                    DatabaseOperations dbOps = new DatabaseOperations();
+                    string taskNamesCondition = string.Join(",", selectedTaskNames);
+                    string query = $"DELETE FROM whms_schema.EmployeeTasks WHERE TaskName IN ({taskNamesCondition})";
+                    dbOps.setData(query, "Selected tasks deleted successfully.");
+                    MessageBox.Show("Selected tasks deleted successfully.");
+                    btnDeleteSelectedTasks.Visible = true;
+                    LoadEmployeeTasks(); // إعادة تحميل البيانات
                 }
                 else
                 {
-                    MessageBox.Show("Invalid Status. Please enter one of: Pending, In Progress, Completed.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please select tasks to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error deleting selected tasks: " + ex.Message);
             }
         }
 
         // Button Click Events (Navigation)
-
-      
-
         private void button8_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
@@ -200,9 +391,10 @@ namespace OurSystemCode
 
         private void btnSittings_Click(object sender, EventArgs e)
         {
-            AdminSittings ASittingsScreen = new AdminSittings(role, name);
+            Sittings SittingsScreen = new Sittings(role, name);
             this.Hide();
-            ASittingsScreen.Show();
+            SittingsScreen.Show();
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -211,8 +403,16 @@ namespace OurSystemCode
             this.Close();
             logoutScreen.Show();
         }
+
+        private void btnDeleteSelectedTasks_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedTasks();
+        }
+
+       
     }
 }
+
 
 
 

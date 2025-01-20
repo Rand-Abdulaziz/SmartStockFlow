@@ -50,7 +50,7 @@
             this.DashTitle = new System.Windows.Forms.Label();
             this.button8 = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.DataEntryView = new System.Windows.Forms.DataGridView();
+            this.EmployeesTasksView = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -58,7 +58,7 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataEntryView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeesTasksView)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -350,21 +350,22 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.DataEntryView);
+            this.panel3.Controls.Add(this.EmployeesTasksView);
             this.panel3.Location = new System.Drawing.Point(356, 106);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1239, 792);
             this.panel3.TabIndex = 9;
             // 
-            // DataEntryView
+            // EmployeesTasksView
             // 
-            this.DataEntryView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataEntryView.Location = new System.Drawing.Point(0, 0);
-            this.DataEntryView.Name = "DataEntryView";
-            this.DataEntryView.RowHeadersWidth = 82;
-            this.DataEntryView.RowTemplate.Height = 35;
-            this.DataEntryView.Size = new System.Drawing.Size(1236, 581);
-            this.DataEntryView.TabIndex = 0;
+            this.EmployeesTasksView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.EmployeesTasksView.Location = new System.Drawing.Point(0, 0);
+            this.EmployeesTasksView.Name = "EmployeesTasksView";
+            this.EmployeesTasksView.RowHeadersWidth = 82;
+            this.EmployeesTasksView.RowTemplate.Height = 35;
+            this.EmployeesTasksView.Size = new System.Drawing.Size(1236, 581);
+            this.EmployeesTasksView.TabIndex = 1;
+            this.EmployeesTasksView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeesTasksView_CellDoubleClick_1);
             // 
             // Employees_tasks
             // 
@@ -387,7 +388,7 @@
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DataEntryView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EmployeesTasksView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -412,9 +413,9 @@
         private System.Windows.Forms.Label DashTitle;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView DataEntryView;
         private System.Windows.Forms.Button btnSittings;
         private System.Windows.Forms.Button btnEmployeeMang;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridView EmployeesTasksView;
     }
 }

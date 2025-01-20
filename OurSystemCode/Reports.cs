@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 using System.IO;
+using System.Data.SqlClient;
+using System.Collections;
 
 namespace OurSystemCode
 {
@@ -24,11 +26,6 @@ namespace OurSystemCode
         public Reports(String role ,String name)
         {
 
-            // DEBUG: Check if DataEntryGrid is assigned
-            if (DataEntryGrid == null)
-            {
-                Console.WriteLine("DataEntryGrid is null. Did you forget to assign it?");
-            }
 
             InitializeComponent();
             this.Size = new Size(811, 490);
@@ -49,6 +46,10 @@ namespace OurSystemCode
             userroleBox.Text = role;
             usernameBox.TabStop = false;
             userroleBox.TabStop = false;
+
+            DatabaseOperations dbOps = new DatabaseOperations();
+            DataSet ds = dbOps.getData("SELECT * FROM whms_schema.Item");
+            DataSet dsSup = dbOps.getData("SELECT * FROM whms_schema.Suppliers");
 
             int cornerRadius = 20;
             Form1.ApplyRoundedCorners(this, cornerRadius);
@@ -147,17 +148,17 @@ namespace OurSystemCode
 
         private string GetSelectedReportType()
         {
-            if (radioButton1.Checked) return "Items";
-            if (radioButton2.Checked) return "Expiry Items";
-            if (radioButton5.Checked) return "Suppliers";
+            if (radioButtonItems.Checked) return "Items";
+        
+            if (radioButtonSuppliers.Checked) return "Suppliers";
             return string.Empty;
         }
 
         private string GetSelectedReportDuration()
         {
-            if (radioButton4.Checked) return "Daily";
-            if (radioButton3.Checked) return "Weekly";
-            if (radioButton6.Checked) return "Monthly";
+            if (radioButtonDaily.Checked) return "Daily";
+            if (radioButtonWeekly.Checked) return "Weekly";
+            if (radioButtonMonthly.Checked) return "Monthly";
             return string.Empty;
         }
 
@@ -196,34 +197,52 @@ namespace OurSystemCode
                             worksheet.Cells[2, 1].Value = GetSelectedReportType();
                             worksheet.Cells[2, 2].Value = GetSelectedReportDuration();
 
-                            // Fetch data from DataEntryGrid
-                            if (DataEntryGrid != null && DataEntryGrid.Rows.Count > 0)
+                            // Fetch data based on selected report type and duration
+                            var data = FetchDataBasedOnSelection();
+                            if (data.Count > 0)
                             {
-                                // Add headers from DataEntryGrid
-                                var headers = GetDataEntryViewHeaders();
-                                for (int col = 0; col < headers.Length; col++)
+                                // Add headers
+                                var headers = data.First().Keys.ToList();
+                                for (int col = 0; col < headers.Count; col++)
                                 {
                                     worksheet.Cells[4, col + 1].Value = headers[col]; // Start writing headers from row 4
                                 }
 
-                                // Add data from DataEntryGrid
-                                var data = GetDataEntryViewData();
-                                for (int row = 0; row < data.Count; row++)
+                                int rowIndex = 5;
+                                foreach (var row in data)
                                 {
-                                    for (int col = 0; col < data[row].Length; col++)
+                                    for (int colIndex = 0; colIndex < headers.Count; colIndex++)
                                     {
-                                        worksheet.Cells[row + 5, col + 1].Value = data[row][col]; // Start writing data from row 5
+                                        var cell = worksheet.Cells[rowIndex, colIndex + 1];
+                                        var value = row[headers[colIndex]];
+
+                                        // Check if the value is a DateTime and format accordingly
+                                        if (value is DateTime dateValue)
+                                        {
+                                            cell.Value = dateValue;
+                                            cell.Style.Numberformat.Format = "yyyy-MM-dd"; // Change format as needed
+                                        }
+                                        else
+                                        {
+                                            cell.Value = value;
+                                        }
                                     }
+                                    rowIndex++;
                                 }
+
+                                // Adjust column widths to fit content
+                                worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+
+
+
+                                // Save the file
+                                package.SaveAs(new FileInfo(saveFileDialog.FileName));
+                                MessageBox.Show("Report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
-                                MessageBox.Show("No data available to export from Data Entry.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("No data available to export.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
-
-                            // Save the file
-                            package.SaveAs(new FileInfo(saveFileDialog.FileName));
-                            MessageBox.Show("Report exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                     catch (Exception ex)
@@ -235,49 +254,105 @@ namespace OurSystemCode
         }
 
 
-
-        public DataGridView DataEntryGrid { get; set; }
-
-        private List<string[]> GetDataEntryViewData()
+        private List<Dictionary<string, object>> FetchDataBasedOnSelection()
         {
-            if (DataEntryGrid == null)
+            var data = new List<Dictionary<string, object>>();
+
+            // Determine the report type
+            string reportType = GetSelectedReportType();
+            string reportDuration = GetSelectedReportDuration();
+            DateTime currentDate = DateTime.Now;
+
+            // SQL query for different report types and durations
+            string query = "";
+
+            if (reportType == "Items")
             {
-                MessageBox.Show("No data is available to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new List<string[]>();
+                query = BuildQueryForItems(reportDuration, currentDate);
+            }
+            else if (reportType == "Suppliers")
+            {
+                query = BuildQueryForSuppliers(reportDuration, currentDate);
             }
 
-            var data = new List<string[]>();
+            // Fetch the data from database
+            data = FetchDataFromDatabase(query);
 
-            foreach (DataGridViewRow row in DataEntryGrid.Rows)
+            return data;
+        }
+
+        private string BuildQueryForItems(string duration, DateTime currentDate)
+        {
+            string query = "SELECT * FROM whms_schema.Item WHERE 1=1";
+
+            // Add date filtering based on the selected duration
+            if (duration == "Daily")
             {
-                if (!row.IsNewRow) // Exclude the blank row used for new data
+                query += $" AND CreatedDate >= '{currentDate.Date}'";
+            }
+
+            else if (duration == "Weekly")
+            {
+                var startOfWeek = currentDate.AddDays(-7);
+                query += $" AND CreatedDate >= '{startOfWeek.Date}' AND CreatedDate < '{currentDate.Date}'";
+            }
+            else if (duration == "Monthly")
+            {
+                var startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+                query += $" AND CreatedDate >= '{startOfMonth.Date}' AND CreatedDate < '{currentDate.AddMonths(1).Date}'";
+            }
+
+            return query;
+        }
+
+        private string BuildQueryForSuppliers(string duration, DateTime currentDate)
+        {
+            string query = "SELECT * FROM whms_schema.Suppliers WHERE 1=1";
+
+            // Add date filtering based on the selected duration
+            if (duration == "Daily")
+            {
+                query += $" AND CreatedDate >= '{currentDate.Date}' AND CreatedDate < '{currentDate.Date.AddDays(1)}'";
+            }
+            else if (duration == "Weekly")
+            {
+                var startOfWeek = currentDate.AddDays(-7);
+                query += $" AND CreatedDate >= '{startOfWeek.Date}' AND CreatedDate < '{currentDate.Date}'";
+            }
+            else if (duration == "Monthly")
+            {
+                var startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
+                query += $" AND CreatedDate >= '{startOfMonth.Date}' AND CreatedDate < '{currentDate.AddMonths(1).Date}'";
+            }
+
+            return query;
+        }
+
+        private List<Dictionary<string, object>> FetchDataFromDatabase(string query, Dictionary<string, object> parameters = null)
+        {
+            var data = new List<Dictionary<string, object>>();
+
+            // Create an instance of the DatabaseOperations class
+            DatabaseOperations dbOps = new DatabaseOperations();
+
+            // Use getData or getDataWithParameter to retrieve data from the database
+            DataSet ds = parameters == null ? dbOps.getData(query) : dbOps.getDataWithParameter(query, parameters);
+
+            // Convert the DataSet to List<Dictionary<string, object>>
+            if (ds.Tables.Count > 0)
+            {
+                foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    var rowData = new string[DataEntryGrid.ColumnCount];
-                    for (int col = 0; col < DataEntryGrid.ColumnCount; col++)
+                    var rowData = new Dictionary<string, object>();
+                    foreach (DataColumn column in ds.Tables[0].Columns)
                     {
-                        rowData[col] = row.Cells[col].Value?.ToString() ?? ""; // Null-safe
+                        rowData[column.ColumnName] = row[column];
                     }
                     data.Add(rowData);
                 }
             }
 
             return data;
-        }
-
-        private string[] GetDataEntryViewHeaders()
-        {
-            if (DataEntryGrid == null)
-            {
-                MessageBox.Show("No data is available to export.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return new string[0];
-            }
-
-            var headers = new string[DataEntryGrid.ColumnCount];
-            for (int col = 0; col < DataEntryGrid.ColumnCount; col++)
-            {
-                headers[col] = DataEntryGrid.Columns[col].HeaderText;
-            }
-            return headers;
         }
 
         private void BtnDashboard_Click(object sender, EventArgs e)
@@ -329,27 +404,10 @@ namespace OurSystemCode
 
         private void btnSittings_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(role))
-            {
-                MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            Sittings SittingsScreen = new Sittings(role, name);
+            this.Hide();
+            SittingsScreen.Show();
 
-
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
-            {
-                Sittings SittingsScreen = new Sittings(role, name);
-                this.Hide();
-                SittingsScreen.Show();
-
-            }
-            else
-            {
-
-                AdminSittings ASittingsScreen = new AdminSittings(role, name);
-                this.Hide();
-                ASittingsScreen.Show();
-            }
         }
 
         private void button7_Click(object sender, EventArgs e)

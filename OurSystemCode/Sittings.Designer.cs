@@ -30,15 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sittings));
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.buttonMinimize = new System.Windows.Forms.Button();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.ChangePasswordBtn = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnSittings = new System.Windows.Forms.Button();
             this.btnEmployeeMang = new System.Windows.Forms.Button();
@@ -53,116 +44,23 @@
             this.userroleBox = new System.Windows.Forms.TextBox();
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonMinimize = new System.Windows.Forms.Button();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button8 = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.ChangePasswordBtn = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel4.Controls.Add(this.buttonMinimize);
-            this.panel4.Controls.Add(this.pictureBox7);
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.button8);
-            this.panel4.Location = new System.Drawing.Point(340, 12);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1269, 208);
-            this.panel4.TabIndex = 11;
-            this.panel4.Resize += new System.EventHandler(this.panel4_Resize);
-            // 
-            // buttonMinimize
-            // 
-            this.buttonMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.buttonMinimize.FlatAppearance.BorderSize = 0;
-            this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonMinimize.Font = new System.Drawing.Font("Tahoma", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMinimize.Location = new System.Drawing.Point(1155, 4);
-            this.buttonMinimize.Name = "buttonMinimize";
-            this.buttonMinimize.Size = new System.Drawing.Size(35, 39);
-            this.buttonMinimize.TabIndex = 8;
-            this.buttonMinimize.Text = "-";
-            this.buttonMinimize.UseVisualStyleBackColor = false;
-            this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
-            // 
-            // pictureBox7
-            // 
-            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(1196, 7);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(30, 27);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox7.TabIndex = 7;
-            this.pictureBox7.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.label3.Location = new System.Drawing.Point(30, 29);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 50);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Settings";
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.button8.FlatAppearance.BorderSize = 0;
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(1228, 4);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(35, 39);
-            this.button8.TabIndex = 4;
-            this.button8.Text = "X";
-            this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.panel7);
-            this.panel3.Location = new System.Drawing.Point(356, 106);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1239, 792);
-            this.panel3.TabIndex = 12;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel7.Controls.Add(this.ChangePasswordBtn);
-            this.panel7.Location = new System.Drawing.Point(294, 120);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(655, 115);
-            this.panel7.TabIndex = 7;
-            this.panel7.Resize += new System.EventHandler(this.panel7_Resize);
-            // 
-            // ChangePasswordBtn
-            // 
-            this.ChangePasswordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangePasswordBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.ChangePasswordBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.ChangePasswordBtn.Location = new System.Drawing.Point(170, 33);
-            this.ChangePasswordBtn.Name = "ChangePasswordBtn";
-            this.ChangePasswordBtn.Size = new System.Drawing.Size(306, 54);
-            this.ChangePasswordBtn.TabIndex = 9;
-            this.ChangePasswordBtn.Text = "Change Password";
-            this.ChangePasswordBtn.UseVisualStyleBackColor = true;
-            this.ChangePasswordBtn.Click += new System.EventHandler(this.ChangePasswordBtn_Click);
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(0, 0);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 0;
             // 
             // panel1
             // 
@@ -183,7 +81,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(330, 911);
-            this.panel1.TabIndex = 14;
+            this.panel1.TabIndex = 15;
             // 
             // btnSittings
             // 
@@ -219,7 +117,7 @@
             this.btnEmployeeMang.Text = "Employees management";
             this.btnEmployeeMang.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployeeMang.UseVisualStyleBackColor = true;
-            this.btnEmployeeMang.Click += new System.EventHandler(this.btnEmployeeMang_Click);
+            this.btnEmployeeMang.Click += new System.EventHandler(this.btnEmployeeMang_Click_1);
             // 
             // button7
             // 
@@ -390,42 +288,125 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel4.Controls.Add(this.buttonMinimize);
+            this.panel4.Controls.Add(this.pictureBox7);
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.button8);
+            this.panel4.Location = new System.Drawing.Point(340, 12);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1269, 208);
+            this.panel4.TabIndex = 16;
+            // 
+            // buttonMinimize
+            // 
+            this.buttonMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.buttonMinimize.FlatAppearance.BorderSize = 0;
+            this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonMinimize.Font = new System.Drawing.Font("Tahoma", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMinimize.Location = new System.Drawing.Point(1155, 4);
+            this.buttonMinimize.Name = "buttonMinimize";
+            this.buttonMinimize.Size = new System.Drawing.Size(35, 39);
+            this.buttonMinimize.TabIndex = 8;
+            this.buttonMinimize.Text = "-";
+            this.buttonMinimize.UseVisualStyleBackColor = false;
+            this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
+            this.pictureBox7.Location = new System.Drawing.Point(1196, 7);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(30, 27);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox7.TabIndex = 7;
+            this.pictureBox7.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.label3.Location = new System.Drawing.Point(30, 29);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(163, 50);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Settings";
+            // 
+            // button8
+            // 
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.Location = new System.Drawing.Point(1228, 4);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(35, 39);
+            this.button8.TabIndex = 4;
+            this.button8.Text = "X";
+            this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Controls.Add(this.panel7);
+            this.panel3.Location = new System.Drawing.Point(356, 106);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1239, 792);
+            this.panel3.TabIndex = 17;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel7.Controls.Add(this.ChangePasswordBtn);
+            this.panel7.Location = new System.Drawing.Point(294, 120);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(655, 115);
+            this.panel7.TabIndex = 7;
+            // 
+            // ChangePasswordBtn
+            // 
+            this.ChangePasswordBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChangePasswordBtn.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.ChangePasswordBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
+            this.ChangePasswordBtn.Location = new System.Drawing.Point(170, 33);
+            this.ChangePasswordBtn.Name = "ChangePasswordBtn";
+            this.ChangePasswordBtn.Size = new System.Drawing.Size(306, 54);
+            this.ChangePasswordBtn.TabIndex = 9;
+            this.ChangePasswordBtn.Text = "Change Password";
+            this.ChangePasswordBtn.UseVisualStyleBackColor = true;
+            this.ChangePasswordBtn.Click += new System.EventHandler(this.ChangePasswordBtn_Click);
+            // 
             // Sittings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1621, 911);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel4);
+            this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Sittings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sittings";
             this.Load += new System.EventHandler(this.Sittings_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button ChangePasswordBtn;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.Button buttonMinimize;
+
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSittings;
         private System.Windows.Forms.Button btnEmployeeMang;
@@ -440,7 +421,14 @@
         private System.Windows.Forms.TextBox userroleBox;
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button buttonMinimize;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Button ChangePasswordBtn;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ToolTip toolTip2;
     }
 }

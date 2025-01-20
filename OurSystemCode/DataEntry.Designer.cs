@@ -100,9 +100,6 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.notificationPanel = new System.Windows.Forms.Panel();
-            this.notificationLabel = new System.Windows.Forms.Label();
-            this.Notifcationlabel = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -119,13 +116,11 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.notificationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel4.Controls.Add(this.notificationPanel);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.buttonMinimize);
             this.panel4.Controls.Add(this.pictureBox7);
@@ -1000,38 +995,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // notificationPanel
-            // 
-            this.notificationPanel.Controls.Add(this.Notifcationlabel);
-            this.notificationPanel.Controls.Add(this.notificationLabel);
-            this.notificationPanel.Location = new System.Drawing.Point(217, 1);
-            this.notificationPanel.Name = "notificationPanel";
-            this.notificationPanel.Size = new System.Drawing.Size(832, 43);
-            this.notificationPanel.TabIndex = 5;
-            // 
-            // notificationLabel
-            // 
-            this.notificationLabel.AutoSize = true;
-            this.notificationLabel.Font = new System.Drawing.Font("Segoe UI", 7.875F);
-            this.notificationLabel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.notificationLabel.Location = new System.Drawing.Point(156, 7);
-            this.notificationLabel.Name = "notificationLabel";
-            this.notificationLabel.Size = new System.Drawing.Size(19, 30);
-            this.notificationLabel.TabIndex = 0;
-            this.notificationLabel.Text = " ";
-            // 
-            // Notifcationlabel
-            // 
-            this.Notifcationlabel.AutoSize = true;
-            this.Notifcationlabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.Notifcationlabel.Font = new System.Drawing.Font("Tahoma", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Notifcationlabel.Location = new System.Drawing.Point(4, 6);
-            this.Notifcationlabel.Name = "Notifcationlabel";
-            this.Notifcationlabel.Size = new System.Drawing.Size(143, 25);
-            this.Notifcationlabel.TabIndex = 1;
-            this.Notifcationlabel.Text = "Notifcation: ";
-            this.Notifcationlabel.Visible = false;
-            // 
             // DataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1067,8 +1030,6 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.notificationPanel.ResumeLayout(false);
-            this.notificationPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1144,8 +1105,5 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button DeleteSelectedItemsBtn;
-        private System.Windows.Forms.Panel notificationPanel;
-        private System.Windows.Forms.Label notificationLabel;
-        private System.Windows.Forms.Label Notifcationlabel;
     }
 }

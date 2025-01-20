@@ -38,7 +38,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.CategoriesBox = new System.Windows.Forms.TextBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -49,17 +48,14 @@
             this.label15 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.LowStockBox = new System.Windows.Forms.TextBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.UpcomingDelBox = new System.Windows.Forms.TextBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.TotalItemsBox = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -77,6 +73,10 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.TotalItemsLabel = new System.Windows.Forms.Label();
+            this.CategoriesLabel = new System.Windows.Forms.Label();
+            this.UpcomingDelLabel = new System.Windows.Forms.Label();
+            this.LowStockLabel = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
@@ -191,7 +191,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.White;
-            this.panel8.Controls.Add(this.CategoriesBox);
+            this.panel8.Controls.Add(this.CategoriesLabel);
             this.panel8.Controls.Add(this.pictureBox3);
             this.panel8.Controls.Add(this.label7);
             this.panel8.Location = new System.Drawing.Point(15, 22);
@@ -200,16 +200,6 @@
             this.panel8.TabIndex = 0;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             this.panel8.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // CategoriesBox
-            // 
-            this.CategoriesBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.CategoriesBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.CategoriesBox.Location = new System.Drawing.Point(54, 106);
-            this.CategoriesBox.Name = "CategoriesBox";
-            this.CategoriesBox.Size = new System.Drawing.Size(100, 29);
-            this.CategoriesBox.TabIndex = 6;
-            this.CategoriesBox.Text = "Null";
             // 
             // pictureBox3
             // 
@@ -311,7 +301,7 @@
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.White;
-            this.panel10.Controls.Add(this.LowStockBox);
+            this.panel10.Controls.Add(this.LowStockLabel);
             this.panel10.Controls.Add(this.pictureBox4);
             this.panel10.Controls.Add(this.label9);
             this.panel10.Location = new System.Drawing.Point(15, 22);
@@ -320,16 +310,6 @@
             this.panel10.TabIndex = 0;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             this.panel10.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // LowStockBox
-            // 
-            this.LowStockBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LowStockBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.LowStockBox.Location = new System.Drawing.Point(56, 99);
-            this.LowStockBox.Name = "LowStockBox";
-            this.LowStockBox.Size = new System.Drawing.Size(100, 29);
-            this.LowStockBox.TabIndex = 7;
-            this.LowStockBox.Text = "Null";
             // 
             // pictureBox4
             // 
@@ -366,7 +346,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.White;
-            this.panel12.Controls.Add(this.UpcomingDelBox);
+            this.panel12.Controls.Add(this.UpcomingDelLabel);
             this.panel12.Controls.Add(this.pictureBox5);
             this.panel12.Controls.Add(this.label11);
             this.panel12.Location = new System.Drawing.Point(15, 22);
@@ -375,16 +355,6 @@
             this.panel12.TabIndex = 0;
             this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
             this.panel12.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // UpcomingDelBox
-            // 
-            this.UpcomingDelBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.UpcomingDelBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.UpcomingDelBox.Location = new System.Drawing.Point(61, 106);
-            this.UpcomingDelBox.Name = "UpcomingDelBox";
-            this.UpcomingDelBox.Size = new System.Drawing.Size(100, 29);
-            this.UpcomingDelBox.TabIndex = 7;
-            this.UpcomingDelBox.Text = "Null";
             // 
             // pictureBox5
             // 
@@ -420,7 +390,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Controls.Add(this.TotalItemsBox);
+            this.panel6.Controls.Add(this.TotalItemsLabel);
             this.panel6.Controls.Add(this.pictureBox2);
             this.panel6.Controls.Add(this.label4);
             this.panel6.Location = new System.Drawing.Point(15, 22);
@@ -428,16 +398,6 @@
             this.panel6.Size = new System.Drawing.Size(346, 184);
             this.panel6.TabIndex = 0;
             this.panel6.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // TotalItemsBox
-            // 
-            this.TotalItemsBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.TotalItemsBox.Font = new System.Drawing.Font("Segoe UI", 8F);
-            this.TotalItemsBox.Location = new System.Drawing.Point(56, 106);
-            this.TotalItemsBox.Name = "TotalItemsBox";
-            this.TotalItemsBox.Size = new System.Drawing.Size(100, 29);
-            this.TotalItemsBox.TabIndex = 5;
-            this.TotalItemsBox.Text = "Null";
             // 
             // pictureBox2
             // 
@@ -686,6 +646,42 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // TotalItemsLabel
+            // 
+            this.TotalItemsLabel.AutoSize = true;
+            this.TotalItemsLabel.Location = new System.Drawing.Point(51, 109);
+            this.TotalItemsLabel.Name = "TotalItemsLabel";
+            this.TotalItemsLabel.Size = new System.Drawing.Size(46, 27);
+            this.TotalItemsLabel.TabIndex = 6;
+            this.TotalItemsLabel.Text = "null";
+            // 
+            // CategoriesLabel
+            // 
+            this.CategoriesLabel.AutoSize = true;
+            this.CategoriesLabel.Location = new System.Drawing.Point(51, 109);
+            this.CategoriesLabel.Name = "CategoriesLabel";
+            this.CategoriesLabel.Size = new System.Drawing.Size(46, 27);
+            this.CategoriesLabel.TabIndex = 7;
+            this.CategoriesLabel.Text = "null";
+            // 
+            // UpcomingDelLabel
+            // 
+            this.UpcomingDelLabel.AutoSize = true;
+            this.UpcomingDelLabel.Location = new System.Drawing.Point(65, 109);
+            this.UpcomingDelLabel.Name = "UpcomingDelLabel";
+            this.UpcomingDelLabel.Size = new System.Drawing.Size(46, 27);
+            this.UpcomingDelLabel.TabIndex = 8;
+            this.UpcomingDelLabel.Text = "null";
+            // 
+            // LowStockLabel
+            // 
+            this.LowStockLabel.AutoSize = true;
+            this.LowStockLabel.Location = new System.Drawing.Point(51, 98);
+            this.LowStockLabel.Name = "LowStockLabel";
+            this.LowStockLabel.Size = new System.Drawing.Size(46, 27);
+            this.LowStockLabel.TabIndex = 8;
+            this.LowStockLabel.Text = "null";
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -763,10 +759,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.TextBox CategoriesBox;
-        private System.Windows.Forms.TextBox LowStockBox;
-        private System.Windows.Forms.TextBox UpcomingDelBox;
-        private System.Windows.Forms.TextBox TotalItemsBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSittings;
         private System.Windows.Forms.Button btnEmployeeMang;
@@ -782,5 +774,9 @@
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label TotalItemsLabel;
+        private System.Windows.Forms.Label CategoriesLabel;
+        private System.Windows.Forms.Label UpcomingDelLabel;
+        private System.Windows.Forms.Label LowStockLabel;
     }
 }

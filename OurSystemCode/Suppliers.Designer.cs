@@ -83,6 +83,7 @@
             this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.DeleteSelectedSuppliersBtn = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -261,6 +262,7 @@
             // OBSuppliersPan
             // 
             this.OBSuppliersPan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.OBSuppliersPan.Controls.Add(this.DeleteSelectedSuppliersBtn);
             this.OBSuppliersPan.Controls.Add(this.DeleteSupPan);
             this.OBSuppliersPan.Controls.Add(this.tableLayoutFilterSup);
             this.OBSuppliersPan.Controls.Add(this.OBlapelSup);
@@ -797,6 +799,23 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // DeleteSelectedSuppliersBtn
+            // 
+            this.DeleteSelectedSuppliersBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.DeleteSelectedSuppliersBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DeleteSelectedSuppliersBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.DeleteSelectedSuppliersBtn.FlatAppearance.BorderSize = 10;
+            this.DeleteSelectedSuppliersBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.DeleteSelectedSuppliersBtn.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteSelectedSuppliersBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteSelectedSuppliersBtn.Location = new System.Drawing.Point(494, 61);
+            this.DeleteSelectedSuppliersBtn.Name = "DeleteSelectedSuppliersBtn";
+            this.DeleteSelectedSuppliersBtn.Size = new System.Drawing.Size(224, 74);
+            this.DeleteSelectedSuppliersBtn.TabIndex = 28;
+            this.DeleteSelectedSuppliersBtn.Text = "Delete Selected Suppliers";
+            this.DeleteSelectedSuppliersBtn.UseVisualStyleBackColor = false;
+            this.DeleteSelectedSuppliersBtn.Click += new System.EventHandler(this.DeleteSelectedSuppliersBtn_Click);
+            // 
             // Suppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -889,5 +908,6 @@
         private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button DeleteSelectedSuppliersBtn;
     }
 }
