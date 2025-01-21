@@ -38,6 +38,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.CategoriesLabel = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -48,14 +49,17 @@
             this.label15 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.LowStockLabel = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.UpcomingDelLabel = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.TotalItemsLabel = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -69,14 +73,10 @@
             this.BtnDataEntry = new System.Windows.Forms.Button();
             this.BtnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.userroleBox = new System.Windows.Forms.TextBox();
-            this.usernameBox = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.TotalItemsLabel = new System.Windows.Forms.Label();
-            this.CategoriesLabel = new System.Windows.Forms.Label();
-            this.UpcomingDelLabel = new System.Windows.Forms.Label();
-            this.LowStockLabel = new System.Windows.Forms.Label();
+            this.userroleLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
@@ -201,6 +201,15 @@
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
             this.panel8.Resize += new System.EventHandler(this.panel6_Resize);
             // 
+            // CategoriesLabel
+            // 
+            this.CategoriesLabel.AutoSize = true;
+            this.CategoriesLabel.Location = new System.Drawing.Point(51, 109);
+            this.CategoriesLabel.Name = "CategoriesLabel";
+            this.CategoriesLabel.Size = new System.Drawing.Size(46, 27);
+            this.CategoriesLabel.TabIndex = 7;
+            this.CategoriesLabel.Text = "null";
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
@@ -311,6 +320,15 @@
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
             this.panel10.Resize += new System.EventHandler(this.panel6_Resize);
             // 
+            // LowStockLabel
+            // 
+            this.LowStockLabel.AutoSize = true;
+            this.LowStockLabel.Location = new System.Drawing.Point(51, 98);
+            this.LowStockLabel.Name = "LowStockLabel";
+            this.LowStockLabel.Size = new System.Drawing.Size(46, 27);
+            this.LowStockLabel.TabIndex = 8;
+            this.LowStockLabel.Text = "null";
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
@@ -356,6 +374,15 @@
             this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
             this.panel12.Resize += new System.EventHandler(this.panel6_Resize);
             // 
+            // UpcomingDelLabel
+            // 
+            this.UpcomingDelLabel.AutoSize = true;
+            this.UpcomingDelLabel.Location = new System.Drawing.Point(65, 109);
+            this.UpcomingDelLabel.Name = "UpcomingDelLabel";
+            this.UpcomingDelLabel.Size = new System.Drawing.Size(46, 27);
+            this.UpcomingDelLabel.TabIndex = 8;
+            this.UpcomingDelLabel.Text = "null";
+            // 
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
@@ -398,6 +425,15 @@
             this.panel6.Size = new System.Drawing.Size(346, 184);
             this.panel6.TabIndex = 0;
             this.panel6.Resize += new System.EventHandler(this.panel6_Resize);
+            // 
+            // TotalItemsLabel
+            // 
+            this.TotalItemsLabel.AutoSize = true;
+            this.TotalItemsLabel.Location = new System.Drawing.Point(51, 109);
+            this.TotalItemsLabel.Name = "TotalItemsLabel";
+            this.TotalItemsLabel.Size = new System.Drawing.Size(46, 27);
+            this.TotalItemsLabel.TabIndex = 6;
+            this.TotalItemsLabel.Text = "null";
             // 
             // pictureBox2
             // 
@@ -605,36 +641,14 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.userroleBox);
-            this.panel2.Controls.Add(this.usernameBox);
+            this.panel2.Controls.Add(this.userroleLabel);
+            this.panel2.Controls.Add(this.usernameLabel);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(5, 5);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(320, 204);
             this.panel2.TabIndex = 0;
-            // 
-            // userroleBox
-            // 
-            this.userroleBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.userroleBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.userroleBox.Font = new System.Drawing.Font("Segoe UI", 6F);
-            this.userroleBox.Location = new System.Drawing.Point(108, 170);
-            this.userroleBox.Name = "userroleBox";
-            this.userroleBox.Size = new System.Drawing.Size(100, 22);
-            this.userroleBox.TabIndex = 4;
-            this.userroleBox.Text = "User name";
-            // 
-            // usernameBox
-            // 
-            this.usernameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.usernameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.usernameBox.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.usernameBox.Location = new System.Drawing.Point(107, 146);
-            this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(100, 22);
-            this.usernameBox.TabIndex = 3;
-            this.usernameBox.Text = "User name";
             // 
             // pictureBox1
             // 
@@ -646,41 +660,25 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // TotalItemsLabel
+            // userroleLabel
             // 
-            this.TotalItemsLabel.AutoSize = true;
-            this.TotalItemsLabel.Location = new System.Drawing.Point(51, 109);
-            this.TotalItemsLabel.Name = "TotalItemsLabel";
-            this.TotalItemsLabel.Size = new System.Drawing.Size(46, 27);
-            this.TotalItemsLabel.TabIndex = 6;
-            this.TotalItemsLabel.Text = "null";
+            this.userroleLabel.AutoSize = true;
+            this.userroleLabel.Font = new System.Drawing.Font("Segoe UI", 6F);
+            this.userroleLabel.Location = new System.Drawing.Point(114, 170);
+            this.userroleLabel.Name = "userroleLabel";
+            this.userroleLabel.Size = new System.Drawing.Size(73, 21);
+            this.userroleLabel.TabIndex = 8;
+            this.userroleLabel.Text = "User role";
             // 
-            // CategoriesLabel
+            // usernameLabel
             // 
-            this.CategoriesLabel.AutoSize = true;
-            this.CategoriesLabel.Location = new System.Drawing.Point(51, 109);
-            this.CategoriesLabel.Name = "CategoriesLabel";
-            this.CategoriesLabel.Size = new System.Drawing.Size(46, 27);
-            this.CategoriesLabel.TabIndex = 7;
-            this.CategoriesLabel.Text = "null";
-            // 
-            // UpcomingDelLabel
-            // 
-            this.UpcomingDelLabel.AutoSize = true;
-            this.UpcomingDelLabel.Location = new System.Drawing.Point(65, 109);
-            this.UpcomingDelLabel.Name = "UpcomingDelLabel";
-            this.UpcomingDelLabel.Size = new System.Drawing.Size(46, 27);
-            this.UpcomingDelLabel.TabIndex = 8;
-            this.UpcomingDelLabel.Text = "null";
-            // 
-            // LowStockLabel
-            // 
-            this.LowStockLabel.AutoSize = true;
-            this.LowStockLabel.Location = new System.Drawing.Point(51, 98);
-            this.LowStockLabel.Name = "LowStockLabel";
-            this.LowStockLabel.Size = new System.Drawing.Size(46, 27);
-            this.LowStockLabel.TabIndex = 8;
-            this.LowStockLabel.Text = "null";
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.usernameLabel.Location = new System.Drawing.Point(107, 146);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(91, 21);
+            this.usernameLabel.TabIndex = 7;
+            this.usernameLabel.Text = "User name";
             // 
             // Dashboard
             // 
@@ -770,13 +768,13 @@
         private System.Windows.Forms.Button BtnDataEntry;
         private System.Windows.Forms.Button BtnDashboard;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox userroleBox;
-        private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label TotalItemsLabel;
         private System.Windows.Forms.Label CategoriesLabel;
         private System.Windows.Forms.Label UpcomingDelLabel;
         private System.Windows.Forms.Label LowStockLabel;
+        private System.Windows.Forms.Label userroleLabel;
+        private System.Windows.Forms.Label usernameLabel;
     }
 }

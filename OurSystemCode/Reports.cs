@@ -42,10 +42,10 @@ namespace OurSystemCode
 
         private void Reports_Load(object sender, EventArgs e)
         {
-            usernameBox.Text = name;
-            userroleBox.Text = role;
-            usernameBox.TabStop = false;
-            userroleBox.TabStop = false;
+            usernameLabel.Text = name;
+            userroleLabel.Text = role;
+            usernameLabel.TabStop = false;
+            userroleLabel.TabStop = false;
 
             DatabaseOperations dbOps = new DatabaseOperations();
             DataSet ds = dbOps.getData("SELECT * FROM whms_schema.Item");
@@ -173,7 +173,7 @@ namespace OurSystemCode
                 return;
             }
 
-            // Set license context for EPPlus BEFORE using ExcelPackage
+           
             OfficeOpenXml.ExcelPackage.LicenseContext = OfficeOpenXml.LicenseContext.NonCommercial;
 
             // Create a SaveFileDialog
@@ -220,7 +220,7 @@ namespace OurSystemCode
                                         if (value is DateTime dateValue)
                                         {
                                             cell.Value = dateValue;
-                                            cell.Style.Numberformat.Format = "yyyy-MM-dd"; // Change format as needed
+                                            cell.Style.Numberformat.Format = "yyyy-MM-dd"; 
                                         }
                                         else
                                         {
@@ -281,6 +281,7 @@ namespace OurSystemCode
             return data;
         }
 
+
         private string BuildQueryForItems(string duration, DateTime currentDate)
         {
             string query = "SELECT * FROM whms_schema.Item WHERE 1=1";
@@ -290,7 +291,6 @@ namespace OurSystemCode
             {
                 query += $" AND CreatedDate >= '{currentDate.Date}'";
             }
-
             else if (duration == "Weekly")
             {
                 var startOfWeek = currentDate.AddDays(-7);
@@ -298,12 +298,13 @@ namespace OurSystemCode
             }
             else if (duration == "Monthly")
             {
-                var startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
-                query += $" AND CreatedDate >= '{startOfMonth.Date}' AND CreatedDate < '{currentDate.AddMonths(1).Date}'";
+                var startOfMonth = currentDate.AddMonths(-1);
+                query += $" AND CreatedDate >= '{startOfMonth.Date}' AND CreatedDate < '{currentDate.Date}'";
             }
 
             return query;
         }
+
 
         private string BuildQueryForSuppliers(string duration, DateTime currentDate)
         {
@@ -321,8 +322,8 @@ namespace OurSystemCode
             }
             else if (duration == "Monthly")
             {
-                var startOfMonth = new DateTime(currentDate.Year, currentDate.Month, 1);
-                query += $" AND CreatedDate >= '{startOfMonth.Date}' AND CreatedDate < '{currentDate.AddMonths(1).Date}'";
+                var startOfMonth = currentDate.AddMonths(-1);
+                query += $" AND CreatedDate >= '{startOfMonth.Date}' AND CreatedDate < '{currentDate.Date}'";
             }
 
             return query;

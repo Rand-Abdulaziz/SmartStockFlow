@@ -32,10 +32,10 @@ namespace OurSystemCode
         {
             Form1.ApplyRoundedCorners(this, 20);
             this.Size = new Size(811, 490);
-            usernameBox.Text = name;
-            userroleBox.Text = role;
-            usernameBox.TabStop = false;
-            userroleBox.TabStop = false;
+            usernameLabel.Text = name;
+            userroleLabel.Text = role;
+            usernameLabel.TabStop = false;
+            userroleLabel.TabStop = false;
 
             this.MouseDown += new MouseEventHandler(Employees_MouseDown);
             this.MouseMove += new MouseEventHandler(Employees_MouseMove);
@@ -313,7 +313,7 @@ namespace OurSystemCode
                     dbOps.setData(query, "Selected tasks deleted successfully.");
                     MessageBox.Show("Selected tasks deleted successfully.");
                     btnDeleteSelectedTasks.Visible = true;
-                    LoadEmployeeTasks(); // إعادة تحميل البيانات
+                    LoadEmployeeTasks(); 
                 }
                 else
                 {

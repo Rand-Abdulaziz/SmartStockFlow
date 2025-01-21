@@ -46,10 +46,10 @@ namespace OurSystemCode
         
         private void Suppliers_Load(object sender, EventArgs e)
         {
-            usernameBox.Text = name;
-            userroleBox.Text = role;
-            usernameBox.TabStop = false;
-            userroleBox.TabStop = false;
+            usernameLabel.Text = name;
+            userroleLabel.Text = role;
+            usernameLabel.TabStop = false;
+            userroleLabel.TabStop = false;
 
             OBSuppliersPan.Visible = false;
 
@@ -247,6 +247,7 @@ namespace OurSystemCode
         {
             if (e.RowIndex >= 0 && SuppliersView.Columns[e.ColumnIndex].Name == "Select")
             {
+                SaveSelectedSuppliers();
                 CheckSupplierSelectionAndTogglePanel();
             }
         }
@@ -324,15 +325,48 @@ namespace OurSystemCode
             }
         }
 
+        private List<string> selectedSupplierIDs = new List<string>();
+
+        private void SaveSelectedSuppliers()
+        {
+            selectedSupplierIDs.Clear();
+
+            foreach (DataGridViewRow row in SuppliersView.Rows)
+            {
+                if (row.Cells["Select"].Value != null && Convert.ToBoolean(row.Cells["Select"].Value) == true)
+                {
+                    string supplierID = row.Cells["Supplier_ID"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(supplierID))
+                    {
+                        selectedSupplierIDs.Add(supplierID);
+                    }
+                }
+            }
+        }
+
+       private void RestoreSelectedSuppliers()
+{
+    foreach (DataGridViewRow row in SuppliersView.Rows)
+    {
+        string supplierID = row.Cells["Supplier_ID"].Value?.ToString();
+        if (!string.IsNullOrEmpty(supplierID) && selectedSupplierIDs.Contains(supplierID))
+        {
+            row.Cells["Select"].Value = true;
+        }
+    }
+}
+
+
 
         private void SearchBoxSuppliers_TextChanged(object sender, EventArgs e)
         {
             try
             {
-              
+                SaveSelectedSuppliers();
+
                 DatabaseOperations dbOps = new DatabaseOperations();
 
-              
+       
                 string searchText = SearchBoxSuppliers.Text;
 
                 DateTime searchDate;
@@ -353,9 +387,9 @@ namespace OurSystemCode
 
                
                 Dictionary<string, object> parameters = new Dictionary<string, object>
-        {
+                {
             { "@Search", "%" + searchText + "%" }
-        };
+                };
 
                 
                 if (isDate)
@@ -368,6 +402,8 @@ namespace OurSystemCode
 
                 
                 SuppliersView.DataSource = ds.Tables[0];
+
+                RestoreSelectedSuppliers();
             }
             catch (Exception ex)
             {

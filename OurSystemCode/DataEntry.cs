@@ -54,10 +54,10 @@ namespace OurSystemCode
 
         private void DataEntry_Load(object sender, EventArgs e)
         {
-            usernameBox.Text = name;
-            userroleBox.Text = role;
-            usernameBox.TabStop = false;
-            userroleBox.TabStop = false;
+            usernameLabel.Text = name;
+            userroleLabel.Text = role;
+            usernameLabel.TabStop = false;
+            userroleLabel.TabStop = false;
             OBItemPan.Visible = false;
             AddDeleteButtonToGrid();
 
@@ -156,7 +156,6 @@ namespace OurSystemCode
            
            
             var reportsForm = new Reports(role, name);
-            //reportsForm.DataEntryGrid = this.DataEntryView;
             this.Hide();
             reportsForm.Show();
         }
@@ -171,17 +170,14 @@ namespace OurSystemCode
         {
             try
             {
-                
-                DatabaseOperations dbOps = new DatabaseOperations();
+                SaveSelectedItems();
 
-               
+                DatabaseOperations dbOps = new DatabaseOperations();
                 string searchText = SearchBoxEntry.Text;
 
-               
                 DateTime searchDate;
                 bool isDate = DateTime.TryParse(searchText, out searchDate);
 
-               
                 string query = "SELECT * FROM whms_schema.Item " +
                                "WHERE Name LIKE @Search " +
                                "OR Item_ID LIKE @Search " +
@@ -191,37 +187,33 @@ namespace OurSystemCode
                                "OR Category_ID LIKE @Search " +
                                "OR Quantity LIKE @Search ";
 
-                
                 if (isDate)
                 {
-                    query += "OR ExpirationDate = @SearchDate ";
-                    query += "OR CreatedDate = @SearchDate"; 
+                    query += "OR ExpirationDate = @SearchDate " +
+                             "OR CreatedDate = @SearchDate";
                 }
 
-              
                 Dictionary<string, object> parameters = new Dictionary<string, object>
         {
             { "@Search", "%" + searchText + "%" }
         };
 
-               
                 if (isDate)
                 {
                     parameters.Add("@SearchDate", searchDate.ToString("yyyy-MM-dd"));
                 }
 
-                
                 DataSet ds = dbOps.getDataWithParameter(query, parameters);
-
-              
                 DataEntryView.DataSource = ds.Tables[0];
+
+                RestoreSelectedItems(); 
             }
             catch (Exception ex)
             {
-              
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
 
 
@@ -344,13 +336,44 @@ namespace OurSystemCode
 
          
         }
-      
+
+        private List<string> selectedItemIDs = new List<string>();
+
+        private void SaveSelectedItems()
+        {
+            selectedItemIDs.Clear();
+
+            foreach (DataGridViewRow row in DataEntryView.Rows)
+            {
+                if (row.Cells["Select"].Value != null && Convert.ToBoolean(row.Cells["Select"].Value) == true)
+                {
+                    string itemID = row.Cells["Item_ID"].Value?.ToString();
+                    if (!string.IsNullOrEmpty(itemID))
+                    {
+                        selectedItemIDs.Add(itemID);
+                    }
+                }
+            }
+        }
+
+        private void RestoreSelectedItems()
+        {
+            foreach (DataGridViewRow row in DataEntryView.Rows)
+            {
+                string itemID = row.Cells["Item_ID"].Value?.ToString();
+                if (!string.IsNullOrEmpty(itemID) && selectedItemIDs.Contains(itemID))
+                {
+                    row.Cells["Select"].Value = true;
+                }
+            }
+        }
 
 
         private void DeleteSelectedItems()
         {
             try
             {
+                SaveSelectedItems();
                 List<string> selectedIDs = new List<string>();
 
                
@@ -376,8 +399,8 @@ namespace OurSystemCode
 
                     LoadDataIntoView();
 
-                  
-                   
+                    RestoreSelectedItems();
+
                 }
                 else
                 {

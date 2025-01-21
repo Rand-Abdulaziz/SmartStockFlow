@@ -25,10 +25,10 @@ namespace OurSystemCode
             this.role = role;
             this.name = name;
 
-            usernameBox.Text = name;
-            userroleBox.Text = role;
-            usernameBox.TabStop = false;
-            userroleBox.TabStop = false;
+            usernameLabel.Text = name;
+            userroleLabel.Text = role;
+            usernameLabel.TabStop = false;
+            userroleLabel.TabStop = false;
 
             this.MouseDown += new MouseEventHandler(Employees_tasks_MouseDown);
             this.MouseMove += new MouseEventHandler(Employees_tasks_MouseMove);
@@ -85,7 +85,6 @@ namespace OurSystemCode
             DataGridViewRow row = EmployeesTasksView.Rows[e.RowIndex];
             string currentStatus = row.Cells["Status"].Value.ToString();
 
-            // Check if the new status is the same as the current one
             ComboBox statusComboBox = new ComboBox();
             statusComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             statusComboBox.Items.AddRange(new string[] { "Pending", "In Progress", "Completed" });

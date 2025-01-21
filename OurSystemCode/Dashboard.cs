@@ -35,10 +35,10 @@ namespace OurSystemCode
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            usernameBox.Text = name;
-            userroleBox.Text= role;
-            usernameBox.TabStop = false;
-            userroleBox.TabStop = false;
+            usernameLabel.Text = name;
+            userroleLabel.Text= role;
+            usernameLabel.TabStop = false;
+            userroleLabel.TabStop = false;
 
             UpdateItemCount();
             UpdateCatogiryCount();

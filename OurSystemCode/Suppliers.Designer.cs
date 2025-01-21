@@ -44,6 +44,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.SuppliersView = new System.Windows.Forms.DataGridView();
             this.OBSuppliersPan = new System.Windows.Forms.Panel();
+            this.DeleteSelectedSuppliersBtn = new System.Windows.Forms.Button();
             this.DeleteSupPan = new System.Windows.Forms.TableLayoutPanel();
             this.SupNameDelete = new System.Windows.Forms.TextBox();
             this.SupIDDelete = new System.Windows.Forms.TextBox();
@@ -79,11 +80,10 @@
             this.BtnDataEntry = new System.Windows.Forms.Button();
             this.BtnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.userroleBox = new System.Windows.Forms.TextBox();
-            this.usernameBox = new System.Windows.Forms.TextBox();
+            this.userroleLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.DeleteSelectedSuppliersBtn = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -274,6 +274,23 @@
             this.OBSuppliersPan.Size = new System.Drawing.Size(1213, 197);
             this.OBSuppliersPan.TabIndex = 9;
             // 
+            // DeleteSelectedSuppliersBtn
+            // 
+            this.DeleteSelectedSuppliersBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.DeleteSelectedSuppliersBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.DeleteSelectedSuppliersBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.DeleteSelectedSuppliersBtn.FlatAppearance.BorderSize = 10;
+            this.DeleteSelectedSuppliersBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.DeleteSelectedSuppliersBtn.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeleteSelectedSuppliersBtn.ForeColor = System.Drawing.Color.White;
+            this.DeleteSelectedSuppliersBtn.Location = new System.Drawing.Point(494, 61);
+            this.DeleteSelectedSuppliersBtn.Name = "DeleteSelectedSuppliersBtn";
+            this.DeleteSelectedSuppliersBtn.Size = new System.Drawing.Size(224, 74);
+            this.DeleteSelectedSuppliersBtn.TabIndex = 28;
+            this.DeleteSelectedSuppliersBtn.Text = "Delete Selected Suppliers";
+            this.DeleteSelectedSuppliersBtn.UseVisualStyleBackColor = false;
+            this.DeleteSelectedSuppliersBtn.Click += new System.EventHandler(this.DeleteSelectedSuppliersBtn_Click);
+            // 
             // DeleteSupPan
             // 
             this.DeleteSupPan.AutoScroll = true;
@@ -290,7 +307,7 @@
             this.DeleteSupPan.Controls.Add(this.SupIDDelete, 0, 1);
             this.DeleteSupPan.Controls.Add(this.label16, 1, 0);
             this.DeleteSupPan.Controls.Add(this.label18, 0, 0);
-            this.DeleteSupPan.Location = new System.Drawing.Point(0, 37);
+            this.DeleteSupPan.Location = new System.Drawing.Point(0, 39);
             this.DeleteSupPan.Name = "DeleteSupPan";
             this.DeleteSupPan.RowCount = 2;
             this.DeleteSupPan.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -408,6 +425,7 @@
             this.SupplierContactFilBox.Name = "SupplierContactFilBox";
             this.SupplierContactFilBox.Size = new System.Drawing.Size(123, 33);
             this.SupplierContactFilBox.TabIndex = 29;
+            this.SupplierContactFilBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SupplierNameFil
             // 
@@ -427,6 +445,7 @@
             this.SupplierLocationFilBox.Name = "SupplierLocationFilBox";
             this.SupplierLocationFilBox.Size = new System.Drawing.Size(123, 33);
             this.SupplierLocationFilBox.TabIndex = 19;
+            this.SupplierLocationFilBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // SupplierLocationFil
             // 
@@ -758,8 +777,8 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.userroleBox);
-            this.panel2.Controls.Add(this.usernameBox);
+            this.panel2.Controls.Add(this.userroleLabel);
+            this.panel2.Controls.Add(this.usernameLabel);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(5, 5);
@@ -767,27 +786,25 @@
             this.panel2.Size = new System.Drawing.Size(320, 204);
             this.panel2.TabIndex = 0;
             // 
-            // userroleBox
+            // userroleLabel
             // 
-            this.userroleBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.userroleBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.userroleBox.Font = new System.Drawing.Font("Segoe UI", 6F);
-            this.userroleBox.Location = new System.Drawing.Point(108, 170);
-            this.userroleBox.Name = "userroleBox";
-            this.userroleBox.Size = new System.Drawing.Size(100, 22);
-            this.userroleBox.TabIndex = 4;
-            this.userroleBox.Text = "User name";
+            this.userroleLabel.AutoSize = true;
+            this.userroleLabel.Font = new System.Drawing.Font("Segoe UI", 6F);
+            this.userroleLabel.Location = new System.Drawing.Point(114, 170);
+            this.userroleLabel.Name = "userroleLabel";
+            this.userroleLabel.Size = new System.Drawing.Size(73, 21);
+            this.userroleLabel.TabIndex = 8;
+            this.userroleLabel.Text = "User role";
             // 
-            // usernameBox
+            // usernameLabel
             // 
-            this.usernameBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.usernameBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.usernameBox.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
-            this.usernameBox.Location = new System.Drawing.Point(107, 146);
-            this.usernameBox.Name = "usernameBox";
-            this.usernameBox.Size = new System.Drawing.Size(100, 22);
-            this.usernameBox.TabIndex = 3;
-            this.usernameBox.Text = "User name";
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Font = new System.Drawing.Font("Segoe UI", 6F, System.Drawing.FontStyle.Bold);
+            this.usernameLabel.Location = new System.Drawing.Point(107, 146);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(91, 21);
+            this.usernameLabel.TabIndex = 7;
+            this.usernameLabel.Text = "User name";
             // 
             // pictureBox1
             // 
@@ -798,23 +815,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // DeleteSelectedSuppliersBtn
-            // 
-            this.DeleteSelectedSuppliersBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.DeleteSelectedSuppliersBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.DeleteSelectedSuppliersBtn.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.DeleteSelectedSuppliersBtn.FlatAppearance.BorderSize = 10;
-            this.DeleteSelectedSuppliersBtn.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.DeleteSelectedSuppliersBtn.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DeleteSelectedSuppliersBtn.ForeColor = System.Drawing.Color.White;
-            this.DeleteSelectedSuppliersBtn.Location = new System.Drawing.Point(494, 61);
-            this.DeleteSelectedSuppliersBtn.Name = "DeleteSelectedSuppliersBtn";
-            this.DeleteSelectedSuppliersBtn.Size = new System.Drawing.Size(224, 74);
-            this.DeleteSelectedSuppliersBtn.TabIndex = 28;
-            this.DeleteSelectedSuppliersBtn.Text = "Delete Selected Suppliers";
-            this.DeleteSelectedSuppliersBtn.UseVisualStyleBackColor = false;
-            this.DeleteSelectedSuppliersBtn.Click += new System.EventHandler(this.DeleteSelectedSuppliersBtn_Click);
             // 
             // Suppliers
             // 
@@ -904,10 +904,10 @@
         private System.Windows.Forms.Button BtnDataEntry;
         private System.Windows.Forms.Button BtnDashboard;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox userroleBox;
-        private System.Windows.Forms.TextBox usernameBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button DeleteSelectedSuppliersBtn;
+        private System.Windows.Forms.Label userroleLabel;
+        private System.Windows.Forms.Label usernameLabel;
     }
 }

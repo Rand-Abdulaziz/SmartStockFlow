@@ -43,10 +43,10 @@ namespace OurSystemCode
 
         private void Sittings_Load(object sender, EventArgs e)
         {
-            usernameBox.Text = name;
-            userroleBox.Text = role;
-            usernameBox.TabStop = false;
-            userroleBox.TabStop = false;
+            usernameLabel.Text = name;
+            userroleLabel.Text = role;
+            usernameLabel.TabStop = false;
+            userroleLabel.TabStop = false;
 
             int cornerRadius = 20;
             Form1.ApplyRoundedCorners(this, cornerRadius);
