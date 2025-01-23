@@ -96,10 +96,10 @@
             this.BtnDataEntry = new System.Windows.Forms.Button();
             this.BtnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.userroleLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.usernameLabel = new System.Windows.Forms.Label();
-            this.userroleLabel = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -963,15 +963,15 @@
             this.panel2.Size = new System.Drawing.Size(320, 204);
             this.panel2.TabIndex = 0;
             // 
-            // pictureBox1
+            // userroleLabel
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(105, 55);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 87);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.userroleLabel.AutoSize = true;
+            this.userroleLabel.Font = new System.Drawing.Font("Segoe UI", 6F);
+            this.userroleLabel.Location = new System.Drawing.Point(114, 170);
+            this.userroleLabel.Name = "userroleLabel";
+            this.userroleLabel.Size = new System.Drawing.Size(73, 21);
+            this.userroleLabel.TabIndex = 6;
+            this.userroleLabel.Text = "User role";
             // 
             // usernameLabel
             // 
@@ -983,15 +983,15 @@
             this.usernameLabel.TabIndex = 5;
             this.usernameLabel.Text = "User name";
             // 
-            // userroleLabel
+            // pictureBox1
             // 
-            this.userroleLabel.AutoSize = true;
-            this.userroleLabel.Font = new System.Drawing.Font("Segoe UI", 6F);
-            this.userroleLabel.Location = new System.Drawing.Point(114, 170);
-            this.userroleLabel.Name = "userroleLabel";
-            this.userroleLabel.Size = new System.Drawing.Size(73, 21);
-            this.userroleLabel.TabIndex = 6;
-            this.userroleLabel.Text = "User role";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(105, 55);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 87);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // DataEntry
             // 

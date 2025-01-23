@@ -60,15 +60,24 @@ namespace OurSystemCode
                 return;
             }
 
-            
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase) || "IT".Equals(role, StringComparison.OrdinalIgnoreCase))
+
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
                 btnEmployeeMan.Visible = false;
                 btnSittings.Location = new System.Drawing.Point(5, 509);
             }
+            else if ("IT".Equals(role, StringComparison.OrdinalIgnoreCase))
+            {
+                btnEmployeeMan.Visible = false;
+                btnSittings.Location = new System.Drawing.Point(5, 509);
+                pictureEye.Visible = false;
+                pictureBox2.Visible = false;
+                
+            }
             else
             {
+                AddDeleteButtonToSuppliersGrid();
 
                 btnEmployeeMan.Visible = true;
                 btnEmployeesTasks.Visible = false;
@@ -107,7 +116,8 @@ namespace OurSystemCode
             toolTip1.SetToolTip(pictureBox4, "Filtering Supliers");
             toolTip1.SetToolTip(pictureBox3, "Print");
 
-            AddDeleteButtonToSuppliersGrid();
+            
+          
 
             foreach (DataGridViewColumn column in SuppliersView.Columns)
             {

@@ -59,7 +59,8 @@ namespace OurSystemCode
             usernameLabel.TabStop = false;
             userroleLabel.TabStop = false;
             OBItemPan.Visible = false;
-            AddDeleteButtonToGrid();
+           
+               
 
             FilExpirationDateInsertBox.Format = DateTimePickerFormat.Custom;
             FilExpirationDateInsertBox.CustomFormat = " "; 
@@ -71,15 +72,26 @@ namespace OurSystemCode
                 return;
             }
 
-         
-            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase) || "IT".Equals(role, StringComparison.OrdinalIgnoreCase))
+ 
+            if ("EMPLOYEE".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
 
                 btnEmployeeMang.Visible = false;
                 btnSittings.Location = new System.Drawing.Point(5, 509);
             }
+            else if ("IT".Equals(role, StringComparison.OrdinalIgnoreCase))
+            {
+
+                btnEmployeeMang.Visible = false;
+                btnSittings.Location = new System.Drawing.Point(5, 509);
+                pictureEye.Visible = false;
+                pictureBox2.Visible=false;
+              
+
+            }
             else
             {
+                AddDeleteButtonToGrid();
 
                 btnEmployeeMang.Visible = true;
                 btnEmployeesTasks.Visible = false;
@@ -268,13 +280,14 @@ namespace OurSystemCode
         private void CheckSelectionAndTogglePanel()
         {
             bool hasSelection = false;
+           
 
-            
             foreach (DataGridViewRow row in DataEntryView.Rows)
             {
                 if (row.Cells["Select"].Value != null && Convert.ToBoolean(row.Cells["Select"].Value) == true)
                 {
                     hasSelection = true;
+
                     break;
                 }
             }
@@ -311,6 +324,7 @@ namespace OurSystemCode
             DataSet ds = dbOps.getData("SELECT * FROM whms_schema.Item");
             if (ds != null && ds.Tables.Count > 0)
             {
+                
                 DataEntryView.DataSource = ds.Tables[0];
 
                
@@ -333,8 +347,9 @@ namespace OurSystemCode
            
             OBItemPan.Visible = false;
             DeleteSelectedItemsBtn.Visible = false;
+           
 
-         
+
         }
 
         private List<string> selectedItemIDs = new List<string>();
