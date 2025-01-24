@@ -43,7 +43,7 @@ namespace OurSystemCode
             UpdateItemCount();
             UpdateCatogiryCount();
             LowStockCount();
-            UpcomingCount();
+            
 
             int cornerRadius = 20;
             Form1.ApplyRoundedCorners(this, cornerRadius);
@@ -144,34 +144,7 @@ namespace OurSystemCode
             }
         }
 
-        private void UpcomingCount()
-        {
-            try
-            {
-
-                string query = "SELECT COUNT(*) FROM whms_schema.PurchaseOrders  WHERE CAST(ExpectedDeliveryDate AS DATE) = CAST(GETDATE() AS DATE)";
-
-
-                DatabaseOperations dbOps = new DatabaseOperations();
-                DataSet ds = dbOps.getData(query);
-
-
-                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-                {
-                    int IntUpcomingCount = Convert.ToInt32(ds.Tables[0].Rows[0][0]);
-                    UpcomingDelLabel.Text = IntUpcomingCount.ToString();
-                }
-                else
-                {
-                    UpcomingDelLabel.Text = "Null";
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-        }
-
+        
         private void UpdateCatogiryCount()
         {
             try
@@ -261,16 +234,8 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel8, 20);
         }
 
-        private void panel11_Paint(object sender, PaintEventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel11, 20);
-        }
-
-        private void panel12_Paint(object sender, PaintEventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel12, 20);
-        }
-
+       
+        
         private void panel9_Paint(object sender, PaintEventArgs e)
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel9, 20);

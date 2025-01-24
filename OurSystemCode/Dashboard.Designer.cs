@@ -52,11 +52,6 @@
             this.LowStockLabel = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.UpcomingDelLabel = new System.Windows.Forms.Label();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.TotalItemsLabel = new System.Windows.Forms.Label();
@@ -73,10 +68,10 @@
             this.BtnDataEntry = new System.Windows.Forms.Button();
             this.BtnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.userroleLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
@@ -90,9 +85,6 @@
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel11.SuspendLayout();
-            this.panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -169,7 +161,6 @@
             this.panel3.Controls.Add(this.panel15);
             this.panel3.Controls.Add(this.panel13);
             this.panel3.Controls.Add(this.panel9);
-            this.panel3.Controls.Add(this.panel11);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Location = new System.Drawing.Point(356, 106);
             this.panel3.Name = "panel3";
@@ -267,9 +258,9 @@
             // 
             this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel13.Controls.Add(this.panel14);
-            this.panel13.Location = new System.Drawing.Point(56, 497);
+            this.panel13.Location = new System.Drawing.Point(56, 293);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(375, 285);
+            this.panel13.Size = new System.Drawing.Size(375, 445);
             this.panel13.TabIndex = 0;
             this.panel13.Paint += new System.Windows.Forms.PaintEventHandler(this.panel13_Paint);
             this.panel13.Resize += new System.EventHandler(this.panel5_Resize);
@@ -280,7 +271,7 @@
             this.panel14.Controls.Add(this.label15);
             this.panel14.Location = new System.Drawing.Point(15, 22);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(346, 250);
+            this.panel14.Size = new System.Drawing.Size(346, 392);
             this.panel14.TabIndex = 0;
             this.panel14.Paint += new System.Windows.Forms.PaintEventHandler(this.panel14_Paint);
             this.panel14.Resize += new System.EventHandler(this.panel6_Resize);
@@ -300,7 +291,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(56, 256);
+            this.panel9.Location = new System.Drawing.Point(848, 15);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(375, 233);
             this.panel9.TabIndex = 0;
@@ -349,60 +340,6 @@
             this.label9.Size = new System.Drawing.Size(201, 32);
             this.label9.TabIndex = 0;
             this.label9.Text = "Low-Stock Items";
-            // 
-            // panel11
-            // 
-            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel11.Controls.Add(this.panel12);
-            this.panel11.Location = new System.Drawing.Point(848, 15);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(375, 233);
-            this.panel11.TabIndex = 0;
-            this.panel11.Paint += new System.Windows.Forms.PaintEventHandler(this.panel11_Paint);
-            this.panel11.Resize += new System.EventHandler(this.panel5_Resize);
-            // 
-            // panel12
-            // 
-            this.panel12.BackColor = System.Drawing.Color.White;
-            this.panel12.Controls.Add(this.UpcomingDelLabel);
-            this.panel12.Controls.Add(this.pictureBox5);
-            this.panel12.Controls.Add(this.label11);
-            this.panel12.Location = new System.Drawing.Point(15, 22);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(346, 184);
-            this.panel12.TabIndex = 0;
-            this.panel12.Paint += new System.Windows.Forms.PaintEventHandler(this.panel12_Paint);
-            this.panel12.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // UpcomingDelLabel
-            // 
-            this.UpcomingDelLabel.AutoSize = true;
-            this.UpcomingDelLabel.Location = new System.Drawing.Point(65, 109);
-            this.UpcomingDelLabel.Name = "UpcomingDelLabel";
-            this.UpcomingDelLabel.Size = new System.Drawing.Size(46, 27);
-            this.UpcomingDelLabel.TabIndex = 8;
-            this.UpcomingDelLabel.Text = "null";
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(221, 66);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(100, 105);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 4;
-            this.pictureBox5.TabStop = false;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.label11.Location = new System.Drawing.Point(18, 30);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(251, 32);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "Upcoming Deliveries";
             // 
             // panel5
             // 
@@ -650,16 +587,6 @@
             this.panel2.Size = new System.Drawing.Size(320, 204);
             this.panel2.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(105, 55);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 87);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // userroleLabel
             // 
             this.userroleLabel.AutoSize = true;
@@ -679,6 +606,16 @@
             this.usernameLabel.Size = new System.Drawing.Size(91, 21);
             this.usernameLabel.TabIndex = 7;
             this.usernameLabel.Text = "User name";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(105, 55);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 87);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Dashboard
             // 
@@ -712,10 +649,6 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            this.panel11.ResumeLayout(false);
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -745,10 +678,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.Label label15;
@@ -772,7 +701,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label TotalItemsLabel;
         private System.Windows.Forms.Label CategoriesLabel;
-        private System.Windows.Forms.Label UpcomingDelLabel;
         private System.Windows.Forms.Label LowStockLabel;
         private System.Windows.Forms.Label userroleLabel;
         private System.Windows.Forms.Label usernameLabel;
