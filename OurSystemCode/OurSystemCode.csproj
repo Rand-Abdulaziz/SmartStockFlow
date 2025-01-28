@@ -159,6 +159,7 @@
     <Compile Include="Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <Compile Include="RFIDTriangulation.cs" />
     <Compile Include="Sittings.cs">
       <SubType>Form</SubType>
     </Compile>

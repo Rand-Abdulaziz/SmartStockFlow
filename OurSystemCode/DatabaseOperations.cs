@@ -1,8 +1,9 @@
-﻿using System;
+﻿//Start laibrary
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
-
+using System.Data.SqlClient; //Sql Server
+//End laibrary
 namespace OurSystemCode
 {
     internal class DatabaseOperations

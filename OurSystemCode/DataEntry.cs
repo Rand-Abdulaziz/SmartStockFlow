@@ -6,7 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
+//using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -50,8 +50,9 @@ namespace OurSystemCode
             Application.Exit();
         }
 
-       
 
+
+        //Start DataEntry Load
         private void DataEntry_Load(object sender, EventArgs e)
         {
             usernameLabel.Text = name;
@@ -59,13 +60,13 @@ namespace OurSystemCode
             usernameLabel.TabStop = false;
             userroleLabel.TabStop = false;
             OBItemPan.Visible = false;
-           
-               
 
+
+            //Exparation date for Filtering
             FilExpirationDateInsertBox.Format = DateTimePickerFormat.Custom;
             FilExpirationDateInsertBox.CustomFormat = " "; 
             FilExpirationDateInsertBox.ShowCheckBox = true;
-
+            
             if (string.IsNullOrEmpty(role))
             {
                 MessageBox.Show("Role is not set properly.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -136,7 +137,7 @@ namespace OurSystemCode
 
                 column.ReadOnly = (column.Index != 0);
             }
-        }
+        }//End DataEntry Load
 
         private void DataEntry_MouseDown(object sender, MouseEventArgs e)
         {
@@ -166,7 +167,6 @@ namespace OurSystemCode
         private void button2_Click(object sender, EventArgs e)
         {
            
-           
             var reportsForm = new Reports(role, name);
             this.Hide();
             reportsForm.Show();
@@ -178,6 +178,7 @@ namespace OurSystemCode
             this.WindowState = FormWindowState.Minimized;
         }
 
+        //Start Search Box
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             try
@@ -206,9 +207,9 @@ namespace OurSystemCode
                 }
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>
-        {
-            { "@Search", "%" + searchText + "%" }
-        };
+                {
+                { "@Search", "%" + searchText + "%" }
+                };
 
                 if (isDate)
                 {
@@ -225,10 +226,11 @@ namespace OurSystemCode
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        //End Search Box
 
 
 
-
+        //Close Panel
         private void button6_Click(object sender, EventArgs e)
         {
             OBItemPan.Visible = false;
@@ -243,6 +245,7 @@ namespace OurSystemCode
         }
 
         String opeartion;
+       //Add Icon
         private void pictureEye_Click(object sender, EventArgs e)
         {
            
@@ -257,12 +260,13 @@ namespace OurSystemCode
             OBlapel.Text = "Add Item";
             OBbutton.Text = "ADD";
         }
-
+        //End Add Icon
         private void AddItemPan_Resize(object sender, EventArgs e)
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
         }
 
+        //Refresh view
        private void LoadDataIntoView()
         {
             DataEntryView.AutoGenerateColumns = true;
@@ -275,8 +279,10 @@ namespace OurSystemCode
             }
             DataEntryView.Refresh();
         }
+        //End Refresh view
 
-        
+        //// This function checks if any rows are selected in the DataGridView 
+        ///and updates the visibility of UI elements accordingly. 
         private void CheckSelectionAndTogglePanel()
         {
             bool hasSelection = false;
@@ -304,6 +310,9 @@ namespace OurSystemCode
             OBlapel.Text = "Delete Items";
             
         }
+        //End CheckSelectionAndTogglePanel
+
+        //Select
         private void DataEntryView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (DataEntryView.IsCurrentCellDirty)
@@ -318,7 +327,9 @@ namespace OurSystemCode
                 CheckSelectionAndTogglePanel();
             }
         }
+        //Select
 
+        //Add Select Button
         private void AddDeleteButtonToGrid()
         {
             DataSet ds = dbOps.getData("SELECT * FROM whms_schema.Item");
@@ -351,7 +362,9 @@ namespace OurSystemCode
 
 
         }
+        //End Add Select Button
 
+        //Save ItemIDs for selected items
         private List<string> selectedItemIDs = new List<string>();
 
         private void SaveSelectedItems()
@@ -370,7 +383,7 @@ namespace OurSystemCode
                 }
             }
         }
-
+        
         private void RestoreSelectedItems()
         {
             foreach (DataGridViewRow row in DataEntryView.Rows)
@@ -383,7 +396,7 @@ namespace OurSystemCode
             }
         }
 
-
+        //delete selected items
         private void DeleteSelectedItems()
         {
             try
@@ -427,7 +440,9 @@ namespace OurSystemCode
                 MessageBox.Show("Error deleting selected items: " + ex.Message);
             }
         }
+        //End delete selected items
 
+        //Add Item
         private void AddItem()
         {
             try
@@ -490,8 +505,10 @@ namespace OurSystemCode
                 MessageBox.Show("Error Add item: " + ex.Message);
             }
         }
+        //End Add Item
 
 
+        //Delete one item
         private void DeleteItem()
         {
             try
@@ -563,7 +580,9 @@ namespace OurSystemCode
                 MessageBox.Show("Error deleting item: " + ex.Message);
             }
         }
+        //delete one item
 
+        //Filter Item
         private void FilterItem()
         {
             try
@@ -643,7 +662,7 @@ namespace OurSystemCode
                 MessageBox.Show("Error filtering items: " + ex.Message);
             }
         }
-
+        //end Filter Item
 
         private void ResetButton()
         {
@@ -690,6 +709,7 @@ namespace OurSystemCode
             }
         }
 
+        //print
         private void PrintEntryData()
         {
             PrintDocument printDoc = new PrintDocument();
@@ -705,14 +725,14 @@ namespace OurSystemCode
             DataEntryView.DrawToBitmap(bitmap, new Rectangle(0, 0, this.DataEntryView.Width, this.DataEntryView.Height));
             e.Graphics.DrawImage(bitmap, 0, 0);
         }
+        //End print
 
 
+        //Only Number
         private void ItemIDInsert_KeyPress(object sender, KeyPressEventArgs e)
         {
             Utility.onlyNumber(e);
         }
-
-       
 
         private void CatogeryIDInsertBox_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -733,7 +753,9 @@ namespace OurSystemCode
         {
             Utility.onlyNumber(e);
         }
+        //End Only Number
 
+        //Delete icon
         private void pictureBox2_Click(object sender, EventArgs e)
         {
 
@@ -749,14 +771,15 @@ namespace OurSystemCode
             OBlapel.Text = "Delete Item";
           
         }
+        //End Delete icon
 
-      
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
             OBItemPan.Visible = true;
         }
 
+        //Filter icon
         private void pictureBox4_Click_1(object sender, EventArgs e)
         {
             ResetButton();
@@ -770,7 +793,7 @@ namespace OurSystemCode
             OBlapel.Text = "Filtering Items";
            
         }
-
+        //End Filter icon
 
 
         private void FilExpirationDateInsertBox_ValueChanged(object sender, EventArgs e)
@@ -781,11 +804,12 @@ namespace OurSystemCode
 
         }
 
+        //print icon
         private void EntryDataPrint_Click(object sender, EventArgs e)
         {
             PrintEntryData();
         }
-
+        //End print icon
         private void ItemIDDelete_KeyPress(object sender, KeyPressEventArgs e)
         {
             Utility.onlyNumber(e);
@@ -811,6 +835,7 @@ namespace OurSystemCode
             Utility.onlyNumber(e);
         }
 
+        //Navigation
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
             Dashboard dashboardScreen = new Dashboard(role, name);
@@ -872,8 +897,9 @@ namespace OurSystemCode
             this.Close();
             logoutScreen.Show();
         }
+        //End navigation
 
-       
+        //// Toggle expiration date selection and format
         private void FilExpirationDateInsertBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (FilExpirationDateInsertBox.Checked)
@@ -891,15 +917,17 @@ namespace OurSystemCode
             }
 
         }
+        //End Toggle expiration date selection and format
 
+        //Selected items icon
         private void DeleteSelectedItemsBtn_Click(object sender, EventArgs e)
         {
             DeleteSelectedItems();
         }
-
-        
-    
+        //End Selected items icon
 
 
-    }
+
+
+    }//End class
 }

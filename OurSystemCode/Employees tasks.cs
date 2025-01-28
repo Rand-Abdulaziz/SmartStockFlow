@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Start laibrary
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+//End laibrary
 
 namespace OurSystemCode
 {
@@ -63,6 +65,8 @@ namespace OurSystemCode
             EmployeesTasksView.ReadOnly = true; 
 
         }
+
+        // Load Employee Tasks View
         private void LoadEmployeeTasks()
         {
             EmployeesTasksView.AutoGenerateColumns = true;
@@ -78,6 +82,7 @@ namespace OurSystemCode
 
             EmployeesTasksView.Refresh();
         }
+        //End Employees Tasks View
 
         // Update Task Status on Double Click
         private void EmployeesTasksView_CellDoubleClick_1(object sender, DataGridViewCellEventArgs e)
@@ -138,6 +143,7 @@ namespace OurSystemCode
             statusForm.Controls.Add(statusComboBox);
             statusForm.ShowDialog();
         }
+        //End Update Task Status
 
 
         private void Employees_tasks_MouseDown(object sender, MouseEventArgs e)
@@ -182,7 +188,7 @@ namespace OurSystemCode
         }
 
 
-
+        //Navigation
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
             Dashboard dashboardScreen = new Dashboard(role, name);
@@ -245,8 +251,8 @@ namespace OurSystemCode
         {
             this.Show();
         }
+        //End Navigation
 
-
-    }
+    }//End class
 }
 

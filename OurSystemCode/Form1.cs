@@ -107,7 +107,7 @@ namespace OurSystemCode
        
         private int failedAttempts = 0;
         private DateTime lockoutEndTime = DateTime.MinValue;
-        private bool passwordResetRequired = false;  
+        
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
@@ -119,12 +119,6 @@ namespace OurSystemCode
                 return;
             }
 
-            if (passwordResetRequired)
-            {
-              
-                MessageBox.Show("Your password is incorrect multiple times. Please reset your password.", "Password Reset Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; 
-            }
 
             try
             {
@@ -138,7 +132,7 @@ namespace OurSystemCode
                     {
                         
                         failedAttempts = 0;
-                        passwordResetRequired = false;
+                        
 
                         string name = ds.Tables[0].Rows[0]["UserName"].ToString();
                         string role = ds.Tables[0].Rows[0]["Role"].ToString();

@@ -111,7 +111,7 @@ namespace OurSystemCode
             isDragging = false;
         }
 
-
+        //View Inventory Data
         DataTable originalData;
         private void LoadInventoryData()
         {
@@ -161,8 +161,10 @@ namespace OurSystemCode
 
             InventoryView.ReadOnly = true;
         }
+        //End View Inventory Data
 
 
+        //Cell Formatting
         private void InventoryView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
            
@@ -203,8 +205,10 @@ namespace OurSystemCode
               
                 
             }
+            //End Cell Formatting
 
-          
+
+            //Cell Formatting (Expiration)
             if (InventoryView.Columns[e.ColumnIndex].Name == "Product State (Expiration)")
             {
                 
@@ -241,10 +245,11 @@ namespace OurSystemCode
                     e.CellStyle.ForeColor = Color.Black;
                 }
             }
-        }
+        }//End Cell Formatting (Expiration)
 
 
 
+        //Start Get Product State
         private string GetExpirationState(object expirationDateObj)
         {
             if (expirationDateObj == DBNull.Value)
@@ -262,21 +267,22 @@ namespace OurSystemCode
             else
                 return "Good";
         }
+        //End Get Product State
 
 
-        
+        //Start Get Stock State
         private string GetStockState(int quantity)
         {
             if (quantity == 0)
                 return "Out of Stock";
-            else if (quantity < 50)
+            else if (quantity <= 50)
                 return "Low Stock"; 
             else
                 return "In Stock"; 
         }
+        //End Get Stock State
 
-
-       
+        //Start Get Location Name
         private string GetLocationName(int locationID)
         {
             try
@@ -300,7 +306,9 @@ namespace OurSystemCode
                 return "Error";
             }
         }
-
+        //End Get Location Name
+        
+        //print data
         private void PrintEntryData()
         {
             PrintDocument printDoc = new PrintDocument();

@@ -1,4 +1,4 @@
-﻿//F24
+﻿//F24 //Start library
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OurSystemCode.Properties;
-
+//End library
 
 
 namespace OurSystemCode
@@ -116,6 +116,7 @@ namespace OurSystemCode
             isDragging = false;  
         }
 
+        //Start Item Count
         private void UpdateItemCount()
         {
             try
@@ -143,8 +144,9 @@ namespace OurSystemCode
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        //End Item Count
 
-        
+        //Start Category Count
         private void UpdateCatogiryCount()
         {
             try
@@ -172,6 +174,9 @@ namespace OurSystemCode
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        //End Category Count
+
+        //Start Low Stock Count
         private void LowStockCount()
         {
             try
@@ -199,6 +204,9 @@ namespace OurSystemCode
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+        //End Low Stock Count
+
+        //Start Panel Disghn
         private void panel3_Resize(object sender, EventArgs e)
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel3, 20);
@@ -209,11 +217,12 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
         }
 
+        //Close Application
         private void button8_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
+        //End Close Application
         private void panel5_Resize(object sender, EventArgs e)
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel5, 20);
@@ -233,9 +242,7 @@ namespace OurSystemCode
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel8, 20);
         }
-
-       
-        
+      
         private void panel9_Paint(object sender, PaintEventArgs e)
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel9, 20);
@@ -265,7 +272,9 @@ namespace OurSystemCode
         {
             this.WindowState = FormWindowState.Minimized;
         }
+        //End Panel Disghn
 
+        //Start Button Clicks (Navigation)
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
             this.Show();
@@ -328,6 +337,8 @@ namespace OurSystemCode
             this.Close();
             logoutScreen.Show();
         }
+
+        //End Button Clicks (Navigation)
     }
 
 

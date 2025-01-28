@@ -152,13 +152,11 @@ namespace OurSystemCode
                 MessageBox.Show("An error occurred while assigning the task.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //End Assign New Task
 
-        
 
         // Update Task Status on Double Click
-
-       
-       private void dgvEmployeeTasks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvEmployeeTasks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 {
     if (e.RowIndex >= 0)
     {
@@ -218,8 +216,8 @@ namespace OurSystemCode
 
         statusForm.Controls.Add(statusComboBox);
         statusForm.ShowDialog();
-    }
-}
+        }
+        }//End Update Task Status
 
 
         private void dgvEmployeeTasks_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -342,6 +340,7 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel4, 20);
         }
 
+        //navigation
         private void BtnDashboard_Click(object sender, EventArgs e)
         {
             Dashboard dashboardScreen = new Dashboard(role, name);
@@ -403,6 +402,7 @@ namespace OurSystemCode
             this.Close();
             logoutScreen.Show();
         }
+        //navigation
 
         private void btnDeleteSelectedTasks_Click(object sender, EventArgs e)
         {
@@ -410,7 +410,7 @@ namespace OurSystemCode
         }
 
        
-    }
+    }//End class
 }
 
 
