@@ -179,7 +179,6 @@
             this.panel8.Size = new System.Drawing.Size(346, 184);
             this.panel8.TabIndex = 0;
             this.panel8.Paint += new System.Windows.Forms.PaintEventHandler(this.panel8_Paint);
-            this.panel8.Resize += new System.EventHandler(this.panel6_Resize);
             // 
             // CategoriesLabel
             // 
@@ -233,7 +232,7 @@
             this.panel10.Size = new System.Drawing.Size(346, 184);
             this.panel10.TabIndex = 0;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
-            this.panel10.Resize += new System.EventHandler(this.panel6_Resize);
+      
             // 
             // LowStockLabel
             // 
@@ -285,7 +284,7 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(346, 184);
             this.panel6.TabIndex = 0;
-            this.panel6.Resize += new System.EventHandler(this.panel6_Resize);
+      
             // 
             // TotalItemsLabel
             // 

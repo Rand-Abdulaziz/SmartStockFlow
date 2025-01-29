@@ -231,11 +231,6 @@ namespace OurSystemCode
             OurSystemCode.Form1.ApplyRoundedCorners(panel5, 20);
         }
 
-        private void panel6_Resize(object sender, EventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel16, 20);
-        }
-
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel7, 20);
@@ -254,21 +249,6 @@ namespace OurSystemCode
         private void panel10_Paint(object sender, PaintEventArgs e)
         {
             OurSystemCode.Form1.ApplyRoundedCorners(panel10, 20);
-        }
-
-        private void panel13_Paint(object sender, PaintEventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel13, 20);
-        }
-
-        private void panel14_Paint(object sender, PaintEventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel14, 20);
-        }
-
-        private void panel15_Paint(object sender, PaintEventArgs e)
-        {
-            OurSystemCode.Form1.ApplyRoundedCorners(panel15, 20);
         }
 
         private void buttonMinimize_Click(object sender, EventArgs e)
