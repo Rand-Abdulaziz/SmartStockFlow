@@ -159,7 +159,14 @@
     <Compile Include="Reports.Designer.cs">
       <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
+    <Compile Include="RFIDConfigure.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RFIDConfigure.Designer.cs">
+      <DependentUpon>RFIDConfigure.cs</DependentUpon>
+    </Compile>
     <Compile Include="RFIDTriangulation.cs" />
+    <Compile Include="RWDev.cs" />
     <Compile Include="Sittings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +212,9 @@
     </Compile>
     <EmbeddedResource Include="Reports.resx">
       <DependentUpon>Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RFIDConfigure.resx">
+      <DependentUpon>RFIDConfigure.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sittings.resx">
       <DependentUpon>Sittings.cs</DependentUpon>

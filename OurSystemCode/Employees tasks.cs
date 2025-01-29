@@ -48,13 +48,9 @@ namespace OurSystemCode
 
                 btnEmployeeMang.Visible = false;
                 btnSittings.Location = new System.Drawing.Point(5, 509);
+                btnRFIDConfigure.Location = new System.Drawing.Point(4, 559);
             }
-            else
-            {
-
-                btnEmployeeMang.Visible = true;
-                btnSittings.Location = new System.Drawing.Point(5, 559);
-            }
+           
 
             toolTip1.SetToolTip(button8, "Close applacation");
             toolTip1.SetToolTip(buttonMinimize, "Minimize window");
@@ -250,6 +246,13 @@ namespace OurSystemCode
         private void btnEmployeesTasks_Click(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void btnRFIDConfigure_Click(object sender, EventArgs e)
+        {
+            RFIDConfigure RFIDConfigureScreen = new RFIDConfigure(role, name);
+            this.Close();
+            RFIDConfigureScreen.Show();
         }
         //End Navigation
 

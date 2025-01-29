@@ -409,7 +409,12 @@ namespace OurSystemCode
             DeleteSelectedTasks();
         }
 
-       
+        private void btnRFIDConfigure_Click(object sender, EventArgs e)
+        {
+            RFIDConfigure RFIDConfigureScreen = new RFIDConfigure(role, name);
+            this.Close();
+            RFIDConfigureScreen.Show();
+        }
     }//End class
 }
 

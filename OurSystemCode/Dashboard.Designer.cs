@@ -41,12 +41,6 @@
             this.CategoriesLabel = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.label15 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.LowStockLabel = new System.Windows.Forms.Label();
@@ -58,6 +52,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRFIDConfigure = new System.Windows.Forms.Button();
             this.btnSittings = new System.Windows.Forms.Button();
             this.btnEmployeeMang = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -78,10 +73,6 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            this.panel15.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -158,8 +149,6 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.panel15);
-            this.panel3.Controls.Add(this.panel13);
             this.panel3.Controls.Add(this.panel9);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Location = new System.Drawing.Point(356, 106);
@@ -172,7 +161,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(455, 15);
+            this.panel7.Location = new System.Drawing.Point(443, 82);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(375, 233);
             this.panel7.TabIndex = 0;
@@ -222,76 +211,11 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Categories";
             // 
-            // panel15
-            // 
-            this.panel15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel15.Controls.Add(this.panel16);
-            this.panel15.Location = new System.Drawing.Point(455, 293);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(768, 445);
-            this.panel15.TabIndex = 0;
-            this.panel15.Paint += new System.Windows.Forms.PaintEventHandler(this.panel15_Paint);
-            this.panel15.Resize += new System.EventHandler(this.panel5_Resize);
-            // 
-            // panel16
-            // 
-            this.panel16.BackColor = System.Drawing.Color.White;
-            this.panel16.Controls.Add(this.label13);
-            this.panel16.Location = new System.Drawing.Point(15, 22);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(739, 401);
-            this.panel16.TabIndex = 0;
-            this.panel16.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.label13.Location = new System.Drawing.Point(12, 17);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(367, 37);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Real-time tracking of items";
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
-            this.panel13.Controls.Add(this.panel14);
-            this.panel13.Location = new System.Drawing.Point(56, 293);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(375, 445);
-            this.panel13.TabIndex = 0;
-            this.panel13.Paint += new System.Windows.Forms.PaintEventHandler(this.panel13_Paint);
-            this.panel13.Resize += new System.EventHandler(this.panel5_Resize);
-            // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.White;
-            this.panel14.Controls.Add(this.label15);
-            this.panel14.Location = new System.Drawing.Point(15, 22);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(346, 392);
-            this.panel14.TabIndex = 0;
-            this.panel14.Paint += new System.Windows.Forms.PaintEventHandler(this.panel14_Paint);
-            this.panel14.Resize += new System.EventHandler(this.panel6_Resize);
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(202)))), ((int)(((byte)(255)))));
-            this.label15.Location = new System.Drawing.Point(14, 28);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(266, 32);
-            this.label15.TabIndex = 0;
-            this.label15.Text = "Number of read items";
-            // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(848, 15);
+            this.panel9.Location = new System.Drawing.Point(836, 82);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(375, 233);
             this.panel9.TabIndex = 0;
@@ -345,7 +269,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(56, 15);
+            this.panel5.Location = new System.Drawing.Point(44, 82);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(375, 233);
             this.panel5.TabIndex = 0;
@@ -396,6 +320,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.btnRFIDConfigure);
             this.panel1.Controls.Add(this.btnSittings);
             this.panel1.Controls.Add(this.btnEmployeeMang);
             this.panel1.Controls.Add(this.button7);
@@ -413,6 +338,24 @@
             this.panel1.Padding = new System.Windows.Forms.Padding(5);
             this.panel1.Size = new System.Drawing.Size(330, 911);
             this.panel1.TabIndex = 13;
+            // 
+            // btnRFIDConfigure
+            // 
+            this.btnRFIDConfigure.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRFIDConfigure.FlatAppearance.BorderSize = 0;
+            this.btnRFIDConfigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRFIDConfigure.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btnRFIDConfigure.Image = ((System.Drawing.Image)(resources.GetObject("btnRFIDConfigure.Image")));
+            this.btnRFIDConfigure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRFIDConfigure.Location = new System.Drawing.Point(5, 609);
+            this.btnRFIDConfigure.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnRFIDConfigure.Name = "btnRFIDConfigure";
+            this.btnRFIDConfigure.Size = new System.Drawing.Size(320, 53);
+            this.btnRFIDConfigure.TabIndex = 5;
+            this.btnRFIDConfigure.Text = "RFID Reader";
+            this.btnRFIDConfigure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRFIDConfigure.UseVisualStyleBackColor = true;
+            this.btnRFIDConfigure.Click += new System.EventHandler(this.btnRFIDConfigure_Click);
             // 
             // btnSittings
             // 
@@ -639,12 +582,6 @@
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            this.panel15.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel13.ResumeLayout(false);
-            this.panel14.ResumeLayout(false);
-            this.panel14.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
@@ -678,12 +615,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Panel panel1;
@@ -704,5 +635,6 @@
         private System.Windows.Forms.Label LowStockLabel;
         private System.Windows.Forms.Label userroleLabel;
         private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.Button btnRFIDConfigure;
     }
 }

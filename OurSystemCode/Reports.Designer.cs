@@ -47,10 +47,11 @@
             this.BtnDataEntry = new System.Windows.Forms.Button();
             this.BtnDashboard = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.userroleLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRFIDConfigure = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.panel3.SuspendLayout();
@@ -262,6 +263,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.btnRFIDConfigure);
             this.panel1.Controls.Add(this.btnSittings);
             this.panel1.Controls.Add(this.btnEmployeeMang);
             this.panel1.Controls.Add(this.button7);
@@ -453,16 +455,6 @@
             this.panel2.Size = new System.Drawing.Size(320, 204);
             this.panel2.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(105, 55);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(92, 87);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // userroleLabel
             // 
             this.userroleLabel.AutoSize = true;
@@ -482,6 +474,34 @@
             this.usernameLabel.Size = new System.Drawing.Size(91, 21);
             this.usernameLabel.TabIndex = 7;
             this.usernameLabel.Text = "User name";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(105, 55);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(92, 87);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnRFIDConfigure
+            // 
+            this.btnRFIDConfigure.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRFIDConfigure.FlatAppearance.BorderSize = 0;
+            this.btnRFIDConfigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRFIDConfigure.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btnRFIDConfigure.Image = ((System.Drawing.Image)(resources.GetObject("btnRFIDConfigure.Image")));
+            this.btnRFIDConfigure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRFIDConfigure.Location = new System.Drawing.Point(5, 609);
+            this.btnRFIDConfigure.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnRFIDConfigure.Name = "btnRFIDConfigure";
+            this.btnRFIDConfigure.Size = new System.Drawing.Size(320, 53);
+            this.btnRFIDConfigure.TabIndex = 6;
+            this.btnRFIDConfigure.Text = "RFID Reader";
+            this.btnRFIDConfigure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRFIDConfigure.UseVisualStyleBackColor = true;
+            this.btnRFIDConfigure.Click += new System.EventHandler(this.btnRFIDConfigure_Click);
             // 
             // Reports
             // 
@@ -547,5 +567,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label userroleLabel;
         private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.Button btnRFIDConfigure;
     }
 }

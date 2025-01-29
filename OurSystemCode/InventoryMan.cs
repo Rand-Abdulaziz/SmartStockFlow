@@ -64,6 +64,7 @@ namespace OurSystemCode
             {
                 btnEmployeeMang.Visible = false;
                 btnSittings.Location = new System.Drawing.Point(5, 509);
+                btnRFIDConfigure.Location = new System.Drawing.Point(4, 559);
             }
             else
             {
@@ -71,6 +72,7 @@ namespace OurSystemCode
                 btnEmployeesTasks.Visible = false;
                 btnEmployeeMang.Location = new System.Drawing.Point(5, 459);
                 btnSittings.Location = new System.Drawing.Point(5, 509);
+                btnRFIDConfigure.Location = new System.Drawing.Point(4, 559);
             }
 
             int cornerRadius = 20;
@@ -536,5 +538,11 @@ namespace OurSystemCode
             ProductNameInsert.Text= "";
         }
 
+        private void btnRFIDConfigure_Click(object sender, EventArgs e)
+        {
+            RFIDConfigure RFIDConfigureScreen = new RFIDConfigure(role, name);
+            this.Close();
+            RFIDConfigureScreen.Show();
+        }
     }
 }

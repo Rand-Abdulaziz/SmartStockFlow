@@ -100,6 +100,7 @@
             this.usernameLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRFIDConfigure = new System.Windows.Forms.Button();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -772,6 +773,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.btnRFIDConfigure);
             this.panel1.Controls.Add(this.btnSittings);
             this.panel1.Controls.Add(this.btnEmployeeMang);
             this.panel1.Controls.Add(this.button7);
@@ -993,6 +995,24 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnRFIDConfigure
+            // 
+            this.btnRFIDConfigure.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRFIDConfigure.FlatAppearance.BorderSize = 0;
+            this.btnRFIDConfigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRFIDConfigure.Font = new System.Drawing.Font("Segoe UI", 8F);
+            this.btnRFIDConfigure.Image = ((System.Drawing.Image)(resources.GetObject("btnRFIDConfigure.Image")));
+            this.btnRFIDConfigure.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRFIDConfigure.Location = new System.Drawing.Point(5, 609);
+            this.btnRFIDConfigure.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnRFIDConfigure.Name = "btnRFIDConfigure";
+            this.btnRFIDConfigure.Size = new System.Drawing.Size(320, 53);
+            this.btnRFIDConfigure.TabIndex = 6;
+            this.btnRFIDConfigure.Text = "RFID Reader";
+            this.btnRFIDConfigure.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRFIDConfigure.UseVisualStyleBackColor = true;
+            this.btnRFIDConfigure.Click += new System.EventHandler(this.btnRFIDConfigure_Click);
+            // 
             // DataEntry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1103,5 +1123,6 @@
         private System.Windows.Forms.Button DeleteSelectedItemsBtn;
         private System.Windows.Forms.Label usernameLabel;
         private System.Windows.Forms.Label userroleLabel;
+        private System.Windows.Forms.Button btnRFIDConfigure;
     }
 }

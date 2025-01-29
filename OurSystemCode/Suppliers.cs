@@ -66,6 +66,7 @@ namespace OurSystemCode
 
                 btnEmployeeMan.Visible = false;
                 btnSittings.Location = new System.Drawing.Point(5, 509);
+                btnRFIDConfigure.Location = new System.Drawing.Point(4, 559);
             }
             else if ("IT".Equals(role, StringComparison.OrdinalIgnoreCase))
             {
@@ -73,7 +74,8 @@ namespace OurSystemCode
                 btnSittings.Location = new System.Drawing.Point(5, 509);
                 pictureEye.Visible = false;
                 pictureBox2.Visible = false;
-                
+                btnRFIDConfigure.Location = new System.Drawing.Point(4, 559);
+
             }
             else
             {
@@ -83,6 +85,7 @@ namespace OurSystemCode
                 btnEmployeesTasks.Visible = false;
                 btnEmployeeMan.Location = new System.Drawing.Point(5, 459);
                 btnSittings.Location = new System.Drawing.Point(5, 509);
+                btnRFIDConfigure.Location = new System.Drawing.Point(4, 559);
             }
 
             int cornerRadius = 20;
@@ -725,6 +728,14 @@ namespace OurSystemCode
         private void DeleteSelectedSuppliersBtn_Click(object sender, EventArgs e)
         {
             DeleteSelectedSuppliers();
+        }
+
+        private void btnRFIDConfigure_Click(object sender, EventArgs e)
+        {
+
+            RFIDConfigure RFIDConfigureScreen = new RFIDConfigure(role, name);
+            this.Close();
+            RFIDConfigureScreen.Show();
         }
     }
 }

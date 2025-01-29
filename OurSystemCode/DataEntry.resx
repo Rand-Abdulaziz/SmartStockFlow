@@ -190,6 +190,20 @@
   <metadata name="printDocument1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>187, 17</value>
   </metadata>
+  <data name="btnRFIDConfigure.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DgAACw4BQL7hQQAAAddJREFUOE/VlMuOTFEUhjcDRkSqUnX2/5+6TGpUeA6XiSaRjvQE79KY0I14AyNJ
+        txdoYzM6abpN2wsQJCaEfJV15PRWVcHMSlays89a317Xk9J/K1VVnbO9afuN7S+hnDf5VtovlOl0ekLS
+        E9vfA7Bu+2boHdtvbX+z/Rjb0v+IBOyFpA+2V1NKx0ajkeq6vpxzvtTr9TJ3km5I+ihpZymUyIBVVXV2
+        OBza9vOI9Eco520eGQwG54HaflRyZhI1I5VVYJLe2z6QdKXb7Z5CJa1Iemf7EKikNXwIoOSlpgGkFJEd
+        jMfjM0Ri+yHKo9wFdCts9yU9KHkAKfY6L5MakUVaXyW9kvSaM9Cc8zVsqKntu7b3Sh7AT7Zv5ZwvUi9S
+        JCpAKaXjqKRdMul0OqexkXTB9m18S96fAP9O5qS8QnqRMtCZRHQbkp611fZT28M2cANoFHqbwtOAZmMa
+        mKSXrTE6onVdX/8FpPWMAEMbUR4ClXQVEDZ0s4QsBCKsE8NKdwO61Qx2AElt5tz4AFkIjNXbibVaI/1+
+        v1/RqH8CIkBZp9iafdv3+DHwrQ3EGZV0fymwEWoaNduz/Zm7NnCeLgXOkxiN30CNsl2lz1JhzppUSwU2
+        mUxO/gR8p9RxQsbT/AAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnSittings.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
