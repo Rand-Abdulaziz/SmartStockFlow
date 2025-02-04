@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E13C2219-4B13-4BD3-B074-4DEAB67B5A0B}"
 	ProjectSection(SolutionItems) = preProject
 		Reports = Reports
+		UHFReader288.exe = UHFReader288.exe
 	EndProjectSection
 EndProject
 Global

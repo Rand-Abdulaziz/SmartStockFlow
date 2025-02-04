@@ -161,7 +161,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(443, 82);
+            this.panel7.Location = new System.Drawing.Point(434, 213);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(375, 233);
             this.panel7.TabIndex = 0;
@@ -214,7 +214,7 @@
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(836, 82);
+            this.panel9.Location = new System.Drawing.Point(835, 213);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(375, 233);
             this.panel9.TabIndex = 0;
@@ -232,7 +232,6 @@
             this.panel10.Size = new System.Drawing.Size(346, 184);
             this.panel10.TabIndex = 0;
             this.panel10.Paint += new System.Windows.Forms.PaintEventHandler(this.panel10_Paint);
-      
             // 
             // LowStockLabel
             // 
@@ -268,7 +267,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(255)))));
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(44, 82);
+            this.panel5.Location = new System.Drawing.Point(36, 213);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(375, 233);
             this.panel5.TabIndex = 0;
@@ -284,7 +283,6 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(346, 184);
             this.panel6.TabIndex = 0;
-      
             // 
             // TotalItemsLabel
             // 

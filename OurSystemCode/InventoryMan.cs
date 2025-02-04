@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using System.Windows.Media.Animation;
 
 
+
 namespace OurSystemCode
 {
     public partial class InventoryMan : Form
@@ -326,6 +327,7 @@ namespace OurSystemCode
             InventoryView.DrawToBitmap(bitmap, new Rectangle(0, 0, this.InventoryView.Width, this.InventoryView.Height));
             e.Graphics.DrawImage(bitmap, 0, 0);
         }
+        //
 
         private void buttonMinimize_Click(object sender, EventArgs e)
         {

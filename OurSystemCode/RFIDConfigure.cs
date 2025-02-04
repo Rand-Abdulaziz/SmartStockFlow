@@ -19,6 +19,7 @@ using System.Runtime.InteropServices;
 using System.Net;
 using System.Net.NetworkInformation;
 
+
 namespace OurSystemCode
 {
     public partial class RFIDConfigure : Form
@@ -224,11 +225,22 @@ namespace OurSystemCode
             int portNum = ComboBox_COM.SelectedIndex + 1;
             int FrmPortIndex = 0;
             string strException = string.Empty;
+
             fBaud = Convert.ToByte(ComboBox_baud2.SelectedIndex);
             if (fBaud > 2)
                 fBaud = Convert.ToByte(fBaud + 2);
             fComAdr = 255;
-            fCmdRet = RWDev.OpenComPort(portNum, ref fComAdr, fBaud, ref FrmPortIndex);
+            try
+                {
+                    fCmdRet = RWDev.OpenComPort(portNum, ref fComAdr, fBaud, ref FrmPortIndex);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Please select the correct baud rate");
+                    return;
+                }
+           
             if (fCmdRet != 0)
             {
                 string strLog = "Connect reader failed: " + GetReturnCodeDesc(fCmdRet);
@@ -372,6 +384,13 @@ namespace OurSystemCode
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            Form1 logoutScreen = new Form1();
+            this.Close();
+            logoutScreen.Show();
         }
     }
 }

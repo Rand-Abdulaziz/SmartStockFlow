@@ -107,6 +107,7 @@ namespace OurSystemCode
             this.btConnect232.TabIndex = 19;
             this.btConnect232.Text = "Connect";
             this.btConnect232.UseVisualStyleBackColor = true;
+            this.btConnect232.Click += new System.EventHandler(this.btConnect232_Click);
             // 
             // ComboBox_baud2
             // 
@@ -256,6 +257,7 @@ namespace OurSystemCode
             this.button7.Text = "Logout";
             this.button7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // btnEmployeesTasks
             // 

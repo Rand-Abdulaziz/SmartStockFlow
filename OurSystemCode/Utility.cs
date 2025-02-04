@@ -20,12 +20,6 @@ namespace OurSystemCode
         }
 
      
-        public static String getUniqueID(String prefix)
-        {
-            long nano = 10000L * Stopwatch.GetTimestamp();
-            nano /= TimeSpan.TicksPerMillisecond;
-            nano *= 100L;
-            return prefix + nano;
-        }
+     
     }
 }
