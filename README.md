@@ -9,10 +9,10 @@ Warehouse Management Systems (WMS) streamline the storage, movement, and managem
  - Design a system architecture that integrates RFID readers for optimal coverage and efficiency.
  - Develop software capable of processing data from multiple RFID readers and determining item locations.
  - Test the system in a simulated warehouse environment, focusing on its accuracy and performance.
-#Conclusion:
+# Conclusion:
 The RFID-based Warehouse Management System (WMS) successfully addresses key inventory management challenges, such as misplaced items,
 real-time tracking, and inefficient reporting. With features like automated low-stock alerts, comprehensive reporting tools, and an intuitive user interface, the system achieves its primary objectives delivering an efficient, scalable, and user friendly solution. This project highlights the potential of integrating RFID technology with software systems to enhance warehouse operations, ensuring accurate inventory management and streamlined processes.
-#Future Work:
+# Future Work:
 To further enhance the system, the following features are planned:
 - Integration with ERP systems (e.g., Odoo, SAP).
 - Complaints and suggestions management.
