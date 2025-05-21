@@ -1,5 +1,4 @@
-# OurSystemCode (F24)
---
+
 # Introduction:
 Efficient warehouse management is essential for optimizing supply chains and ensuring operationalefficiency. Traditional methods often result in misplaced items, inaccurate stock levels, and delays, causing costly errors and inefficiencies. This project leverages RFID technology to develop a Warehouse Management System (WMS) that automates inventory tracking, ensures real-time stock updates, and enhances warehouse operations.
 #  Background:
